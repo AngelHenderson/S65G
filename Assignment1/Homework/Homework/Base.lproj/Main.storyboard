@@ -3,6 +3,9 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--First-->
@@ -16,7 +19,48 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfz-SX-8Fn" userLabel="View Container">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SA-a3-i2R">
+                                        <rect key="frame" x="79" y="55" width="441" height="441"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="7SA-a3-i2R" secondAttribute="height" id="7mg-gC-j8o"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="width" secondItem="Wfz-SX-8Fn" secondAttribute="width" priority="250" id="4If-cl-QDI"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerY" secondItem="Wfz-SX-8Fn" secondAttribute="centerY" id="By3-RR-lCU"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerY" secondItem="Wfz-SX-8Fn" secondAttribute="centerY" id="IIl-hP-2bD"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerX" secondItem="Wfz-SX-8Fn" secondAttribute="centerX" id="RMk-YT-lCT"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="width" relation="lessThanOrEqual" secondItem="Wfz-SX-8Fn" secondAttribute="width" multiplier="0.8" priority="750" id="SdY-62-TR6"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerX" secondItem="Wfz-SX-8Fn" secondAttribute="centerX" id="Xvw-tJ-hjd"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" secondItem="Wfz-SX-8Fn" secondAttribute="height" priority="250" id="brW-sy-uNz"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerY" secondItem="Wfz-SX-8Fn" secondAttribute="centerY" id="nzQ-uh-dQo"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerX" secondItem="Wfz-SX-8Fn" secondAttribute="centerX" id="oXp-kP-Bxv"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" relation="lessThanOrEqual" secondItem="Wfz-SX-8Fn" secondAttribute="height" multiplier="0.8" priority="750" id="yqz-ET-Paj"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="IIl-hP-2bD"/>
+                                        <exclude reference="RMk-YT-lCT"/>
+                                        <exclude reference="nzQ-uh-dQo"/>
+                                        <exclude reference="oXp-kP-Bxv"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Wfz-SX-8Fn" secondAttribute="trailing" constant="-20" id="J5m-gR-Uds"/>
+                            <constraint firstItem="Wfz-SX-8Fn" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="Zjv-LJ-0rN"/>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Wfz-SX-8Fn" secondAttribute="bottom" id="aOc-1E-gIK"/>
+                            <constraint firstItem="Wfz-SX-8Fn" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="-20" id="mjf-Lc-N13"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                 </viewController>
