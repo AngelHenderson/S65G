@@ -23,7 +23,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wfz-SX-8Fn" userLabel="View Container">
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SA-a3-i2R">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SA-a3-i2R" userLabel="Box View">
                                         <rect key="frame" x="79" y="45" width="441" height="441"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -33,25 +33,19 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="width" secondItem="Wfz-SX-8Fn" secondAttribute="width" priority="250" constant="-159" id="4If-cl-QDI"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="width" secondItem="Wfz-SX-8Fn" secondAttribute="width" priority="250" constant="-159" id="4If-cl-QDI">
+                                        <variation key="widthClass=compact" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstItem="7SA-a3-i2R" firstAttribute="centerY" secondItem="Wfz-SX-8Fn" secondAttribute="centerY" id="By3-RR-lCU"/>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerY" secondItem="Wfz-SX-8Fn" secondAttribute="centerY" id="IIl-hP-2bD"/>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerX" secondItem="Wfz-SX-8Fn" secondAttribute="centerX" id="RMk-YT-lCT"/>
                                     <constraint firstItem="7SA-a3-i2R" firstAttribute="width" relation="lessThanOrEqual" secondItem="Wfz-SX-8Fn" secondAttribute="width" multiplier="0.8" priority="750" id="SdY-62-TR6"/>
                                     <constraint firstItem="7SA-a3-i2R" firstAttribute="centerX" secondItem="Wfz-SX-8Fn" secondAttribute="centerX" id="Xvw-tJ-hjd"/>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" secondItem="Wfz-SX-8Fn" secondAttribute="height" priority="250" constant="-90" id="brW-sy-uNz"/>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerY" secondItem="Wfz-SX-8Fn" secondAttribute="centerY" id="nzQ-uh-dQo"/>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="centerX" secondItem="Wfz-SX-8Fn" secondAttribute="centerX" id="oXp-kP-Bxv"/>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" relation="lessThanOrEqual" secondItem="Wfz-SX-8Fn" secondAttribute="height" multiplier="0.8" priority="750" constant="16.199999999999989" id="yqz-ET-Paj"/>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" secondItem="Wfz-SX-8Fn" secondAttribute="height" priority="250" constant="-90" id="brW-sy-uNz">
+                                        <variation key="widthClass=compact" constant="0.0"/>
+                                    </constraint>
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" relation="lessThanOrEqual" secondItem="Wfz-SX-8Fn" secondAttribute="height" multiplier="0.8" priority="750" constant="16.199999999999989" id="yqz-ET-Paj">
+                                        <variation key="widthClass=compact" constant="0.0"/>
+                                    </constraint>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="IIl-hP-2bD"/>
-                                        <exclude reference="RMk-YT-lCT"/>
-                                        <exclude reference="nzQ-uh-dQo"/>
-                                        <exclude reference="oXp-kP-Bxv"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,8 +55,18 @@
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Wfz-SX-8Fn" secondAttribute="bottom" id="aOc-1E-gIK"/>
                             <constraint firstItem="Wfz-SX-8Fn" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="mjf-Lc-N13"/>
                         </constraints>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Wfz-SX-8Fn"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Wfz-SX-8Fn"/>
+                            </mask>
+                        </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="LifeGrid" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
