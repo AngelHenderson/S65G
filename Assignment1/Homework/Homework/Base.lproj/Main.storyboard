@@ -255,7 +255,30 @@
                                 <exclude reference="tDH-c9-N74"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
+                            </mask>
+                        </variation>
                         <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
+                            </mask>
                             <mask key="constraints">
                                 <include reference="Awd-a5-X74"/>
                                 <exclude reference="MLa-tV-DRQ"/>
@@ -264,6 +287,9 @@
                             </mask>
                         </variation>
                         <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
+                            </mask>
                             <mask key="constraints">
                                 <include reference="1Hw-ZU-FOD"/>
                                 <exclude reference="MLa-tV-DRQ"/>
@@ -280,6 +306,11 @@
                                 <exclude reference="MLa-tV-DRQ"/>
                                 <include reference="PG1-OU-jqF"/>
                                 <exclude reference="cUN-if-gHH"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
                             </mask>
                         </variation>
                     </view>
