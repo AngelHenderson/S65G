@@ -213,6 +213,17 @@
                                         <exclude reference="zmJ-Ed-6yi"/>
                                     </mask>
                                 </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="vEm-VW-hr7"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="K3E-dc-bPn"/>
+                                        <include reference="vEm-VW-hr7"/>
+                                    </mask>
+                                </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="K3E-dc-bPn"/>
