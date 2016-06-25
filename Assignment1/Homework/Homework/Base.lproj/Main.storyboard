@@ -223,7 +223,12 @@
                                 <include reference="fIZ-AO-yQY"/>
                             </mask>
                         </variation>
-                        <variation key="widthClass=regular">
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="fIZ-AO-yQY"/>
                             </mask>
