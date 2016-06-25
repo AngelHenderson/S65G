@@ -24,24 +24,30 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="531"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SA-a3-i2R" userLabel="Box View">
-                                        <rect key="frame" x="79" y="45" width="441" height="441"/>
+                                        <rect key="frame" x="87" y="53" width="425" height="425"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="7SA-a3-i2R" secondAttribute="height" id="7mg-gC-j8o"/>
                                         </constraints>
+                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="159" y="25" width="281" height="281"/>
+                                        </variation>
+                                        <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="79" y="145" width="441" height="441"/>
+                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="width" secondItem="Wfz-SX-8Fn" secondAttribute="width" priority="250" constant="-159" id="4If-cl-QDI">
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="width" secondItem="Wfz-SX-8Fn" secondAttribute="width" priority="250" id="4If-cl-QDI">
                                         <variation key="widthClass=compact" constant="0.0"/>
                                     </constraint>
                                     <constraint firstItem="7SA-a3-i2R" firstAttribute="centerY" secondItem="Wfz-SX-8Fn" secondAttribute="centerY" id="By3-RR-lCU"/>
                                     <constraint firstItem="7SA-a3-i2R" firstAttribute="width" relation="lessThanOrEqual" secondItem="Wfz-SX-8Fn" secondAttribute="width" multiplier="0.8" priority="750" id="SdY-62-TR6"/>
                                     <constraint firstItem="7SA-a3-i2R" firstAttribute="centerX" secondItem="Wfz-SX-8Fn" secondAttribute="centerX" id="Xvw-tJ-hjd"/>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" secondItem="Wfz-SX-8Fn" secondAttribute="height" priority="250" constant="-90" id="brW-sy-uNz">
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" secondItem="Wfz-SX-8Fn" secondAttribute="height" priority="250" id="brW-sy-uNz">
                                         <variation key="widthClass=compact" constant="0.0"/>
                                     </constraint>
-                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" relation="lessThanOrEqual" secondItem="Wfz-SX-8Fn" secondAttribute="height" multiplier="0.8" priority="750" constant="16.199999999999989" id="yqz-ET-Paj">
+                                    <constraint firstItem="7SA-a3-i2R" firstAttribute="height" relation="lessThanOrEqual" secondItem="Wfz-SX-8Fn" secondAttribute="height" multiplier="0.8" priority="750" id="yqz-ET-Paj">
                                         <variation key="widthClass=compact" constant="0.0"/>
                                     </constraint>
                                 </constraints>
@@ -107,7 +113,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="top" secondItem="K3E-dc-bPn" secondAttribute="bottom" id="0rm-AM-h0h"/>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="height" secondItem="K3E-dc-bPn" secondAttribute="height" id="ErL-ZQ-ZnO"/>
@@ -145,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="669" y="697.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
