@@ -29,12 +29,6 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="7SA-a3-i2R" secondAttribute="height" id="7mg-gC-j8o"/>
                                         </constraints>
-                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="159" y="25" width="281" height="281"/>
-                                        </variation>
-                                        <variation key="heightClass=regular" ambiguous="YES" misplaced="YES">
-                                            <rect key="frame" x="79" y="145" width="441" height="441"/>
-                                        </variation>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -51,6 +45,46 @@
                                         <variation key="widthClass=compact" constant="0.0"/>
                                     </constraint>
                                 </constraints>
+                                <variation key="heightClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="7SA-a3-i2R"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="7SA-a3-i2R"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="7SA-a3-i2R"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="7SA-a3-i2R"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="7SA-a3-i2R"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="7SA-a3-i2R"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="7SA-a3-i2R"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=regular">
+                                    <mask key="subviews">
+                                        <include reference="7SA-a3-i2R"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -68,12 +102,42 @@
                                 <exclude reference="Zjv-LJ-0rN"/>
                             </mask>
                         </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <include reference="Wfz-SX-8Fn"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="subviews">
+                                <include reference="Wfz-SX-8Fn"/>
+                            </mask>
+                        </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Wfz-SX-8Fn"/>
                             </mask>
                         </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="Wfz-SX-8Fn"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Wfz-SX-8Fn"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact-widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="Wfz-SX-8Fn"/>
+                            </mask>
+                        </variation>
                         <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="Wfz-SX-8Fn"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular">
                             <mask key="subviews">
                                 <include reference="Wfz-SX-8Fn"/>
                             </mask>
@@ -154,6 +218,16 @@
                             <constraint firstItem="fIZ-AO-yQY" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="jso-8f-SYX"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="fIZ-AO-yQY" secondAttribute="bottom" id="lJG-Id-xwm"/>
                         </constraints>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=regular">
+                            <mask key="subviews">
+                                <include reference="fIZ-AO-yQY"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                 </viewController>
