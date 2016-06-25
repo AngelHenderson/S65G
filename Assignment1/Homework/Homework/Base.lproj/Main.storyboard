@@ -188,29 +188,53 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="top" secondItem="K3E-dc-bPn" secondAttribute="bottom" id="0rm-AM-h0h"/>
+                                    <constraint firstItem="K3E-dc-bPn" firstAttribute="width" secondItem="fIZ-AO-yQY" secondAttribute="width" multiplier="0.5" id="1XK-Vj-TrO"/>
+                                    <constraint firstItem="K3E-dc-bPn" firstAttribute="leading" secondItem="fIZ-AO-yQY" secondAttribute="leading" id="Di0-ua-N2P"/>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="height" secondItem="K3E-dc-bPn" secondAttribute="height" id="ErL-ZQ-ZnO"/>
+                                    <constraint firstItem="vEm-VW-hr7" firstAttribute="leading" secondItem="K3E-dc-bPn" secondAttribute="trailing" constant="8" id="G3J-Ag-HLo">
+                                        <variation key="heightClass=compact-widthClass=compact" constant="0.0"/>
+                                    </constraint>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="leading" secondItem="fIZ-AO-yQY" secondAttribute="leading" id="HbQ-mD-FbY"/>
                                     <constraint firstItem="K3E-dc-bPn" firstAttribute="height" secondItem="fIZ-AO-yQY" secondAttribute="height" multiplier="0.5" id="Jdy-Pq-ndW"/>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="height" secondItem="K3E-dc-bPn" secondAttribute="height" id="Jk4-fL-c0e"/>
+                                    <constraint firstItem="K3E-dc-bPn" firstAttribute="height" secondItem="fIZ-AO-yQY" secondAttribute="height" id="LQq-1t-KT3"/>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="leading" secondItem="K3E-dc-bPn" secondAttribute="leading" id="NWX-sg-gTN"/>
+                                    <constraint firstItem="vEm-VW-hr7" firstAttribute="height" secondItem="K3E-dc-bPn" secondAttribute="height" id="Orx-wS-ayl"/>
                                     <constraint firstItem="K3E-dc-bPn" firstAttribute="leading" secondItem="fIZ-AO-yQY" secondAttribute="leading" id="PEa-a3-5Ww"/>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="top" secondItem="K3E-dc-bPn" secondAttribute="top" id="VkO-hS-xAj"/>
                                     <constraint firstAttribute="trailing" secondItem="vEm-VW-hr7" secondAttribute="trailing" id="WFm-Zb-Ak5"/>
                                     <constraint firstItem="K3E-dc-bPn" firstAttribute="centerX" secondItem="fIZ-AO-yQY" secondAttribute="centerX" id="ajv-M9-lRR"/>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="width" secondItem="K3E-dc-bPn" secondAttribute="width" id="bmZ-FZ-WX8"/>
+                                    <constraint firstItem="K3E-dc-bPn" firstAttribute="centerY" secondItem="fIZ-AO-yQY" secondAttribute="centerY" id="gEs-i2-uO5"/>
+                                    <constraint firstItem="vEm-VW-hr7" firstAttribute="width" secondItem="K3E-dc-bPn" secondAttribute="width" id="sbG-Wi-GII"/>
                                     <constraint firstAttribute="trailing" secondItem="K3E-dc-bPn" secondAttribute="trailing" id="tH0-Sd-hG0"/>
                                     <constraint firstItem="K3E-dc-bPn" firstAttribute="width" secondItem="fIZ-AO-yQY" secondAttribute="width" id="uMR-Zi-ccF"/>
+                                    <constraint firstItem="vEm-VW-hr7" firstAttribute="centerY" secondItem="fIZ-AO-yQY" secondAttribute="centerY" id="wAt-It-Gts"/>
                                     <constraint firstItem="K3E-dc-bPn" firstAttribute="top" secondItem="fIZ-AO-yQY" secondAttribute="top" id="xiJ-Zb-j3r"/>
                                     <constraint firstItem="vEm-VW-hr7" firstAttribute="width" secondItem="K3E-dc-bPn" secondAttribute="width" id="zmJ-Ed-6yi"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="1XK-Vj-TrO"/>
+                                        <exclude reference="Di0-ua-N2P"/>
+                                        <exclude reference="LQq-1t-KT3"/>
                                         <exclude reference="PEa-a3-5Ww"/>
                                         <exclude reference="ajv-M9-lRR"/>
+                                        <exclude reference="gEs-i2-uO5"/>
                                         <exclude reference="tH0-Sd-hG0"/>
+                                        <exclude reference="G3J-Ag-HLo"/>
                                         <exclude reference="Jk4-fL-c0e"/>
+                                        <exclude reference="Orx-wS-ayl"/>
                                         <exclude reference="VkO-hS-xAj"/>
+                                        <exclude reference="sbG-Wi-GII"/>
+                                        <exclude reference="wAt-It-Gts"/>
                                         <exclude reference="zmJ-Ed-6yi"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="K3E-dc-bPn"/>
+                                        <include reference="vEm-VW-hr7"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular">
@@ -219,6 +243,36 @@
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="vEm-VW-hr7"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="K3E-dc-bPn"/>
+                                        <include reference="vEm-VW-hr7"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="1XK-Vj-TrO"/>
+                                        <include reference="Di0-ua-N2P"/>
+                                        <exclude reference="Jdy-Pq-ndW"/>
+                                        <include reference="LQq-1t-KT3"/>
+                                        <include reference="gEs-i2-uO5"/>
+                                        <exclude reference="uMR-Zi-ccF"/>
+                                        <exclude reference="xiJ-Zb-j3r"/>
+                                        <exclude reference="0rm-AM-h0h"/>
+                                        <exclude reference="ErL-ZQ-ZnO"/>
+                                        <include reference="G3J-Ag-HLo"/>
+                                        <exclude reference="HbQ-mD-FbY"/>
+                                        <exclude reference="NWX-sg-gTN"/>
+                                        <include reference="Orx-wS-ayl"/>
+                                        <exclude reference="WFm-Zb-Ak5"/>
+                                        <exclude reference="bmZ-FZ-WX8"/>
+                                        <include reference="sbG-Wi-GII"/>
+                                        <include reference="wAt-It-Gts"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact-widthClass=regular">
                                     <mask key="subviews">
                                         <include reference="K3E-dc-bPn"/>
                                         <include reference="vEm-VW-hr7"/>
@@ -329,7 +383,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="669" y="697.5"/>
+            <point key="canvasLocation" x="396" y="871.5"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="yl2-sM-qoP">
