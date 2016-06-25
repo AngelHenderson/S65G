@@ -292,6 +292,7 @@
 				58E64F301D1B1E0B00C31C26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
