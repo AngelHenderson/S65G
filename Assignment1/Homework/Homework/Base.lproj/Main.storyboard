@@ -56,10 +56,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="Wfz-SX-8Fn" secondAttribute="trailing" constant="-20" id="J5m-gR-Uds"/>
+                            <constraint firstItem="Wfz-SX-8Fn" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="TNA-Sv-zyL"/>
                             <constraint firstItem="Wfz-SX-8Fn" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" constant="-20" id="Zjv-LJ-0rN"/>
                             <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="Wfz-SX-8Fn" secondAttribute="bottom" id="aOc-1E-gIK"/>
+                            <constraint firstItem="Wfz-SX-8Fn" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="g5b-pL-pyM"/>
                             <constraint firstItem="Wfz-SX-8Fn" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" id="mjf-Lc-N13"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="J5m-gR-Uds"/>
+                                <exclude reference="Zjv-LJ-0rN"/>
+                            </mask>
+                        </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="Wfz-SX-8Fn"/>
