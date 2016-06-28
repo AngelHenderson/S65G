@@ -72,8 +72,8 @@ var occupationNameShort = occupation2.map { return $0.0 }
 occupationNames
 occupationNameShort
 
-var occupationNameShort2 = occupation2.map { return $0.0 }.map {$0; return "blah"}
-occupationNameShort2
+//var occupationNameShort2 = occupation2.map { return $0.0 }.map {$0; return "blah"}
+//occupationNameShort2
 
 
 var r = 50...100
@@ -139,3 +139,27 @@ progression(6, f:{(x:Int) -> Int in
     return x*2
 })
 
+
+//----------------------------------------
+//This String can either be a string or nothing - In Homework
+var n:String? = nil
+
+var t:Int? = nil
+
+//Doubler NEEDS to be an Int
+//doubler(t)
+
+var optionalN:Int? = 14
+
+//
+var implicitOptionalN:Int! = 12
+
+if let n = optionalN {
+        let doubleN = doubler(n)
+}
+
+doubler(implicitOptionalN)
+
+
+//----------------------------------------
+//Drop a button in the Viewcontroller. Then ctrl grab the button and drag it to uiviewcontroller
