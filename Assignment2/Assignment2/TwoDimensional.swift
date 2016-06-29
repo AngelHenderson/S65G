@@ -107,7 +107,13 @@ class TwoDimensional {
         return value
     }
     
-    
+    func whoAreMyNeighbors (target : CellIndex) -> [CellIndex]? {
+        //Validation
+        if (target.height < 0 || target.height >= self.height) {
+            return nil
+        }
+        return [CellIndex(height:0, width: 1)]
+    }
 }
 
 

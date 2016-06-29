@@ -25,6 +25,18 @@ class Problem2ViewController: UIViewController {
         let color = TwoDimensional.Colors.Red
         
         let origin = CellIndex(height: 0, width: 0)
+        
+        var optionalNeighbors = twoDArray.whoAreMyNeighbors((0,0))
+        print (optionalNeighbors)
+        if let neighbor = optionalNeighbors {
+            print(neighbor)
+        }
+        
+        optionalNeighbors = twoDArray.whoAreMyNeighbors((20,20))
+        print (optionalNeighbors)
+        if let neighbor = optionalNeighbors {
+            print(neighbor)
+        }
     }
     
     
