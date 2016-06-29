@@ -20,7 +20,7 @@ class Problem2ViewController: UIViewController {
     }
     
     @IBAction func runButtonAction(sender: AnyObject) {
-        //textView.text = "Hello"
+        textView.text = "Hello, this button seems to be working as intended"
         if arc4random_uniform(3) == 1 {
             // set current cell to alive
         }
