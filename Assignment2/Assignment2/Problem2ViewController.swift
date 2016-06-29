@@ -12,6 +12,8 @@ class Problem2ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Problem 2"
 
         // Do any additional setup after loading the view.
     }

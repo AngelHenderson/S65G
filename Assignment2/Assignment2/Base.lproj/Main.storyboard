@@ -36,14 +36,23 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5z-6K-jSo">
                                 <rect key="frame" x="265" y="161" width="70" height="30"/>
                                 <state key="normal" title="Problem 2"/>
+                                <connections>
+                                    <segue destination="UMH-UY-YgT" kind="show" id="3Xc-dI-edh"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuF-Tk-mF5">
                                 <rect key="frame" x="264" y="251" width="71" height="30"/>
                                 <state key="normal" title="Problem 4"/>
+                                <connections>
+                                    <segue destination="t4k-sY-1r9" kind="show" id="jlD-8j-77p"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iK-GV-aml">
                                 <rect key="frame" x="265" y="204" width="71" height="30"/>
                                 <state key="normal" title="Problem 3"/>
+                                <connections>
+                                    <segue destination="koy-bO-CGW" kind="show" id="tSJ-83-lV3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
