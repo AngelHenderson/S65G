@@ -17,7 +17,12 @@ class Problem2ViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "Problem 2"
+    
+        let twoDArray = TwoDimensional(height: 5, width: 10)
+        twoDArray.printMyArray()
+        twoDArray.somethingElse()
     }
+    
     
     @IBAction func runButtonAction(sender: AnyObject) {
         textView.text = "Hello, this button seems to be working as intended"
