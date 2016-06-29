@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 enum NeighborStatus {
     
@@ -33,6 +34,9 @@ enum NeighborStatus {
     }
 }
 
+typealias LifeArray = Array<Array<Int>>
+typealias CellIndex = (height: Int, width: Int)
+
 class TwoDimensional {
     
     enum Colors {
@@ -42,7 +46,9 @@ class TwoDimensional {
     let height : Int
     let width : Int
 
-    let twoDimArrayInt: Array<Array<Int>>
+    //let twoDimArrayInt: Array<Array<Int>>
+    let twoDimArrayInt: LifeArray
+
     init (height: Int, width: Int) {
         self.height = height
         self.width = width

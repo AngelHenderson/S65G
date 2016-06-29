@@ -21,6 +21,10 @@ class Problem2ViewController: UIViewController {
         let twoDArray = TwoDimensional(height: 5, width: 10)
         twoDArray.printMyArray()
         twoDArray.somethingElse()
+        let nStatus = NeighborStatus.alive
+        let color = TwoDimensional.Colors.Red
+        
+        let origin = CellIndex(height: 0, width: 0)
     }
     
     
