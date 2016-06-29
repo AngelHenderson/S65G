@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -33,22 +34,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5z-6K-jSo">
-                                <rect key="frame" x="265" y="161" width="70" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5z-6K-jSo">
+                                <rect key="frame" x="262.5" y="135" width="75" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SAi-TU-gnK"/>
+                                    <constraint firstAttribute="width" constant="75" id="XvU-LW-7ue"/>
+                                </constraints>
                                 <state key="normal" title="Problem 2"/>
                                 <connections>
                                     <segue destination="UMH-UY-YgT" kind="show" id="3Xc-dI-edh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuF-Tk-mF5">
-                                <rect key="frame" x="264" y="251" width="71" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuF-Tk-mF5">
+                                <rect key="frame" x="262.5" y="435" width="75" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="LRK-ht-Ee6"/>
+                                    <constraint firstAttribute="width" constant="75" id="sgb-aO-Ybk"/>
+                                </constraints>
                                 <state key="normal" title="Problem 4"/>
                                 <connections>
                                     <segue destination="t4k-sY-1r9" kind="show" id="jlD-8j-77p"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iK-GV-aml">
-                                <rect key="frame" x="265" y="204" width="71" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iK-GV-aml">
+                                <rect key="frame" x="262.5" y="285" width="75" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EFv-hl-i8j"/>
+                                    <constraint firstAttribute="width" constant="75" id="M93-8T-dMh"/>
+                                </constraints>
                                 <state key="normal" title="Problem 3"/>
                                 <connections>
                                     <segue destination="koy-bO-CGW" kind="show" id="tSJ-83-lV3"/>
@@ -56,6 +69,14 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fuF-Tk-mF5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5CV-i2-zeN"/>
+                            <constraint firstItem="w5z-6K-jSo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KIi-S6-BC2"/>
+                            <constraint firstItem="fuF-Tk-mF5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.5" id="baW-3D-cgx"/>
+                            <constraint firstItem="w5z-6K-jSo" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.5" id="ihY-9Q-TRK"/>
+                            <constraint firstItem="1iK-GV-aml" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="woa-FR-Ky1"/>
+                            <constraint firstItem="1iK-GV-aml" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xWk-eD-D0T"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="twK-gd-MRY"/>
                 </viewController>
@@ -79,15 +100,45 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.81960784310000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFn-Zz-tkT">
+                                <rect key="frame" x="210" y="135" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YBf-B6-WD9"/>
+                                </constraints>
+                                <state key="normal" title="Run"/>
+                                <connections>
+                                    <action selector="runButtonAction:" destination="UMH-UY-YgT" eventType="touchUpInside" id="RTY-9F-spH"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="RsJ-S1-sNF">
+                                <rect key="frame" x="90" y="225" width="420" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="ziQ-bm-H4H"/>
+                                </constraints>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="tFn-Zz-tkT" firstAttribute="width" secondItem="rDF-Zg-3sT" secondAttribute="width" multiplier="0.3" id="46t-Uh-afT"/>
+                            <constraint firstItem="tFn-Zz-tkT" firstAttribute="centerY" secondItem="rDF-Zg-3sT" secondAttribute="centerY" multiplier="0.5" id="63a-km-gZt"/>
                             <constraint firstItem="fkI-no-pKb" firstAttribute="centerY" secondItem="rDF-Zg-3sT" secondAttribute="centerY" id="Dsk-Ud-zlJ"/>
                             <constraint firstItem="fkI-no-pKb" firstAttribute="centerX" secondItem="rDF-Zg-3sT" secondAttribute="centerX" id="Kvt-nH-ozK"/>
+                            <constraint firstItem="RsJ-S1-sNF" firstAttribute="centerY" secondItem="rDF-Zg-3sT" secondAttribute="centerY" id="Zgb-dT-BZ2"/>
+                            <constraint firstItem="RsJ-S1-sNF" firstAttribute="centerX" secondItem="rDF-Zg-3sT" secondAttribute="centerX" id="eAU-8y-sjx"/>
                             <constraint firstItem="fkI-no-pKb" firstAttribute="height" secondItem="rDF-Zg-3sT" secondAttribute="height" id="gq3-dy-Svx"/>
+                            <constraint firstItem="tFn-Zz-tkT" firstAttribute="centerX" secondItem="rDF-Zg-3sT" secondAttribute="centerX" id="qH0-vN-IGg"/>
                             <constraint firstItem="fkI-no-pKb" firstAttribute="width" secondItem="rDF-Zg-3sT" secondAttribute="width" id="wUj-v2-GcL"/>
+                            <constraint firstItem="RsJ-S1-sNF" firstAttribute="width" secondItem="rDF-Zg-3sT" secondAttribute="width" multiplier="0.7" id="wde-M6-JfW"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="runButton" destination="tFn-Zz-tkT" id="09B-8m-H1T"/>
+                        <outlet property="textView" destination="RsJ-S1-sNF" id="sH7-m8-vEV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FN6-jc-mIj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

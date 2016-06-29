@@ -10,19 +10,25 @@ import UIKit
 
 class Problem2ViewController: UIViewController {
 
+    @IBOutlet var textView: UITextView!
+    @IBOutlet var runButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.title = "Problem 2"
-
-        // Do any additional setup after loading the view.
     }
-
+    
+    @IBAction func runButtonAction(sender: AnyObject) {
+        textView.text = "Hello"
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 
     /*
     // MARK: - Navigation
