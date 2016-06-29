@@ -10,8 +10,8 @@ import UIKit
 
 class Problem2ViewController: UIViewController {
 
-    @IBOutlet var textView: UITextView!
-    @IBOutlet var runButton: UIButton!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var runButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,10 @@ class Problem2ViewController: UIViewController {
     }
     
     @IBAction func runButtonAction(sender: AnyObject) {
-        textView.text = "Hello"
+        //textView.text = "Hello"
+        if arc4random_uniform(3) == 1 {
+            // set current cell to alive
+        }
     }
     
     
