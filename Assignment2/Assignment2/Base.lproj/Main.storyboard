@@ -74,7 +74,19 @@
                     <view key="view" contentMode="scaleToFill" id="rDF-Zg-3sT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fkI-no-pKb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.81960784310000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="fkI-no-pKb" firstAttribute="centerY" secondItem="rDF-Zg-3sT" secondAttribute="centerY" id="Dsk-Ud-zlJ"/>
+                            <constraint firstItem="fkI-no-pKb" firstAttribute="centerX" secondItem="rDF-Zg-3sT" secondAttribute="centerX" id="Kvt-nH-ozK"/>
+                            <constraint firstItem="fkI-no-pKb" firstAttribute="height" secondItem="rDF-Zg-3sT" secondAttribute="height" id="gq3-dy-Svx"/>
+                            <constraint firstItem="fkI-no-pKb" firstAttribute="width" secondItem="rDF-Zg-3sT" secondAttribute="width" id="wUj-v2-GcL"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FN6-jc-mIj" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -92,7 +104,19 @@
                     <view key="view" contentMode="scaleToFill" id="IkU-FR-C77">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgH-w7-2R0">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wgH-w7-2R0" firstAttribute="centerX" secondItem="IkU-FR-C77" secondAttribute="centerX" id="PQT-G1-mTV"/>
+                            <constraint firstItem="wgH-w7-2R0" firstAttribute="width" secondItem="IkU-FR-C77" secondAttribute="width" id="SsS-uH-pMB"/>
+                            <constraint firstItem="wgH-w7-2R0" firstAttribute="centerY" secondItem="IkU-FR-C77" secondAttribute="centerY" id="dIz-Fi-MJ0"/>
+                            <constraint firstItem="wgH-w7-2R0" firstAttribute="height" secondItem="IkU-FR-C77" secondAttribute="height" id="i7U-7A-OLD"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T8c-1Q-LFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -110,7 +134,19 @@
                     <view key="view" contentMode="scaleToFill" id="2A6-3z-bbH">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GOl-2D-Llk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GOl-2D-Llk" firstAttribute="centerY" secondItem="2A6-3z-bbH" secondAttribute="centerY" id="2XH-vL-54F"/>
+                            <constraint firstItem="GOl-2D-Llk" firstAttribute="width" secondItem="2A6-3z-bbH" secondAttribute="width" id="SDh-yB-C03"/>
+                            <constraint firstItem="GOl-2D-Llk" firstAttribute="centerX" secondItem="2A6-3z-bbH" secondAttribute="centerX" id="bZu-pC-iMY"/>
+                            <constraint firstItem="GOl-2D-Llk" firstAttribute="height" secondItem="2A6-3z-bbH" secondAttribute="height" id="icH-Gb-KAa"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUD-Yx-yhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
