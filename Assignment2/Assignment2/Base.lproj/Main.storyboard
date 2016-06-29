@@ -33,12 +33,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2N-1w-WhK">
-                                <rect key="frame" x="279" y="233" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w5z-6K-jSo">
+                                <rect key="frame" x="265" y="161" width="70" height="30"/>
+                                <state key="normal" title="Problem 2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fuF-Tk-mF5">
+                                <rect key="frame" x="264" y="251" width="71" height="30"/>
+                                <state key="normal" title="Problem 4"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1iK-GV-aml">
+                                <rect key="frame" x="265" y="204" width="71" height="30"/>
+                                <state key="normal" title="Problem 3"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -46,7 +52,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="322" y="319"/>
+            <point key="canvasLocation" x="78" y="300"/>
+        </scene>
+        <!--Problem2ViewController-->
+        <scene sceneID="99u-Fv-q7k">
+            <objects>
+                <viewController id="UMH-UY-YgT" userLabel="Problem2ViewController" customClass="Problem2ViewController" customModule="Assignment2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Um-iG-76E"/>
+                        <viewControllerLayoutGuide type="bottom" id="aIx-g4-9YH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="rDF-Zg-3sT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FN6-jc-mIj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1058" y="-724"/>
+        </scene>
+        <!--Problem3ViewController-->
+        <scene sceneID="fnq-Az-bs7">
+            <objects>
+                <viewController id="koy-bO-CGW" userLabel="Problem3ViewController" customClass="Problem3ViewController" customModule="Assignment2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="LeQ-wB-dov"/>
+                        <viewControllerLayoutGuide type="bottom" id="UBd-Uz-gnx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IkU-FR-C77">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T8c-1Q-LFu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1110" y="115"/>
+        </scene>
+        <!--Problem4ViewController-->
+        <scene sceneID="JJ1-gg-inf">
+            <objects>
+                <viewController id="t4k-sY-1r9" userLabel="Problem4ViewController" customClass="Problem4ViewController" customModule="Assignment2" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NOx-2o-HM3"/>
+                        <viewControllerLayoutGuide type="bottom" id="m1u-7a-6Bx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2A6-3z-bbH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DUD-Yx-yhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1158" y="1087"/>
         </scene>
     </scenes>
 </document>
