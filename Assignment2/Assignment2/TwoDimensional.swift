@@ -82,8 +82,25 @@ class TwoDimensional {
             print (stringLog)
         }
     }
+    
+    func countOfAliveCell () {
+        
+        var aliveCount = 0
 
-    /* 
+        for arrayOfInt in twoDimArrayInt {
+            for intValue in arrayOfInt {
+                //stringLog += "\(intValue)"
+//                if intValue == 1 {
+//                    aliveCount += 1
+//                }
+                aliveCount += ((intValue == 1) ? 1 : 0)
+            }
+        }
+        print ("Alive Count is \(aliveCount)")
+
+    }
+
+    /*
      X X X O O
      X T X O O
      X X X O O

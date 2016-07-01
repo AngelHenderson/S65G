@@ -18,14 +18,23 @@ class Problem2ViewController: UIViewController {
 
         self.title = "Problem 2"
     
-        let twoDArray = TwoDimensional(height: 5, width: 10)
+       
+    }
+    
+    
+    @IBAction func runButtonAction(sender: AnyObject) {
+        textView.text = "Hello, this button seems to be working as intended"
+        
+        let twoDArray = TwoDimensional(height: 10, width: 10)
         twoDArray.printMyArray()
         twoDArray.somethingElse()
+        twoDArray.countOfAliveCell()
+        
         let nStatus = NeighborStatus.alive
         let color = TwoDimensional.Colors.Red
-        
         let origin = CellIndex(height: 0, width: 0)
         
+        //Checking Neighbors
         var optionalNeighbors = twoDArray.whoAreMyNeighbors((0,0))
         print (optionalNeighbors)
         if let neighbor = optionalNeighbors {
@@ -37,11 +46,16 @@ class Problem2ViewController: UIViewController {
         if let neighbor = optionalNeighbors {
             print(neighbor)
         }
-    }
-    
-    
-    @IBAction func runButtonAction(sender: AnyObject) {
-        textView.text = "Hello, this button seems to be working as intended"
+        
+        //Another Version of If let used earlier
+        guard let neighbor = twoDArray.whoAreMyNeighbors((0,0))
+            else {
+                print ("Not present")
+                return
+        }
+        
+        print (neighbor)
+        
         if arc4random_uniform(3) == 1 {
             // set current cell to alive
         }
