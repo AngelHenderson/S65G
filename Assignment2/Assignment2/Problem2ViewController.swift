@@ -18,6 +18,7 @@ class Problem2ViewController: UIViewController {
 
         self.title = "Problem 2"
     
+        
        
     }
     
@@ -25,7 +26,52 @@ class Problem2ViewController: UIViewController {
     @IBAction func runButtonAction(sender: AnyObject) {
         textView.text = "Hello, this button seems to be working as intended"
         
-        let twoDArray = TwoDimensional(height: 10, width: 10)
+        
+        //Problem 2: Part 1 and 2
+        //create a 2-dimensional array of Bool's called before to hold the alive dead state and initialize that to some random value with arc4random upon entry to the IBAction. Initially, 1/3rd of the cells should be alive
+        
+        var beforeTwoDBoolArray = Array<Array<Bool>>()
+        
+        let height : Int
+        let width : Int
+        
+        height = 10
+        width = 10
+        
+        beforeTwoDBoolArray = Array (count: height, repeatedValue: Array(count: width, repeatedValue: false))
+        
+        for h in 0..<height {
+            for w in 0..<width {
+                if arc4random_uniform(3) == 1 {
+                    beforeTwoDBoolArray[h][w] = true
+                }
+            }
+        }
+        
+        print (beforeTwoDBoolArray)
+        
+        
+        //Problem 2: Part 3
+        //count and print the number of living cells in before to the UITextView
+
+        var aliveCount = 0
+        
+        for arrayOfInt in beforeTwoDBoolArray {
+            for intValue in arrayOfInt {
+                //stringLog += "\(intValue)"
+                //                if intValue == 1 {
+                //                    aliveCount += 1
+                //                }
+                aliveCount += ((intValue == true) ? 1 : 0)
+            }
+        }
+        textView.text = "Alive Cell Count is \(aliveCount)"
+
+        
+        
+        
+        
+        /*let twoDArray = TwoDimensional(height: 10, width: 10)
         twoDArray.printMyArray()
         twoDArray.somethingElse()
         twoDArray.countOfAliveCell()
@@ -58,7 +104,7 @@ class Problem2ViewController: UIViewController {
         
         if arc4random_uniform(3) == 1 {
             // set current cell to alive
-        }
+        }*/
     }
     
     

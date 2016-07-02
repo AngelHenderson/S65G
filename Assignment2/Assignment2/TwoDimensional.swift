@@ -84,7 +84,6 @@ class TwoDimensional {
     }
     
     func countOfAliveCell () {
-        
         var aliveCount = 0
 
         for arrayOfInt in twoDimArrayInt {
