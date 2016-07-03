@@ -23,12 +23,11 @@ class Problem3ViewController: UIViewController {
 
     @IBAction func runButtonAction(sender: AnyObject) {
         
-        let twoDArray = TwoDimensional(height: 10, width: 10)
-        
-        print (twoDArray)
-        
+        //Creation of Initial Before Array
         var beforeTwoDBoolArray = Array<Array<Bool>>()
         var afterTwoDBoolArray = Array<Array<Bool>>()
+        var aliveCount = 0
+        var afterAliveCount = 0
 
         let height : Int
         let width : Int
@@ -46,8 +45,7 @@ class Problem3ViewController: UIViewController {
             }
         }
         
-        var aliveCount = 0
-        
+        //Before Alive Count
         for arrayOfBool in beforeTwoDBoolArray {
             for boolValue in arrayOfBool {
                 aliveCount += ((boolValue == true) ? 1 : 0)
@@ -55,11 +53,11 @@ class Problem3ViewController: UIViewController {
         }
         
         
+        //Steps Function
         afterTwoDBoolArray = step(beforeTwoDBoolArray)
         
         
-        var afterAliveCount = 0
-        
+        //After Alive Count
         for arrayOfBool in afterTwoDBoolArray {
             for boolValue in arrayOfBool {
                 afterAliveCount += ((boolValue == true) ? 1 : 0)
