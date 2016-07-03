@@ -10,6 +10,9 @@ import UIKit
 
 class Problem3ViewController: UIViewController {
 
+    @IBOutlet weak var runButton: UIButton!
+    @IBOutlet weak var textView: UITextView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +21,11 @@ class Problem3ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func runButtonAction(sender: AnyObject) {
+        
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
