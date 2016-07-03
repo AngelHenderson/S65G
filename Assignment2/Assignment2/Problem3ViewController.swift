@@ -53,6 +53,10 @@ class Problem3ViewController: UIViewController {
         }
         
         
+        
+        // Problem 3
+        //Extract the cell logic in Problem 2 to a top level function called step() which accepts a 2D array of bools as input and returns a 2D array of bools as output. Place that function in a separate swift file called Engine.swift. Repeat Problem 2 only invoking step() instead of embedding the logic in the IBAction
+        
         //Steps Function
         afterTwoDBoolArray = step(beforeTwoDBoolArray)
         

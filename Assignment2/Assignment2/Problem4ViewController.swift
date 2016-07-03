@@ -51,6 +51,13 @@ class Problem4ViewController: UIViewController {
         }
         
         
+//        Problem 4 (15 points)
+//        Extract the logic for computing neighbors of a cell according to the wrapping rules into a top-level function called
+//        neighbors() which accepts a tuple of row-column coordinates and returns an array of row-column tuples of coordinates
+//        where each member of the returned array is a different neighbor of the input coordinate. Repeat Problem 3 only
+//        invoking creating a function called step2() which invokes neighbors() instead of directly embedding that
+//        functionality.
+        
         //Steps Function
         afterTwoDBoolArray = step2(beforeTwoDBoolArray)
         
