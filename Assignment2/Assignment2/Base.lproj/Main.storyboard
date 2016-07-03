@@ -231,13 +231,53 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="giT-OC-xFD">
+                                <rect key="frame" x="210" y="135" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="YHQ-tD-An6"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="ZEY-Fj-vqb"/>
+                                    <constraint firstAttribute="height" constant="30" id="jow-nR-dK5"/>
+                                </constraints>
+                                <state key="normal" title="Run"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="YHQ-tD-An6"/>
+                                        <exclude reference="ZEY-Fj-vqb"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="runButtonAction:" destination="UMH-UY-YgT" eventType="touchUpInside" id="Dj0-Nh-FDj"/>
+                                    <action selector="runButtonAction:" destination="koy-bO-CGW" eventType="touchUpInside" id="Efx-tJ-gAX"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="itl-e6-AYc">
+                                <rect key="frame" x="90" y="225" width="420" height="150"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="jBe-8H-9UV"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="yM6-UW-GDH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="yM6-UW-GDH"/>
+                                    </mask>
+                                </variation>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="GOl-2D-Llk" firstAttribute="centerY" secondItem="2A6-3z-bbH" secondAttribute="centerY" id="2XH-vL-54F"/>
+                            <constraint firstItem="itl-e6-AYc" firstAttribute="centerY" secondItem="2A6-3z-bbH" secondAttribute="centerY" id="Lfo-G7-rAU"/>
                             <constraint firstItem="GOl-2D-Llk" firstAttribute="width" secondItem="2A6-3z-bbH" secondAttribute="width" id="SDh-yB-C03"/>
+                            <constraint firstItem="giT-OC-xFD" firstAttribute="centerY" secondItem="2A6-3z-bbH" secondAttribute="centerY" multiplier="0.5" id="Ww8-Ra-7se"/>
+                            <constraint firstItem="giT-OC-xFD" firstAttribute="width" secondItem="2A6-3z-bbH" secondAttribute="width" multiplier="0.3" id="Zo9-MN-iFQ"/>
                             <constraint firstItem="GOl-2D-Llk" firstAttribute="centerX" secondItem="2A6-3z-bbH" secondAttribute="centerX" id="bZu-pC-iMY"/>
+                            <constraint firstItem="itl-e6-AYc" firstAttribute="width" secondItem="2A6-3z-bbH" secondAttribute="width" multiplier="0.7" id="fZs-8i-HKW"/>
                             <constraint firstItem="GOl-2D-Llk" firstAttribute="height" secondItem="2A6-3z-bbH" secondAttribute="height" id="icH-Gb-KAa"/>
+                            <constraint firstItem="giT-OC-xFD" firstAttribute="centerX" secondItem="2A6-3z-bbH" secondAttribute="centerX" id="kVM-YD-0M1"/>
+                            <constraint firstItem="itl-e6-AYc" firstAttribute="centerX" secondItem="2A6-3z-bbH" secondAttribute="centerX" id="s0H-j8-u7a"/>
                         </constraints>
                     </view>
                 </viewController>
