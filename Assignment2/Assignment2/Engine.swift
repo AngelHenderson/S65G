@@ -181,6 +181,9 @@ func step2(array: Array<Array<Bool>>) -> Array<Array<Bool>>
     var beforeTwoDBoolArray = Array<Array<Bool>>()
     beforeTwoDBoolArray = array
     
+    
+    
+    
     var afterTwoDBoolArray = Array<Array<Bool>>()
     afterTwoDBoolArray = Array (count: height, repeatedValue: Array(count: width, repeatedValue: false))
     
