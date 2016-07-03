@@ -246,6 +246,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
+                                    <action selector="runButtonAction:" destination="t4k-sY-1r9" eventType="touchUpInside" id="BFW-he-xwE"/>
                                     <action selector="runButtonAction:" destination="UMH-UY-YgT" eventType="touchUpInside" id="Dj0-Nh-FDj"/>
                                     <action selector="runButtonAction:" destination="koy-bO-CGW" eventType="touchUpInside" id="Efx-tJ-gAX"/>
                                 </connections>
@@ -280,6 +281,10 @@
                             <constraint firstItem="itl-e6-AYc" firstAttribute="centerX" secondItem="2A6-3z-bbH" secondAttribute="centerX" id="s0H-j8-u7a"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="runButton" destination="giT-OC-xFD" id="5Es-hx-u9r"/>
+                        <outlet property="textView" destination="itl-e6-AYc" id="cfv-eY-dc0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DUD-Yx-yhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
