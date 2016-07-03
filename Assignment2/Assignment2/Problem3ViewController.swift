@@ -28,7 +28,8 @@ class Problem3ViewController: UIViewController {
         print (twoDArray)
         
         var beforeTwoDBoolArray = Array<Array<Bool>>()
-        
+        var afterTwoDBoolArray = Array<Array<Bool>>()
+
         let height : Int
         let width : Int
         
@@ -37,7 +38,35 @@ class Problem3ViewController: UIViewController {
         
         beforeTwoDBoolArray = Array (count: height, repeatedValue: Array(count: width, repeatedValue: false))
         
-        step(beforeTwoDBoolArray)
+        for w in 0..<width {
+            for h in 0..<height {
+                if arc4random_uniform(3) == 1 {
+                    beforeTwoDBoolArray[w][h] = true
+                }
+            }
+        }
+        
+        var aliveCount = 0
+        
+        for arrayOfBool in beforeTwoDBoolArray {
+            for boolValue in arrayOfBool {
+                aliveCount += ((boolValue == true) ? 1 : 0)
+            }
+        }
+        
+        
+        afterTwoDBoolArray = step(beforeTwoDBoolArray)
+        
+        
+        var afterAliveCount = 0
+        
+        for arrayOfBool in afterTwoDBoolArray {
+            for boolValue in arrayOfBool {
+                afterAliveCount += ((boolValue == true) ? 1 : 0)
+            }
+        }
+        
+        textView.text = "Before Alive Cell Count is \(aliveCount) and the After Alive Cell Count is \(afterAliveCount) "
 
         /*twoDArray.printMyArray()
          twoDArray.somethingElse()
