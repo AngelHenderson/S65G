@@ -157,27 +157,25 @@
                         <subviews>
                             <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgH-w7-2R0">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hd6-Dj-4Rz">
-                                        <rect key="frame" x="210" y="135" width="180" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="h18-lG-pOC"/>
-                                            <constraint firstAttribute="height" constant="30" id="yPs-Rl-X0J"/>
-                                        </constraints>
-                                        <state key="normal" title="Run"/>
-                                        <connections>
-                                            <action selector="runButtonAction:" destination="UMH-UY-YgT" eventType="touchUpInside" id="AAZ-9F-7pv"/>
-                                            <action selector="runButtonAction:" destination="koy-bO-CGW" eventType="touchUpInside" id="eNx-J2-qBf"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="hd6-Dj-4Rz" firstAttribute="centerX" secondItem="wgH-w7-2R0" secondAttribute="centerX" id="U5w-I0-IsZ"/>
-                                    <constraint firstItem="hd6-Dj-4Rz" firstAttribute="width" secondItem="wgH-w7-2R0" secondAttribute="width" multiplier="0.3" id="XGh-cj-f2a"/>
-                                    <constraint firstItem="hd6-Dj-4Rz" firstAttribute="centerY" secondItem="wgH-w7-2R0" secondAttribute="centerY" multiplier="0.5" id="wpi-W8-KuP"/>
-                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hd6-Dj-4Rz">
+                                <rect key="frame" x="210" y="135" width="180" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="h18-lG-pOC"/>
+                                    <constraint firstAttribute="height" constant="30" id="yPs-Rl-X0J"/>
+                                </constraints>
+                                <state key="normal" title="Run"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="h18-lG-pOC"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="runButtonAction:" destination="UMH-UY-YgT" eventType="touchUpInside" id="AAZ-9F-7pv"/>
+                                    <action selector="runButtonAction:" destination="koy-bO-CGW" eventType="touchUpInside" id="eNx-J2-qBf"/>
+                                </connections>
+                            </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Xf7-Vs-wDb">
                                 <rect key="frame" x="90" y="225" width="420" height="150"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -197,12 +195,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Xf7-Vs-wDb" firstAttribute="centerY" secondItem="IkU-FR-C77" secondAttribute="centerY" id="Hfk-Yv-Wni"/>
+                            <constraint firstItem="hd6-Dj-4Rz" firstAttribute="centerY" secondItem="IkU-FR-C77" secondAttribute="centerY" multiplier="0.5" id="JPx-Yj-NDW"/>
                             <constraint firstItem="wgH-w7-2R0" firstAttribute="centerX" secondItem="IkU-FR-C77" secondAttribute="centerX" id="PQT-G1-mTV"/>
                             <constraint firstItem="wgH-w7-2R0" firstAttribute="width" secondItem="IkU-FR-C77" secondAttribute="width" id="SsS-uH-pMB"/>
                             <constraint firstItem="Xf7-Vs-wDb" firstAttribute="centerX" secondItem="IkU-FR-C77" secondAttribute="centerX" id="X8d-r2-Ojv"/>
                             <constraint firstItem="wgH-w7-2R0" firstAttribute="centerY" secondItem="IkU-FR-C77" secondAttribute="centerY" id="dIz-Fi-MJ0"/>
+                            <constraint firstItem="hd6-Dj-4Rz" firstAttribute="centerX" secondItem="IkU-FR-C77" secondAttribute="centerX" id="eUw-AC-Gxi"/>
                             <constraint firstItem="Xf7-Vs-wDb" firstAttribute="width" secondItem="wgH-w7-2R0" secondAttribute="width" multiplier="0.7" id="gXl-7r-23g"/>
                             <constraint firstItem="wgH-w7-2R0" firstAttribute="height" secondItem="IkU-FR-C77" secondAttribute="height" id="i7U-7A-OLD"/>
+                            <constraint firstItem="hd6-Dj-4Rz" firstAttribute="width" secondItem="wgH-w7-2R0" secondAttribute="width" multiplier="0.3" id="ljZ-h6-rQJ"/>
                         </constraints>
                     </view>
                     <connections>

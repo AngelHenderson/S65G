@@ -71,11 +71,6 @@ class Problem2ViewController: UIViewController {
                 
                 var secondAliveCount = 0
                 
-                //Live Cell
-                if (beforeTwoDBoolArray[w][h] == true) {
-                    
-                }
-                
                 let coordinatePoint = (w, h)
                 
                 switch coordinatePoint
@@ -196,40 +191,6 @@ class Problem2ViewController: UIViewController {
         }
         
         textView.text = "Before Alive Cell Count is \(aliveCount) and the After Alive Cell Count is \(afterAliveCount) "
-
-
-        
-        /*let twoDArray = TwoDimensional(height: 10, width: 10)
-        twoDArray.printMyArray()
-        twoDArray.somethingElse()
-        twoDArray.countOfAliveCell()
-        
-        let nStatus = NeighborStatus.alive
-        let color = TwoDimensional.Colors.Red
-        let origin = CellIndex(height: 0, width: 0)
-        
-        //Checking Neighbors
-        var optionalNeighbors = twoDArray.whoAreMyNeighbors((0,0))
-        print (optionalNeighbors)
-        if let neighbor = optionalNeighbors {
-            print(neighbor)
-        }
-        
-        optionalNeighbors = twoDArray.whoAreMyNeighbors((5,5))
-        print (optionalNeighbors)
-        if let neighbor = optionalNeighbors {
-            print(neighbor)
-        }
-        
-        //Another Version of If let used earlier
-        guard let neighbor = twoDArray.whoAreMyNeighbors((0,0))
-            else {
-                print ("Not present")
-                return
-        }
-        
-        print (neighbor)*/
-
     }
     
     override func didReceiveMemoryWarning() {
