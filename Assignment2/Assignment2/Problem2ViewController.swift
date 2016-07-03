@@ -17,9 +17,6 @@ class Problem2ViewController: UIViewController {
         super.viewDidLoad()
 
         self.title = "Problem 2"
-    
-        
-       
     }
     
     
