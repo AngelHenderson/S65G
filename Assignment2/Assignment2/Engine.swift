@@ -178,8 +178,7 @@ func step2(array: Array<Array<Bool>>) -> Array<Array<Bool>>
             aliveCount += ((boolValue == true) ? 1 : 0)
         }
     }
-    
-    
+
     var beforeTwoDBoolArray = Array<Array<Bool>>()
     beforeTwoDBoolArray = array
     
@@ -192,7 +191,6 @@ func step2(array: Array<Array<Bool>>) -> Array<Array<Bool>>
         for h in 0..<height {
             
             var secondAliveCount = 0
-            
             
             let coordinatePoint = (w, h)
             
@@ -317,10 +315,13 @@ func step2(array: Array<Array<Bool>>) -> Array<Array<Bool>>
 }
 
 
-func neighbors()
+func neighbors(tuple:(row: Int, column: Int)) -> [(row: Int, column: Int)]
 {
-
+    
+    return [(row: 0, column: 0)]
 }
+
+
 
 /*
  typealias LifeArray = Array<Array<Bool>>
