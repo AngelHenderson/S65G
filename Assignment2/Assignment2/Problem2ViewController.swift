@@ -94,7 +94,7 @@ class Problem2ViewController: UIViewController {
                     //Wrapping rules: Four Corners (Determines neightbors living cell count for cells in the corners)
                     case let (x, y) where x == 0 && y == 0:
                         
-                        //Sums up
+                        //Sums up Neighbors Living Cells
                         neighborAliveCount = 0
                         neighborAliveCount += ((beforeTwoDBoolArray[0][1] == true) ? 1 : 0)
                         neighborAliveCount += ((beforeTwoDBoolArray[0][9] == true) ? 1 : 0)

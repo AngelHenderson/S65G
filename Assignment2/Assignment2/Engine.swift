@@ -17,147 +17,164 @@ func step(array: Array<Array<Bool>>) -> Array<Array<Bool>>
     height = 10
     width = 10
     
+    //Sets Initial Living Cells Count to Zero
     var aliveCount = 0
     
+    //Counts the total number of True(Living Cells) values in the Before Array
     for arrayOfBool in array {
         for boolValue in arrayOfBool {
             aliveCount += ((boolValue == true) ? 1 : 0)
         }
     }
     
-    
+    //Creating a 2-dimensional array of Bool's
     var beforeTwoDBoolArray = Array<Array<Bool>>()
     beforeTwoDBoolArray = array
-
+    
+    
+    //Creating a 2-dimensional array of Bool's for After Array
     var afterTwoDBoolArray = Array<Array<Bool>>()
     afterTwoDBoolArray = Array (count: height, repeatedValue: Array(count: width, repeatedValue: false))
     
+    
+    //Sets Initial After Living Cells Count to Zero
     var afterAliveCount = 0
     
+    
+    //For Loop to go through every Cell in the Array
     for w in 0..<width {
         for h in 0..<height {
             
-            var secondAliveCount = 0
+            //Sums up Neighbors Living Cells
+            var neighborAliveCount = 0
             
             let coordinatePoint = (w, h)
             
             switch coordinatePoint
             {
-            //Wrapping rules: Four Corners
+            //Wrapping rules: Four Corners (Determines neightbors living cell count for cells in the corners)
             case let (x, y) where x == 0 && y == 0:
-                secondAliveCount = 0
-                secondAliveCount += ((beforeTwoDBoolArray[0][1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[1][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[1][1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[1][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][9] == true) ? 1 : 0)
+                neighborAliveCount = 0
+                neighborAliveCount += ((beforeTwoDBoolArray[0][1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[1][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[1][1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[1][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][9] == true) ? 1 : 0)
                 
             case let (x, y) where x == 0 && y == 9:
-                secondAliveCount = 0
-                secondAliveCount += ((beforeTwoDBoolArray[9][8] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][8] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[1][8] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[1][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[1][0] == true) ? 1 : 0)
+                neighborAliveCount = 0
+                neighborAliveCount += ((beforeTwoDBoolArray[9][8] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][8] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[1][8] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[1][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[1][0] == true) ? 1 : 0)
                 
             case let (x, y) where x == 9 && y == 0:
-                secondAliveCount = 0
-                secondAliveCount += ((beforeTwoDBoolArray[8][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[8][1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[8][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][1] == true) ? 1 : 0)
+                neighborAliveCount = 0
+                neighborAliveCount += ((beforeTwoDBoolArray[8][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[8][1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[8][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][1] == true) ? 1 : 0)
                 
             case let (x, y) where x == 9 && y == 9:
-                secondAliveCount = 0
-                secondAliveCount += ((beforeTwoDBoolArray[0][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][8] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[8][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[8][8] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[8][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][8] == true) ? 1 : 0)
+                neighborAliveCount = 0
+                neighborAliveCount += ((beforeTwoDBoolArray[0][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][8] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[8][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[8][8] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[8][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][8] == true) ? 1 : 0)
                 
             //Wrapping rules: Horizontal Edges
             case let (x, y) where x > 0 && x < 9 && y == 0:
-                secondAliveCount = 0
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][y] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][y] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][y+1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][y+1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][y+1] == true) ? 1 : 0)
+                neighborAliveCount = 0
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][y] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][y] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][y+1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][y+1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][y+1] == true) ? 1 : 0)
                 
             case let (x, y) where x > 0 && x < 9 && y == 9:
-                secondAliveCount = 0
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][9] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][0] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][0] == true) ? 1 : 0)
+                neighborAliveCount = 0
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][9] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][0] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][0] == true) ? 1 : 0)
                 
             //Wrapping rules: Vertical Edges
             case let (x, y) where y > 0 && y < 9 && x == 0:
-                secondAliveCount = 0
-                secondAliveCount += ((beforeTwoDBoolArray[9][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][y] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][y] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[9][y+1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][y+1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][y+1] == true) ? 1 : 0)
+                neighborAliveCount = 0
+                neighborAliveCount += ((beforeTwoDBoolArray[9][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][y] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][y] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[9][y+1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][y+1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][y+1] == true) ? 1 : 0)
                 
             case let (x, y) where y > 0 && y < 9 && x == 9:
-                secondAliveCount = 0
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][y] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][y] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][y+1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][y+1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[0][y+1] == true) ? 1 : 0)
+                neighborAliveCount = 0
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][y] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][y] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][y+1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][y+1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[0][y+1] == true) ? 1 : 0)
                 
             //All Other Cells
             case let (x, y):
-                secondAliveCount = 0
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][y-1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][y] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][y] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x-1][y+1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x][y+1] == true) ? 1 : 0)
-                secondAliveCount += ((beforeTwoDBoolArray[x+1][y+1] == true) ? 1 : 0)
+                neighborAliveCount = 0
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][y-1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][y] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][y] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x-1][y+1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x][y+1] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[x+1][y+1] == true) ? 1 : 0)
             }
             
+            //Determines if Current Cell is Living or Dead Cell
             if (beforeTwoDBoolArray[w][h] == true) {
-                afterTwoDBoolArray[w][h] = ((secondAliveCount == 2 || secondAliveCount == 3) ? true : false)
-                afterAliveCount += ((secondAliveCount == 2 || secondAliveCount == 3) ? 1 : 0)
+                //Any live cell with two or three live neighbors lives on to the next generation or dies do to overcrowding or under-population
+                afterTwoDBoolArray[w][h] = ((neighborAliveCount == 2 || neighborAliveCount == 3) ? true : false)
+                
+                //Added the living cell to total living cells count if it is still living
+                afterAliveCount += ((neighborAliveCount == 2 || neighborAliveCount == 3) ? 1 : 0)
             }
             else {
-                afterTwoDBoolArray[w][h] = ((secondAliveCount == 3) ? true : false)
-                afterAliveCount += ((secondAliveCount == 3) ? 1 : 0)
+                //Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction or else it is still dead
+                afterTwoDBoolArray[w][h] = ((neighborAliveCount == 3) ? true : false)
+                
+                //Added the dead cell to total living cells count if it is now living
+                afterAliveCount += ((neighborAliveCount == 3) ? 1 : 0)
             }
         }
     }
     
+    //Returns the Array
     return afterTwoDBoolArray
 }
 
@@ -170,46 +187,67 @@ func step2(array: Array<Array<Bool>>) -> Array<Array<Bool>>
     height = 10
     width = 10
     
+    //Sets Initial Living Cells Count to Zero
     var aliveCount = 0
     
+    //Counts the total number of True(Living Cells) values in the Before Array
     for arrayOfBool in array {
         for boolValue in arrayOfBool {
             aliveCount += ((boolValue == true) ? 1 : 0)
         }
     }
 
+    //Creating a 2-dimensional array of Bool's
     var beforeTwoDBoolArray = Array<Array<Bool>>()
     beforeTwoDBoolArray = array
         
-    
+    //Creating a 2-dimensional array of Bool's for After Array
     var afterTwoDBoolArray = Array<Array<Bool>>()
     afterTwoDBoolArray = Array (count: height, repeatedValue: Array(count: width, repeatedValue: false))
     
+    
+    //Sets Initial After Living Cells Count to Zero
     var afterAliveCount = 0
     
+    
+    //For Loop to go through every Cell in the Array
     for w in 0..<width {
         for h in 0..<height {
-            var secondAliveCount = 0
             
+            //Sums up Neighbors Living Cells
+            var neighborAliveCount = 0
+            
+            //Creation of Array of Tuples, A Tuple for each Cell is created
             var tupleArray: [(row:Int,column:Int)] = []
             
+            //Neighbor Function checks the neighbor cells of a specific cell
             tupleArray = neighbors((row: w, column: h))
 
+            //Loops through the returned Array to determine neighbors living cell count for the specific cell
             for tuple in tupleArray {
-                secondAliveCount += ((beforeTwoDBoolArray[tuple.row][tuple.column] == true) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[tuple.row][tuple.column] == true) ? 1 : 0)
             }
             
+            //Determines if Current Cell is Living or Dead Cell
             if (beforeTwoDBoolArray[w][h] == true) {
-                afterTwoDBoolArray[w][h] = ((secondAliveCount == 2 || secondAliveCount == 3) ? true : false)
-                afterAliveCount += ((secondAliveCount == 2 || secondAliveCount == 3) ? 1 : 0)
+                
+                //Any live cell with two or three live neighbors lives on to the next generation or dies do to overcrowding or under-population
+                afterTwoDBoolArray[w][h] = ((neighborAliveCount == 2 || neighborAliveCount == 3) ? true : false)
+                
+                //Added the living cell to total living cells count if it is still living
+                afterAliveCount += ((neighborAliveCount == 2 || neighborAliveCount == 3) ? 1 : 0)
             }
             else {
-                afterTwoDBoolArray[w][h] = ((secondAliveCount == 3) ? true : false)
-                afterAliveCount += ((secondAliveCount == 3) ? 1 : 0)
+                //Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction or else it is still dead
+                afterTwoDBoolArray[w][h] = ((neighborAliveCount == 3) ? true : false)
+                
+                //Added the dead cell to total living cells count if it is now living
+                afterAliveCount += ((neighborAliveCount == 3) ? 1 : 0)
             }
         }
     }
     
+    //Returns the Array
     return afterTwoDBoolArray
 }
 
@@ -222,7 +260,7 @@ func neighbors(tuple:(row: Int, column: Int)) -> [(row: Int, column: Int)]
     
     switch coordinatePoint
     {
-    //Wrapping rules: Four Corners
+    //Wrapping rules: Four Corners (Determines neightbors living cell count for cells in the corners)
     case let (x, y) where x == 0 && y == 0:
         tupleArray += [(row: 0,column: 1)]
         tupleArray += [(row: 0,column: 9)]
@@ -320,125 +358,3 @@ func neighbors(tuple:(row: Int, column: Int)) -> [(row: Int, column: Int)]
     
     return tupleArray
 }
-
-
-
-/*
- typealias LifeArray = Array<Array<Bool>>
- typealias CellIndex = (height: Int, width: Int)
- 
- enum NeighborStatus {
- 
- case alive
- case dead
- case starved
- case overpopulated
- case reproduced
- 
- //Dynamic Variable
- var isAlive : Bool {
- 
- switch (self) {
- case .alive:
- fallthrough
- case .reproduced:
- return true
- 
- case .overpopulated,
- .starved,
- .dead:
- return false
- }
- }
- }
-
- class TwoDimensional {
- 
- enum Colors {
- case Red, Orange, Yellow, Green, Blue, Indigo, Violet
- }
- 
- let height : Int
- let width : Int
- 
- //let twoDimArrayInt: Array<Array<Int>>
- let twoDimArrayInt: LifeArray
- 
- init (height: Int, width: Int) {
- self.height = height
- self.width = width
- 
- var tmpArray = Array (count: height, repeatedValue: Array(count: width, repeatedValue: 0))
- 
- for h in 0..<height {
- for w in 0..<width {
- tmpArray[h][w] = Int(arc4random_uniform(3))
- }
- }
- 
- self.twoDimArrayInt = tmpArray
- }
- 
- func printMyArray () {
- for arrayOfInt in twoDimArrayInt {
- var stringLog = ""
- 
- for intValue in arrayOfInt {
- //stringLog += "\(intValue)"
- stringLog += "\((intValue == 1) ? "X" : "O")"
- 
- }
- print (stringLog)
- }
- }
- 
- func countOfAliveCell () {
- var aliveCount = 0
- 
- for arrayOfInt in twoDimArrayInt {
- for intValue in arrayOfInt {
- //stringLog += "\(intValue)"
- //                if intValue == 1 {
- //                    aliveCount += 1
- //                }
- aliveCount += ((intValue == 1) ? 1 : 0)
- }
- }
- print ("Alive Count is \(aliveCount)")
- 
- }
- 
- /*
- X X X O O
- X T X O O
- X X X O O
- O O O O O
- O O O O O
- 
- //Finding List of Neighbors as a Tuple
- //Don't Add yourself (Common Mistakes)
- */
- 
- 
- 
- /**
- - parameter value: prints value
- - returns: the value to be printed
- */
- 
- 
- internal func somethingElse(value: Int = 0) -> Int {
- print (value)
- return value
- }
- 
- func whoAreMyNeighbors (target : CellIndex) -> [CellIndex]? {
- //Validation
- if (target.height < 0 || target.height >= self.height) {
- return nil
- }
- return [CellIndex(height:0, width: 1)]
- }
- }
- */
-
