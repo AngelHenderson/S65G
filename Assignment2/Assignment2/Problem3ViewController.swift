@@ -16,18 +16,14 @@ class Problem3ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Sets the title for the navigation bar
         self.title = "Problem 3"
-
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func runButtonAction(sender: AnyObject) {
         
-        //Creation of Initial Before Array
+        //Creating a 2-dimensional array of Bool's
         var beforeTwoDBoolArray = Array<Array<Bool>>()
-        var afterTwoDBoolArray = Array<Array<Bool>>()
-        var aliveCount = 0
-        var afterAliveCount = 0
 
         let height : Int
         let width : Int
@@ -37,6 +33,7 @@ class Problem3ViewController: UIViewController {
         
         beforeTwoDBoolArray = Array (count: height, repeatedValue: Array(count: width, repeatedValue: false))
         
+        //Initialize Array with arc4random
         for w in 0..<width {
             for h in 0..<height {
                 if arc4random_uniform(3) == 1 {
@@ -45,60 +42,44 @@ class Problem3ViewController: UIViewController {
             }
         }
         
-        //Before Alive Count
+        //Sets Initial Living Cells Count to Zero
+        var aliveCount = 0
+
+        //Counts the total number of True(Living Cells) values in the Before Array
         for arrayOfBool in beforeTwoDBoolArray {
             for boolValue in arrayOfBool {
                 aliveCount += ((boolValue == true) ? 1 : 0)
             }
         }
         
-        
+        //Post the Number of Living Cells Count to TextView
+        textView.text = "Before Alive Cell Count is \(aliveCount)"
+
         
         // Problem 3
         //Extract the cell logic in Problem 2 to a top level function called step() which accepts a 2D array of bools as input and returns a 2D array of bools as output. Place that function in a separate swift file called Engine.swift. Repeat Problem 2 only invoking step() instead of embedding the logic in the IBAction
         
-        //Steps Function
+        
+        //Creating a 2-dimensional array of Bool's for After Array
+        var afterTwoDBoolArray = Array<Array<Bool>>()
+        
+        //Sets Initial After Living Cells Count to Zero
+        var afterAliveCount = 0
+        
+        
+        //Steps Function which accepts the Before 2D Array of bools and returns the After 2D array of bools
         afterTwoDBoolArray = step(beforeTwoDBoolArray)
         
         
-        //After Alive Count
+        //Counts the total number of True(Living Cells) values in the After Array
         for arrayOfBool in afterTwoDBoolArray {
             for boolValue in arrayOfBool {
                 afterAliveCount += ((boolValue == true) ? 1 : 0)
             }
         }
         
-        textView.text = "Before Alive Cell Count is \(aliveCount) and the After Alive Cell Count is \(afterAliveCount) "
-
-        /*twoDArray.printMyArray()
-         twoDArray.somethingElse()
-         twoDArray.countOfAliveCell()
-         
-         let nStatus = NeighborStatus.alive
-         let color = TwoDimensional.Colors.Red
-         let origin = CellIndex(height: 0, width: 0)
-         
-         //Checking Neighbors
-         var optionalNeighbors = twoDArray.whoAreMyNeighbors((0,0))
-         print (optionalNeighbors)
-         if let neighbor = optionalNeighbors {
-         print(neighbor)
-         }
-         
-         optionalNeighbors = twoDArray.whoAreMyNeighbors((5,5))
-         print (optionalNeighbors)
-         if let neighbor = optionalNeighbors {
-         print(neighbor)
-         }
-         
-         //Another Version of If let used earlier
-         guard let neighbor = twoDArray.whoAreMyNeighbors((0,0))
-         else {
-         print ("Not present")
-         return
-         }
-         
-         print (neighbor)*/
+        //Post the Number of Before and After Living Cells Count to TextView
+        textView.text = "Before Alive Cell Count is \(aliveCount) and the After Alive Cell Count is \(afterAliveCount)"
     }
     
     

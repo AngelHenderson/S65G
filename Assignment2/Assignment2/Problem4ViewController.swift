@@ -16,6 +16,7 @@ class Problem4ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //Sets the title for the navigation bar 
         self.title = "Problem 4"
 
         // Do any additional setup after loading the view.
