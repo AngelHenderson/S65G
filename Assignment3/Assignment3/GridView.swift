@@ -57,7 +57,8 @@ import UIKit
             var startPoint: CGPoint = CGPoint(x: 0, y: 0)
             var endPoint: CGPoint = CGPoint(x: 0, y: 0)
             
-            startPoint.x = CGFloat(rows * i)
+            let gridSpace: CGFloat = CGFloat(self.frame.size.height) / CGFloat(rows)
+            startPoint.x = gridSpace * CGFloat(i)
             startPoint.y = 0.0
             
             endPoint.x = startPoint.x;
@@ -76,7 +77,7 @@ import UIKit
             //draw the stroke
             gridLinePath.stroke()
             
-            print("Rows: The x point is \(startPoint.x) and the y point \(endPoint.x)")
+            //print("Rows: The x point is \(startPoint.x) and the y point \(endPoint.x)")
         }
         
         for j in 0..<cols {
@@ -84,9 +85,10 @@ import UIKit
             var startPoint: CGPoint = CGPoint(x: 0, y: 0)
             var endPoint: CGPoint = CGPoint(x: 0, y: 0)
             
+            let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(cols)
+            
             startPoint.x = 0.0;
-            //startPoint.y = gridWidth * CGFloat(j);
-            startPoint.y = CGFloat(rows * j)
+            startPoint.y = gridSpace * CGFloat(j)
 
             endPoint.x = self.frame.size.width;
             endPoint.y = startPoint.y;
@@ -104,7 +106,7 @@ import UIKit
             //draw the stroke
             gridLinePath.stroke()
             
-            print("Columns: The x point is \(startPoint.y) and the y point \(endPoint.y)")
+            //print("Columns: The x point is \(startPoint.y) and the y point \(endPoint.y)")
         }
     }
     
