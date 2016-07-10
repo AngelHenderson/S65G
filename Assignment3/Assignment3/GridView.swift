@@ -18,7 +18,6 @@ import UIKit
     @IBInspectable var diedColor: UIColor = UIColor.redColor()
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridWidth: CGFloat = 10
-
     var grid = [[CellState]]()
 
     @IBInspectable var rows : Int = 20{
@@ -44,7 +43,15 @@ import UIKit
         }
     }
     
+
     override func drawRect(gridRect: CGRect) {
+        
+        grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
+        
+        var beforeTwoDBoolArray = Array<Array<Bool>>()
+        beforeTwoDBoolArray = Array (count: 10, repeatedValue: Array(count: 10, repeatedValue: false))
+        print(beforeTwoDBoolArray)
+    
         
         var startPoint: CGPoint = CGPoint(x: 0, y: 0)
         var endPoint: CGPoint = CGPoint(x: 0, y: 0)
@@ -123,7 +130,24 @@ import UIKit
                 //innerRingRect.origin.y += yCoordinate
                 let inner = UIBezierPath(ovalInRect: innerRingRect)
                 inner.lineWidth = 1
-                UIColor(white: 0.7, alpha: 1.0).setStroke()
+                
+                let xValue: Int = Int(w)
+                let yValue: Int = Int(h)
+
+                let currentCell: CellState  = grid[xValue][yValue]
+
+                switch (currentCell) {
+                    case .Living:
+                        livingColor.setStroke()
+                    case .Empty:
+                        emptyColor.setStroke()
+                    case .Born:
+                        bornColor.setStroke()
+                    case .Died:
+                        diedColor.setStroke()
+                }
+                
+                //UIColor(white: 0.7, alpha: 1.0).setStroke()
                 inner.stroke()
             }
         }

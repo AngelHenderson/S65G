@@ -21,7 +21,7 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsU-Yy-Xkw" userLabel="Box View" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
                                 <rect key="frame" x="60.5" y="60" width="480" height="480"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zsU-Yy-Xkw" secondAttribute="height" id="b11-g1-LEZ"/>
                                 </constraints>
