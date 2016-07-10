@@ -12,17 +12,16 @@ import UIKit
 
     //@IBInspectable var rows:Int = 20
     //@IBInspectable var cols:Int = 20
-    @IBInspectable var livingColor = UIColor.greenColor()
-    @IBInspectable var emptyColor = UIColor.whiteColor()
-    @IBInspectable var bornColor = UIColor.blueColor()
-    @IBInspectable var diedColor = UIColor.redColor()
-    @IBInspectable var gridColor = UIColor.grayColor()
-    @IBInspectable var gridWidth = CGFloat(10)
+    @IBInspectable var livingColor: UIColor = UIColor.greenColor()
+    @IBInspectable var emptyColor: UIColor = UIColor.whiteColor()
+    @IBInspectable var bornColor: UIColor = UIColor.blueColor()
+    @IBInspectable var diedColor: UIColor = UIColor.redColor()
+    @IBInspectable var gridColor: UIColor = UIColor.grayColor()
+    @IBInspectable var gridWidth: CGFloat = 10
 
     var grid = [[CellState]]()
 
     @IBInspectable var rows : Int = 20{
-        
         //First this
         willSet {
             //print("Old value is \(rows), new value is \(newValue)")
