@@ -48,15 +48,16 @@ import UIKit
     
     override func drawRect(rect: CGRect) {
         
+        var startPoint: CGPoint = CGPoint(x: 0, y: 0)
+        var endPoint: CGPoint = CGPoint(x: 0, y: 0)
+        
         let gridLinePath = UIBezierPath()
         
         //set the path's line width to the height of the stroke
         gridLinePath.lineWidth = gridWidth
         
+        //Draws Grid Lines for Rows
         for i in 0..<rows {
-            var startPoint: CGPoint = CGPoint(x: 0, y: 0)
-            var endPoint: CGPoint = CGPoint(x: 0, y: 0)
-            
             let gridSpace: CGFloat = CGFloat(self.frame.size.height) / CGFloat(rows)
             startPoint.x = gridSpace * CGFloat(i)
             startPoint.y = 0.0
@@ -80,11 +81,8 @@ import UIKit
             //print("Rows: The x point is \(startPoint.x) and the y point \(endPoint.x)")
         }
         
+        //Draws Grid Lines for Columns
         for j in 0..<cols {
-            
-            var startPoint: CGPoint = CGPoint(x: 0, y: 0)
-            var endPoint: CGPoint = CGPoint(x: 0, y: 0)
-            
             let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(cols)
             
             startPoint.x = 0.0;
