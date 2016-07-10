@@ -44,4 +44,108 @@ import UIKit
         }
     }
     
+    
+    
+    override func drawRect(rect: CGRect) {
+        
+        let gridLinePath = UIBezierPath()
+        
+        //set the path's line width to the height of the stroke
+        gridLinePath.lineWidth = gridWidth
+        
+        for i in 0..<rows {
+            var startPoint: CGPoint = CGPoint(x: 0, y: 0)
+            var endPoint: CGPoint = CGPoint(x: 0, y: 0)
+            
+            startPoint.x = CGFloat(rows * i)
+            startPoint.y = 0.0
+            
+            endPoint.x = startPoint.x;
+            endPoint.y = self.frame.size.height;
+            
+            //move the initial point of the path
+            //to the start of the horizontal stroke
+            gridLinePath.moveToPoint(CGPoint(x: startPoint.x, y: startPoint.y))
+            
+            //add a point to the path at the end of the stroke
+            gridLinePath.addLineToPoint(CGPoint(x: endPoint.x, y: endPoint.y))
+            
+            //set the stroke color
+            gridColor.setStroke()
+            
+            //draw the stroke
+            gridLinePath.stroke()
+            
+            print("Rows: The x point is \(startPoint.x) and the y point \(endPoint.x)")
+        }
+        
+        for j in 0..<cols {
+            
+            var startPoint: CGPoint = CGPoint(x: 0, y: 0)
+            var endPoint: CGPoint = CGPoint(x: 0, y: 0)
+            
+            startPoint.x = 0.0;
+            //startPoint.y = gridWidth * CGFloat(j);
+            startPoint.y = CGFloat(rows * j)
+
+            endPoint.x = self.frame.size.width;
+            endPoint.y = startPoint.y;
+            
+            //move the initial point of the path
+            //to the start of the horizontal stroke
+            gridLinePath.moveToPoint(CGPoint(x: startPoint.x, y: startPoint.y))
+            
+            //add a point to the path at the end of the stroke
+            gridLinePath.addLineToPoint(CGPoint(x: endPoint.x, y: endPoint.y))
+            
+            //set the stroke color
+            gridColor.setStroke()
+            
+            //draw the stroke
+            gridLinePath.stroke()
+            
+            print("Columns: The x point is \(startPoint.y) and the y point \(endPoint.y)")
+        }
+    }
+    
+    /*for(int i = 1; i <= self.numberOfColumns; i++)
+    {
+        CGPoint startPoint;
+        CGPoint endPoint;
+
+        startPoint.x = columnWidth * i;
+        startPoint.y = 0.0f;
+
+        endPoint.x = startPoint.x;
+        endPoint.y = self.frame.size.height;
+
+        CGContextMoveToPoint(context, startPoint.x, startPoint.y);
+        CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
+        CGContextStrokePath(context);
+    }
+    
+    // ---------------------------
+    // Drawing row lines
+    // ---------------------------
+    
+    // calclulate row height
+    CGFloat rowHeight = self.frame.size.height / (self.numberOfRows + 1.0);
+    
+    for(int j = 1; j <= self.numberOfRows; j++)
+    {
+        CGPoint startPoint;
+        CGPoint endPoint;
+        
+        startPoint.x = 0.0f;
+        startPoint.y = rowHeight * j;
+        
+        endPoint.x = self.frame.size.width;
+        endPoint.y = startPoint.y;
+        
+        CGContextMoveToPoint(context, startPoint.x, startPoint.y);
+        CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
+        CGContextStrokePath(context);
+    }*/
+    
+    
 }
