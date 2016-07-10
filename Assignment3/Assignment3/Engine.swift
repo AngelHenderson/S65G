@@ -28,8 +28,8 @@ enum CellState : String {
     }
     
 
-    func allValues() -> [String] {
-        return [Living.rawValue, Empty.rawValue, Born.rawValue, Died.rawValue]
+    func allValues() -> [CellState] {
+        return [.Living, .Empty, .Born, .Died]
     }
     
     func toggle(value:CellState) -> CellState {
