@@ -82,7 +82,7 @@ import UIKit
         //Draws Grid Lines for Rows
         for i in 0..<rows {
             
-            print("Grid Line Row Drawn")
+            //print("Grid Line Row Drawn")
             let gridSpace: CGFloat = CGFloat(self.frame.size.height) / CGFloat(rows)
             startPoint.x = gridSpace * CGFloat(i)
             startPoint.y = 0.0
@@ -135,7 +135,7 @@ import UIKit
 
         //Add Circles
         for w in 0..<rows {
-            print("Circle Drawn")
+            //print("Circle Drawn")
 
             for h in 0..<cols {
                 
