@@ -27,6 +27,8 @@ import UIKit
     @IBInspectable var diedColor: UIColor = UIColor.redColor()
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridWidth: CGFloat = 10
+    let specificRect = CGRectMake(0, 0, 0, 0)
+    
     var grid:[[CellState]] = [] {
         //Finaly this
         didSet {
@@ -252,44 +254,3 @@ import UIKit
     }
     
 }
-
-
-/*for(int i = 1; i <= self.numberOfColumns; i++)
- {
- CGPoint startPoint;
- CGPoint endPoint;
- 
- startPoint.x = columnWidth * i;
- startPoint.y = 0.0f;
- 
- endPoint.x = startPoint.x;
- endPoint.y = self.frame.size.height;
- 
- CGContextMoveToPoint(context, startPoint.x, startPoint.y);
- CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
- CGContextStrokePath(context);
- }
- 
- // ---------------------------
- // Drawing row lines
- // ---------------------------
- 
- // calclulate row height
- CGFloat rowHeight = self.frame.size.height / (self.numberOfRows + 1.0);
- 
- for(int j = 1; j <= self.numberOfRows; j++)
- {
- CGPoint startPoint;
- CGPoint endPoint;
- 
- startPoint.x = 0.0f;
- startPoint.y = rowHeight * j;
- 
- endPoint.x = self.frame.size.width;
- endPoint.y = startPoint.y;
- 
- CGContextMoveToPoint(context, startPoint.x, startPoint.y);
- CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
- CGContextStrokePath(context);
- }*/
-
