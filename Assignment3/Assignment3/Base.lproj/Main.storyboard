@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zsU-Yy-Xkw" userLabel="Box View" customClass="GridView" customModule="Assignment3" customModuleProvider="target">
-                                <rect key="frame" x="60.5" y="60" width="480" height="480"/>
+                                <rect key="frame" x="60" y="28" width="480" height="480"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zsU-Yy-Xkw" secondAttribute="height" id="b11-g1-LEZ"/>
@@ -52,6 +52,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0q-xB-73e">
+                                <rect key="frame" x="180" y="523" width="240" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8mR-9p-mzW"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="XUT-oU-faB"/>
+                                </constraints>
+                                <state key="normal" title="Run"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="XUT-oU-faB"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="runButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SEi-m0-2un"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -59,9 +75,22 @@
                             <constraint firstItem="zsU-Yy-Xkw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="85m-yZ-c6e"/>
                             <constraint firstItem="zsU-Yy-Xkw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HOT-bu-LW4"/>
                             <constraint firstItem="zsU-Yy-Xkw" firstAttribute="width" secondItem="zsU-Yy-Xkw" secondAttribute="height" id="Kkr-zu-2vV"/>
+                            <constraint firstItem="R0q-xB-73e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nvq-yY-7Zj"/>
+                            <constraint firstItem="R0q-xB-73e" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.4" id="bxc-yW-Pa4"/>
                             <constraint firstItem="zsU-Yy-Xkw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" priority="250" id="m6w-bA-4X3"/>
+                            <constraint firstItem="zsU-Yy-Xkw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="wTt-7X-UWI"/>
+                            <constraint firstItem="R0q-xB-73e" firstAttribute="top" secondItem="zsU-Yy-Xkw" secondAttribute="bottom" constant="15" id="yfP-Jz-0iW"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HOT-bu-LW4"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="gridView" destination="zsU-Yy-Xkw" id="9Tf-X1-IMs"/>
+                        <outlet property="runButton" destination="R0q-xB-73e" id="2HN-yT-9TI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

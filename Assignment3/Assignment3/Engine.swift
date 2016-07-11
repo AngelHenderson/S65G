@@ -76,10 +76,11 @@ func step(array: Array<Array<CellState>>) -> Array<Array<CellState>>
             var tupleArray: [(row:Int,column:Int)] = []
             
             //Neighbor Function checks the neighbor cells of a specific cell
-            tupleArray = neighbors((row: w, column: h))
+            tupleArray = neighbors((row: w, column: h), maxWidth: width-1, maxHeight: height-1)
             
             //Loops through the returned Array to determine neighbors living cell count for the specific cell
             for tuple in tupleArray {
+                print("The Row is \(tuple.row) and The Column is \(tuple.column)")
                 neighborAliveCount += ((beforeTwoDBoolArray[tuple.row][tuple.column] == .Living) ? 1 : 0)
             }
             
@@ -116,7 +117,7 @@ func step(array: Array<Array<CellState>>) -> Array<Array<CellState>>
 }
 
 
-func neighbors(tuple:(row: Int, column: Int)) -> [(row: Int, column: Int)]
+func neighbors(tuple:(row: Int, column: Int) , maxWidth: Int, maxHeight: Int) -> [(row: Int, column: Int)]
 {
     var tupleArray: [(row:Int,column:Int)] = []
     
@@ -127,58 +128,58 @@ func neighbors(tuple:(row: Int, column: Int)) -> [(row: Int, column: Int)]
     //Wrapping rules: Four Corners (Determines neightbors living cell count for cells in the corners)
     case let (x, y) where x == 0 && y == 0:
         tupleArray += [(row: 0,column: 1)]
-        tupleArray += [(row: 0,column: 9)]
+        tupleArray += [(row: 0,column: maxHeight)]
         tupleArray += [(row: 1,column: 0)]
         tupleArray += [(row: 1,column: 1)]
-        tupleArray += [(row: 1,column: 9)]
-        tupleArray += [(row: 9,column: 0)]
-        tupleArray += [(row: 9,column: 1)]
-        tupleArray += [(row: 9,column: 9)]
+        tupleArray += [(row: 1,column: maxHeight)]
+        tupleArray += [(row: maxWidth,column: 0)]
+        tupleArray += [(row: maxWidth,column: 1)]
+        tupleArray += [(row: maxWidth,column: maxHeight)]
         
-    case let (x, y) where x == 0 && y == 9:
-        tupleArray += [(row: 9,column: 1)]
-        tupleArray += [(row: 0,column: 9)]
+    case let (x, y) where x == 0 && y == maxHeight:
+        tupleArray += [(row: maxWidth,column: 1)]
+        tupleArray += [(row: 0,column: maxHeight)]
         tupleArray += [(row: 1,column: 0)]
-        tupleArray += [(row: 9,column: 1)]
-        tupleArray += [(row: 1,column: 9)]
-        tupleArray += [(row: 9,column: 0)]
+        tupleArray += [(row: maxWidth,column: 1)]
+        tupleArray += [(row: 1,column: maxHeight)]
+        tupleArray += [(row: maxWidth,column: 0)]
         tupleArray += [(row: 0,column: 1)]
-        tupleArray += [(row: 1,column: 9)]
+        tupleArray += [(row: 1,column: maxHeight)]
         
-    case let (x, y) where x == 9 && y == 0:
-        tupleArray += [(row: 8,column: 0)]
-        tupleArray += [(row: 8,column: 1)]
-        tupleArray += [(row: 9,column: 1)]
-        tupleArray += [(row: 8,column: 9)]
-        tupleArray += [(row: 9,column: 9)]
-        tupleArray += [(row: 0,column: 9)]
+    case let (x, y) where x == maxWidth && y == 0:
+        tupleArray += [(row: maxWidth-1,column: 0)]
+        tupleArray += [(row: maxWidth-1,column: 1)]
+        tupleArray += [(row: maxWidth,column: 1)]
+        tupleArray += [(row: maxWidth-1,column: maxHeight)]
+        tupleArray += [(row: maxWidth,column: maxHeight)]
+        tupleArray += [(row: 0,column: maxHeight)]
         tupleArray += [(row: 0,column: 0)]
         tupleArray += [(row: 0,column: 1)]
         
-    case let (x, y) where x == 9 && y == 9:
+    case let (x, y) where x == maxWidth && y == maxHeight:
         tupleArray += [(row: 0,column: 0)]
-        tupleArray += [(row: 0,column: 8)]
-        tupleArray += [(row: 0,column: 9)]
-        tupleArray += [(row: 8,column: 0)]
-        tupleArray += [(row: 9,column: 0)]
-        tupleArray += [(row: 8,column: 8)]
-        tupleArray += [(row: 8,column: 9)]
-        tupleArray += [(row: 9,column: 8)]
+        tupleArray += [(row: 0,column: maxHeight-1)]
+        tupleArray += [(row: 0,column: maxHeight)]
+        tupleArray += [(row: maxWidth-1,column: 0)]
+        tupleArray += [(row: maxWidth,column: 0)]
+        tupleArray += [(row: maxWidth-1,column: maxHeight-1)]
+        tupleArray += [(row: maxWidth-1,column: maxHeight)]
+        tupleArray += [(row: maxWidth,column: maxHeight-1)]
         
     //Wrapping rules: Horizontal Edges
-    case let (x, y) where x > 0 && x < 9 && y == 0:
-        tupleArray += [(row: x-1,column: 9)]
-        tupleArray += [(row: x,column: 9)]
-        tupleArray += [(row: x+1,column: 9)]
+    case let (x, y) where x > 0 && x < maxWidth && y == 0:
+        tupleArray += [(row: x-1,column: maxHeight)]
+        tupleArray += [(row: x,column: maxHeight)]
+        tupleArray += [(row: x+1,column: maxHeight)]
         tupleArray += [(row: x-1,column: y)]
         tupleArray += [(row: x+1,column: y)]
         tupleArray += [(row: x-1,column: y+1)]
         tupleArray += [(row: x,column: y+1)]
         tupleArray += [(row: x+1,column: y+1)]
         
-    case let (x, y) where x > 0 && x < 9 && y == 9:
-        tupleArray += [(row: x-1,column: 9)]
-        tupleArray += [(row: x+1,column: 9)]
+    case let (x, y) where x > 0 && x < maxWidth && y == maxHeight:
+        tupleArray += [(row: x-1,column: maxHeight)]
+        tupleArray += [(row: x+1,column: maxHeight)]
         tupleArray += [(row: x-1,column: y-1)]
         tupleArray += [(row: x,column: y-1)]
         tupleArray += [(row: x+1,column: y-1)]
@@ -187,17 +188,17 @@ func neighbors(tuple:(row: Int, column: Int)) -> [(row: Int, column: Int)]
         tupleArray += [(row: x+1,column: 0)]
         
     //Wrapping rules: Vertical Edges
-    case let (x, y) where y > 0 && y < 9 && x == 0:
-        tupleArray += [(row: 9,column: y-1)]
+    case let (x, y) where y > 0 && y < maxHeight && x == 0:
+        tupleArray += [(row: maxWidth,column: y-1)]
         tupleArray += [(row: x,column: y-1)]
         tupleArray += [(row: x+1,column: y-1)]
-        tupleArray += [(row: 9,column: y)]
+        tupleArray += [(row: maxWidth,column: y)]
         tupleArray += [(row: x+1,column: y)]
-        tupleArray += [(row: 9,column: y+1)]
+        tupleArray += [(row: maxWidth,column: y+1)]
         tupleArray += [(row: x,column: y+1)]
         tupleArray += [(row: x+1,column: y+1)]
         
-    case let (x, y) where y > 0 && y < 9 && x == 9:
+    case let (x, y) where y > 0 && y < maxHeight && x == maxWidth:
         tupleArray += [(row: x-1,column: y-1)]
         tupleArray += [(row: x,column: y-1)]
         tupleArray += [(row: 0,column: y-1)]

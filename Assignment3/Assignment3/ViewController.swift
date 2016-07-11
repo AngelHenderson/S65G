@@ -10,11 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var runButton: UIButton!
+    @IBOutlet weak var gridView: GridView!
+    var beforeTwoDArray: Array<Array<CellState>>!
+    var afterTwoDArray: Array<Array<CellState>>!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    @IBAction func runButtonAction(sender: AnyObject) {
+        
+        beforeTwoDArray = gridView.grid
+        gridView.grid = step(gridView.grid)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
