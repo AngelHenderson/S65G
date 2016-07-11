@@ -30,7 +30,7 @@ import UIKit
     var grid:[[CellState]] = [] {
         //Finaly this
         didSet {
-            
+            //self.setNeedsDisplayInRect(ovalInRect);
             self.setNeedsDisplay()
         }
     }
@@ -81,6 +81,8 @@ import UIKit
         
         //Draws Grid Lines for Rows
         for i in 0..<rows {
+            
+            print("Grid Line Row Drawn")
             let gridSpace: CGFloat = CGFloat(self.frame.size.height) / CGFloat(rows)
             startPoint.x = gridSpace * CGFloat(i)
             startPoint.y = 0.0
@@ -123,16 +125,18 @@ import UIKit
             
             //set the stroke color
             gridColor.setStroke()
-            
+
             //draw the stroke
             gridLinePath.stroke()
-            
+
             //print("Columns: The x point is \(startPoint.y) and the y point \(endPoint.y)")
         }
         
 
         //Add Circles
         for w in 0..<rows {
+            print("Circle Drawn")
+
             for h in 0..<cols {
                 
                 let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
@@ -154,24 +158,29 @@ import UIKit
                 let yValue: Int = Int(h)
 
                 let currentCell: CellState  = grid[xValue][yValue]
-                
-                print(currentCell)
+                //print(currentCell)
                 
                 //Sets Color for each Circle
                 switch (currentCell) {
                     case .Living:
                         livingColor.setStroke()
+                        livingColor.setFill()
                     case .Empty:
                         emptyColor.setStroke()
+                        emptyColor.setFill()
                     case .Born:
                         bornColor.setStroke()
+                        bornColor.setFill()
                     case .Died:
                         diedColor.setStroke()
+                        diedColor.setFill()
+
                 }
                 
                 //UIColor(white: 0.7, alpha: 1.0).setStroke()
                 inner.stroke()
-                
+                inner.fill()
+
                 let tagName: String = "\(w)\(h)"
                 let tagNumber: Int = Int(tagName)!
                 let cellButton = UIButton()
