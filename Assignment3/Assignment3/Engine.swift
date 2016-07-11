@@ -81,7 +81,11 @@ func step(array: Array<Array<CellState>>) -> Array<Array<CellState>>
             //Loops through the returned Array to determine neighbors living cell count for the specific cell
             for tuple in tupleArray {
                 //print("The Row is \(tuple.row) and The Column is \(tuple.column)")
-                neighborAliveCount += ((beforeTwoDBoolArray[tuple.row][tuple.column] == .Living) ? 1 : 0)
+                //neighborAliveCount += ((beforeTwoDBoolArray[tuple.row][tuple.column] == .Living) ? 1 : 0)
+                
+                if (beforeTwoDBoolArray[tuple.row][tuple.column] == .Living || beforeTwoDBoolArray[tuple.row][tuple.column] == .Born) {
+                        neighborAliveCount += 1
+                }
             }
             
             let currentCell: CellState  = beforeTwoDBoolArray[w][h]
@@ -95,18 +99,12 @@ func step(array: Array<Array<CellState>>) -> Array<Array<CellState>>
                     afterTwoDBoolArray[w][h] = .Died
                 }
             }
-            else if (currentCell == .Died) {
+            else if (currentCell == .Died || (currentCell == .Empty)) {
                 if neighborAliveCount == 3 {
                     afterTwoDBoolArray[w][h] = .Born
                 }
                 else {
-                    afterTwoDBoolArray[w][h] = .Died
-                }
-            }
-            else {
-                afterTwoDBoolArray[w][h] = .Empty
-                if neighborAliveCount == 2 || neighborAliveCount == 3 {
-                    //afterTwoDBoolArray[w][h] = .Born
+                    afterTwoDBoolArray[w][h] = .Empty
                 }
             }
         }

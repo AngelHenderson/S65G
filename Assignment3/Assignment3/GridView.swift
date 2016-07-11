@@ -250,6 +250,7 @@ import UIKit
         print(currentCell.toggle(currentCell))
         
         grid[xPosition][yPosition] = currentCell.toggle(currentCell)
+
         self.setNeedsDisplay()
     }
     
