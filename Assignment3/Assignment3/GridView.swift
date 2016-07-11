@@ -180,30 +180,12 @@ import UIKit
     }
     
     
-    func drawPoints(points: [CGPoint], color: UIColor, context: CGContextRef) {
-        if points.count > 1 {
-            let path = CGPathCreateMutable()
-            let firstPoint = points[0]
-            CGPathMoveToPoint(path, nil, firstPoint.x, firstPoint.y)
-            
-            for pointIndex in 1..<points.count {
-                let point = points[pointIndex]
-                CGPathAddLineToPoint(path, nil, point.x, point.y)
-            }
-            
-            CGContextSetStrokeColorWithColor(context, color.CGColor)
-            CGContextSetLineWidth(context, 5.0)
-            CGContextAddPath(context, path)
-            CGContextDrawPath(context, CGPathDrawingMode.Stroke)
-        }
-    }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
             self.allPoints[touch ] = [CGPoint]()
             self.processTouch(touch )
             currentTouches(touches)
-
         }
     }
     
@@ -229,7 +211,14 @@ import UIKit
         // Get the first touch and its location in this view controller's view coordinate system
         let touch = touches.allObjects[0] as! UITouch
         let touchLocation = touch.locationInView(self)
-        print(touchLocation)
+        
+
+        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
+        
+        let xCoordinate: Int = Int(touchLocation.x)/Int(gridSpace)
+        let yCoordinate: Int = Int(touchLocation.y)/Int(gridSpace)
+        print("The Touch Location is \(touchLocation) and the GridSpace and \(gridSpace) and the X is \(xCoordinate) and the Y is \(yCoordinate)")
+
     }
     
 }
