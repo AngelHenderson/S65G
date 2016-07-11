@@ -106,7 +106,7 @@ func step(array: Array<Array<CellState>>) -> Array<Array<CellState>>
             else {
                 afterTwoDBoolArray[w][h] = .Empty
                 if neighborAliveCount == 2 || neighborAliveCount == 3 {
-                   // afterTwoDBoolArray[w][h] = .Born
+                    //afterTwoDBoolArray[w][h] = .Born
                 }
             }
         }
