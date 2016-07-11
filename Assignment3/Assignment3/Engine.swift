@@ -43,14 +43,18 @@ enum CellState : String {
 
 }
 
-/*
+
 func step(array: Array<Array<CellState>>) -> Array<Array<CellState>>
 {
-    let height : Int
-    let width : Int
+    var height : Int = 0
+    var width : Int = 0
     
-    height = 10
-    width = 10
+    height = array.count
+    
+    for item in array {
+        width = item.count
+        break
+    }
         
     //Creating a 2-dimensional array of Bool's
     var beforeTwoDBoolArray = Array<Array<CellState>>()
@@ -76,31 +80,40 @@ func step(array: Array<Array<CellState>>) -> Array<Array<CellState>>
             
             //Loops through the returned Array to determine neighbors living cell count for the specific cell
             for tuple in tupleArray {
-                neighborAliveCount += ((beforeTwoDBoolArray[tuple.row][tuple.column] == .Living || .Born) ? 1 : 0)
+                neighborAliveCount += ((beforeTwoDBoolArray[tuple.row][tuple.column] == .Living) ? 1 : 0)
             }
             
+            let currentCell: CellState  = beforeTwoDBoolArray[w][h]
+
             //Determines if Current Cell is Living or Dead Cell
-            if (beforeTwoDBoolArray[w][h] == true) {
+            if (currentCell == .Living || currentCell == .Born) {
                 
-                //Any live cell with two or three live neighbors lives on to the next generation or dies do to overcrowding or under-population
-                afterTwoDBoolArray[w][h] = ((neighborAliveCount == 2 || neighborAliveCount == 3) ? true : false)
-                
-                //Added the living cell to total living cells count if it is still living
-                afterAliveCount += ((neighborAliveCount == 2 || neighborAliveCount == 3) ? 1 : 0)
+                if neighborAliveCount == 2 || neighborAliveCount == 3 {
+                    afterTwoDBoolArray[w][h] = .Living
+                } else {
+                    afterTwoDBoolArray[w][h] = .Died
+                }
+            }
+            else if (currentCell == .Died) {
+                if neighborAliveCount == 3 {
+                    afterTwoDBoolArray[w][h] = .Born
+                }
+                else {
+                    afterTwoDBoolArray[w][h] = .Died
+                }
             }
             else {
-                //Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction or else it is still dead
-                afterTwoDBoolArray[w][h] = ((neighborAliveCount == 3) ? true : false)
-                
-                //Added the dead cell to total living cells count if it is now living
-                afterAliveCount += ((neighborAliveCount == 3) ? 1 : 0)
+                afterTwoDBoolArray[w][h] = .Empty
+                if neighborAliveCount == 2 || neighborAliveCount == 3 {
+                   // afterTwoDBoolArray[w][h] = .Born
+                }
             }
         }
     }
     
     //Returns the Array
     return afterTwoDBoolArray
-}*/
+}
 
 
 func neighbors(tuple:(row: Int, column: Int)) -> [(row: Int, column: Int)]
