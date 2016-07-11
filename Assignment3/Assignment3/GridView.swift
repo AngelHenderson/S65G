@@ -10,6 +10,15 @@ import UIKit
 
 @IBDesignable class GridView: UIView {
 
+    private var allPoints = [UITouch : [CGPoint]]()
+    private var colors = [UITouch : UIColor]()
+    
+    var strokeColor: UIColor = UIColor.blackColor()
+    
+    override func awakeFromNib() {
+        self.multipleTouchEnabled = true
+    }
+    
     //@IBInspectable var rows:Int = 20
     //@IBInspectable var cols:Int = 20
     @IBInspectable var livingColor: UIColor = UIColor.greenColor()
@@ -44,14 +53,17 @@ import UIKit
     }
     
 
-    override func drawRect(gridRect: CGRect) {
-        
+    override init(frame: CGRect) {
         grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
-        
-        var beforeTwoDBoolArray = Array<Array<Bool>>()
-        beforeTwoDBoolArray = Array (count: 10, repeatedValue: Array(count: 10, repeatedValue: false))
-        print(beforeTwoDBoolArray)
+        super.init(frame: frame)
+    }
+
     
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
+    
+    override func drawRect(gridRect: CGRect) {
         
         var startPoint: CGPoint = CGPoint(x: 0, y: 0)
         var endPoint: CGPoint = CGPoint(x: 0, y: 0)
@@ -112,7 +124,7 @@ import UIKit
             //print("Columns: The x point is \(startPoint.y) and the y point \(endPoint.y)")
         }
         
-        
+        //Sets Color for each Circle
         for w in 0..<rows {
             for h in 0..<cols {
                 
@@ -151,47 +163,99 @@ import UIKit
                 inner.stroke()
             }
         }
+    
+        // Drawing code
+        let currentContext = UIGraphicsGetCurrentContext()
+        for (touch, points) in self.allPoints {
+            self.drawPoints(points, color: self.colors[touch]!, context: currentContext!)
+        }
     }
     
     
-    /*for(int i = 1; i <= self.numberOfColumns; i++)
-    {
-        CGPoint startPoint;
-        CGPoint endPoint;
-
-        startPoint.x = columnWidth * i;
-        startPoint.y = 0.0f;
-
-        endPoint.x = startPoint.x;
-        endPoint.y = self.frame.size.height;
-
-        CGContextMoveToPoint(context, startPoint.x, startPoint.y);
-        CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
-        CGContextStrokePath(context);
+    func drawPoints(points: [CGPoint], color: UIColor, context: CGContextRef) {
+        if points.count > 1 {
+            let path = CGPathCreateMutable()
+            let firstPoint = points[0]
+            CGPathMoveToPoint(path, nil, firstPoint.x, firstPoint.y)
+            
+            for pointIndex in 1..<points.count {
+                let point = points[pointIndex]
+                CGPathAddLineToPoint(path, nil, point.x, point.y)
+            }
+            
+            CGContextSetStrokeColorWithColor(context, color.CGColor)
+            CGContextSetLineWidth(context, 5.0)
+            CGContextAddPath(context, path)
+            CGContextDrawPath(context, CGPathDrawingMode.Stroke)
+        }
     }
     
-    // ---------------------------
-    // Drawing row lines
-    // ---------------------------
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            self.allPoints[touch ] = [CGPoint]()
+            self.colors[touch ] = self.strokeColor
+            self.processTouch(touch )
+        }
+    }
     
-    // calclulate row height
-    CGFloat rowHeight = self.frame.size.height / (self.numberOfRows + 1.0);
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            self.processTouch(touch )
+        }
+    }
     
-    for(int j = 1; j <= self.numberOfRows; j++)
-    {
-        CGPoint startPoint;
-        CGPoint endPoint;
-        
-        startPoint.x = 0.0f;
-        startPoint.y = rowHeight * j;
-        
-        endPoint.x = self.frame.size.width;
-        endPoint.y = startPoint.y;
-        
-        CGContextMoveToPoint(context, startPoint.x, startPoint.y);
-        CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
-        CGContextStrokePath(context);
-    }*/
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            self.processTouch(touch )
+        }
+    }
+    
+    func processTouch(touch: UITouch) {
+        let point = touch.locationInView(self)
+        self.allPoints[touch]?.append(point)
+        self.setNeedsDisplay()
+    }
     
     
 }
+
+
+/*for(int i = 1; i <= self.numberOfColumns; i++)
+ {
+ CGPoint startPoint;
+ CGPoint endPoint;
+ 
+ startPoint.x = columnWidth * i;
+ startPoint.y = 0.0f;
+ 
+ endPoint.x = startPoint.x;
+ endPoint.y = self.frame.size.height;
+ 
+ CGContextMoveToPoint(context, startPoint.x, startPoint.y);
+ CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
+ CGContextStrokePath(context);
+ }
+ 
+ // ---------------------------
+ // Drawing row lines
+ // ---------------------------
+ 
+ // calclulate row height
+ CGFloat rowHeight = self.frame.size.height / (self.numberOfRows + 1.0);
+ 
+ for(int j = 1; j <= self.numberOfRows; j++)
+ {
+ CGPoint startPoint;
+ CGPoint endPoint;
+ 
+ startPoint.x = 0.0f;
+ startPoint.y = rowHeight * j;
+ 
+ endPoint.x = self.frame.size.width;
+ endPoint.y = startPoint.y;
+ 
+ CGContextMoveToPoint(context, startPoint.x, startPoint.y);
+ CGContextAddLineToPoint(context, endPoint.x, endPoint.y);
+ CGContextStrokePath(context);
+ }*/
+
