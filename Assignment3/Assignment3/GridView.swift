@@ -215,10 +215,23 @@ import UIKit
 
         let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
         
-        let xCoordinate: Int = Int(touchLocation.x)/Int(gridSpace)
-        let yCoordinate: Int = Int(touchLocation.y)/Int(gridSpace)
-        print("The Touch Location is \(touchLocation) and the GridSpace and \(gridSpace) and the X is \(xCoordinate) and the Y is \(yCoordinate)")
+        let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpace))
+        let yCoordinate: CGFloat = (CGFloat(touchLocation.y)/CGFloat(gridSpace))
+        
+        let actualXPosition: Float = floorf(Float(xCoordinate))
+        let actualYPosition: Float = floorf(Float(yCoordinate))
 
+        let xPosition: Int = Int(actualXPosition)
+        let yPosition: Int = Int(actualYPosition)
+
+        print("The Touch Location is \(touchLocation) and the GridSpace and \(xCoordinate) and the X is \(xPosition) and the Y is \(yPosition)")
+        
+        let currentCell: CellState  = grid[xPosition][yPosition]
+
+        print(currentCell.toggle(currentCell))
+        
+        grid[xPosition][yPosition] = currentCell.toggle(currentCell)
+        self.setNeedsDisplay()
     }
     
 }
