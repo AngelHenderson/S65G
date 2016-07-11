@@ -124,7 +124,8 @@ import UIKit
             //print("Columns: The x point is \(startPoint.y) and the y point \(endPoint.y)")
         }
         
-        //Sets Color for each Circle
+
+        //Add Circles
         for w in 0..<rows {
             for h in 0..<cols {
                 
@@ -136,8 +137,8 @@ import UIKit
                 //let rect = CGRectMake(CGPointZero.x, CGPointZero.y, gridSpace, gridSpace)
                 //let rect = CGRectMake(CGPointZero.x, CGPointZero.y, self.bounds.size.height, self.bounds.size.width)
                 let rect = CGRectMake(xCoordinate, yCoordinate, gridSpace, gridSpace)
-                let w = rect.size.width
-                let innerRingRect = CGRectInset(rect, w * 0.15, w * 0.15)
+                let width = rect.size.width
+                let innerRingRect = CGRectInset(rect, width * 0.15, width * 0.15)
                 //innerRingRect.origin.x += xCoordinate
                 //innerRingRect.origin.y += yCoordinate
                 let inner = UIBezierPath(ovalInRect: innerRingRect)
@@ -148,6 +149,7 @@ import UIKit
 
                 let currentCell: CellState  = grid[xValue][yValue]
 
+                //Sets Color for each Circle
                 switch (currentCell) {
                     case .Living:
                         livingColor.setStroke()
@@ -161,14 +163,20 @@ import UIKit
                 
                 //UIColor(white: 0.7, alpha: 1.0).setStroke()
                 inner.stroke()
+                
+                let tagName: String = "\(w)\(h)"
+                let tagNumber: Int = Int(tagName)!
+                let cellButton = UIButton()
+                cellButton.frame = CGRectMake(xCoordinate, yCoordinate, gridSpace, gridSpace)
+                cellButton.addTarget(self, action: #selector(GridView.pressed(_:)), forControlEvents: .TouchUpInside)
+                cellButton.tag = tagNumber
+                //self.addSubview(cellButton)
             }
         }
+    }
     
-        // Drawing code
-        let currentContext = UIGraphicsGetCurrentContext()
-        for (touch, points) in self.allPoints {
-            self.drawPoints(points, color: self.colors[touch]!, context: currentContext!)
-        }
+    func pressed(sender: UIButton!) {
+       // print(sender.tag)
     }
     
     
@@ -193,8 +201,9 @@ import UIKit
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
             self.allPoints[touch ] = [CGPoint]()
-            self.colors[touch ] = self.strokeColor
             self.processTouch(touch )
+            currentTouches(touches)
+
         }
     }
     
@@ -216,6 +225,12 @@ import UIKit
         self.setNeedsDisplay()
     }
     
+    func currentTouches(touches: NSSet!) {
+        // Get the first touch and its location in this view controller's view coordinate system
+        let touch = touches.allObjects[0] as! UITouch
+        let touchLocation = touch.locationInView(self)
+        print(touchLocation)
+    }
     
 }
 
