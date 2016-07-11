@@ -71,13 +71,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="zsU-Yy-Xkw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" priority="250" id="3Bp-Kd-lus"/>
+                            <constraint firstItem="zsU-Yy-Xkw" firstAttribute="height" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.8" priority="750" id="3Bp-Kd-lus"/>
                             <constraint firstItem="zsU-Yy-Xkw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="85m-yZ-c6e"/>
                             <constraint firstItem="zsU-Yy-Xkw" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HOT-bu-LW4"/>
                             <constraint firstItem="zsU-Yy-Xkw" firstAttribute="width" secondItem="zsU-Yy-Xkw" secondAttribute="height" id="Kkr-zu-2vV"/>
                             <constraint firstItem="R0q-xB-73e" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nvq-yY-7Zj"/>
                             <constraint firstItem="R0q-xB-73e" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.4" id="bxc-yW-Pa4"/>
-                            <constraint firstItem="zsU-Yy-Xkw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" priority="250" id="m6w-bA-4X3"/>
+                            <constraint firstItem="zsU-Yy-Xkw" firstAttribute="width" relation="lessThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" priority="750" id="m6w-bA-4X3"/>
+                            <constraint firstItem="zsU-Yy-Xkw" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" priority="250" id="uH3-6A-nkh"/>
+                            <constraint firstItem="zsU-Yy-Xkw" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" priority="250" id="uOc-9z-4g7"/>
                             <constraint firstItem="zsU-Yy-Xkw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="wTt-7X-UWI"/>
                             <constraint firstItem="R0q-xB-73e" firstAttribute="top" secondItem="zsU-Yy-Xkw" secondAttribute="bottom" constant="15" id="yfP-Jz-0iW"/>
                         </constraints>
