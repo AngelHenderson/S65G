@@ -80,7 +80,7 @@ func step(array: Array<Array<CellState>>) -> Array<Array<CellState>>
             
             //Loops through the returned Array to determine neighbors living cell count for the specific cell
             for tuple in tupleArray {
-                print("The Row is \(tuple.row) and The Column is \(tuple.column)")
+                //print("The Row is \(tuple.row) and The Column is \(tuple.column)")
                 neighborAliveCount += ((beforeTwoDBoolArray[tuple.row][tuple.column] == .Living) ? 1 : 0)
             }
             

@@ -27,7 +27,13 @@ import UIKit
     @IBInspectable var diedColor: UIColor = UIColor.redColor()
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridWidth: CGFloat = 10
-    var grid = [[CellState]]()
+    var grid:[[CellState]] = [] {
+        //Finaly this
+        didSet {
+            
+            self.setNeedsDisplay()
+        }
+    }
 
     @IBInspectable var rows : Int = 20{
         //First this
@@ -37,7 +43,7 @@ import UIKit
         
         //Finaly this
         didSet {
-            grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
+            self.grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
             //print("Old value is \(oldValue), new value is \(grid)")
         }
     }
@@ -47,21 +53,21 @@ import UIKit
             //print("Old value is \(rows), new value is \(newValue)")
         }        
         didSet {
-            grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
+            self.grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
             //print("Old value is \(oldValue), new value is \(grid)")
         }
     }
     
-
+/*
     override init(frame: CGRect) {
-        grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
+        //self.grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
         super.init(frame: frame)
     }
-
     
     required init(coder aDecoder: NSCoder) {
+        //self.grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
         super.init(coder: aDecoder)!
-    }
+    }*/
     
     override func drawRect(gridRect: CGRect) {
         
@@ -148,7 +154,9 @@ import UIKit
                 let yValue: Int = Int(h)
 
                 let currentCell: CellState  = grid[xValue][yValue]
-
+                
+                print(currentCell)
+                
                 //Sets Color for each Circle
                 switch (currentCell) {
                     case .Living:
