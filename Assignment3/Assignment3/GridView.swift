@@ -27,6 +27,10 @@ import UIKit
     @IBInspectable var diedColor: UIColor = UIColor.redColor()
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridWidth: CGFloat = 10
+    
+    var previousPositionX: Int = 0
+    var previousPositionY: Int = 0
+
     let specificRect = CGRectMake(0, 0, 0, 0)
     
     var grid:[[CellState]] = [] {
@@ -211,6 +215,8 @@ import UIKit
     override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
             self.processTouch(touch )
+            dragTouches(touches)
+
         }
     }
     
@@ -252,6 +258,42 @@ import UIKit
         grid[xPosition][yPosition] = currentCell.toggle(currentCell)
 
         self.setNeedsDisplay()
+    }
+    
+    func dragTouches(touches: NSSet!) {
+        // Get the first touch and its location in this view controller's view coordinate system
+        let touch = touches.allObjects[0] as! UITouch
+        let touchLocation = touch.locationInView(self)
+        
+        
+        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
+        
+        let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpace))
+        let yCoordinate: CGFloat = (CGFloat(touchLocation.y)/CGFloat(gridSpace))
+        
+        let actualXPosition: Float = floorf(Float(xCoordinate))
+        let actualYPosition: Float = floorf(Float(yCoordinate))
+        
+        let xPosition: Int = Int(actualXPosition)
+        let yPosition: Int = Int(actualYPosition)
+        
+        if previousPositionX != xPosition || previousPositionY != yPosition {
+            
+            let currentCell: CellState  = grid[xPosition][yPosition]
+            
+            print(currentCell.toggle(currentCell))
+            
+            grid[xPosition][yPosition] = currentCell.toggle(currentCell)
+            
+            self.setNeedsDisplay()
+        }
+        
+        previousPositionX = xPosition
+        previousPositionY = yPosition
+        
+        print("The Touch Location is \(touchLocation) and the GridSpace and \(previousPositionX) and the X is \(xPosition) and the Y is \(yPosition)")
+        
+        
     }
     
 }
