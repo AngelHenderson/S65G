@@ -12,8 +12,6 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var runButton: UIButton!
     @IBOutlet weak var gridView: GridView!
-    var beforeTwoDArray: Array<Array<CellState>>!
-    var afterTwoDArray: Array<Array<CellState>>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +21,6 @@ class ViewController: UIViewController {
 
     @IBAction func runButtonAction(sender: AnyObject) {
         
-        beforeTwoDArray = gridView.grid
         gridView.grid = step(gridView.grid)
     }
     
