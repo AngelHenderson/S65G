@@ -26,15 +26,13 @@ import UIKit
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridWidth: CGFloat = 10
     
+    //var specificRect = CGRectMake(0, 0, 0, 0);
     var previousPositionX: Int = 0
     var previousPositionY: Int = 0
-
-    let specificRect = CGRectMake(0, 0, 0, 0)
     
     var grid:[[CellState]] = [] {
         //Finaly this
         didSet {
-            //self.setNeedsDisplayInRect(ovalInRect);
             self.setNeedsDisplay()
         }
     }
@@ -135,15 +133,10 @@ import UIKit
                 let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
                 let xCoordinate: CGFloat = CGFloat(w)*gridSpace
                 let yCoordinate: CGFloat = CGFloat(h)*gridSpace
-                //let xCoordinateSpace: CGFloat = CGFloat(w)*gridSpace + (gridSpace*0.5)
-                //let yCoordinateSpace: CGFloat = CGFloat(h)*gridSpace + (gridSpace*0.5)
-                //let rect = CGRectMake(CGPointZero.x, CGPointZero.y, gridSpace, gridSpace)
-                //let rect = CGRectMake(CGPointZero.x, CGPointZero.y, self.bounds.size.height, self.bounds.size.width)
+
                 let rect = CGRectMake(xCoordinate, yCoordinate, gridSpace, gridSpace)
                 let width = rect.size.width
                 let innerRingRect = CGRectInset(rect, width * 0.15, width * 0.15)
-                //innerRingRect.origin.x += xCoordinate
-                //innerRingRect.origin.y += yCoordinate
                 let inner = UIBezierPath(ovalInRect: innerRingRect)
                 inner.lineWidth = 1
                 
@@ -230,7 +223,9 @@ import UIKit
         
         grid[xPosition][yPosition] = currentCell.toggle(currentCell)
 
-        self.setNeedsDisplay()
+        //self.setNeedsDisplay()
+        let specificRect = CGRectMake(CGFloat(touchLocation.x-gridSpace), CGFloat(touchLocation.y-gridSpace),gridSpace*2, gridSpace*2);
+        self.setNeedsDisplayInRect(specificRect)
     }
     
     func dragTouches(touches: NSSet!) {
@@ -255,7 +250,8 @@ import UIKit
             if xPosition < rows && xPosition >= 0 && yPosition < cols && yPosition >= 0 {
                 let currentCell: CellState  = grid[xPosition][yPosition]
                 grid[xPosition][yPosition] = currentCell.toggle(currentCell)
-                self.setNeedsDisplay()
+                let specificRect = CGRectMake(CGFloat(touchLocation.x-gridSpace), CGFloat(touchLocation.y-gridSpace),gridSpace*2, gridSpace*2);
+                self.setNeedsDisplayInRect(specificRect)
             }
         }
         
