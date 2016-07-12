@@ -18,9 +18,7 @@ import UIKit
     override func awakeFromNib() {
         self.multipleTouchEnabled = true
     }
-    
-    //@IBInspectable var rows:Int = 20
-    //@IBInspectable var cols:Int = 20
+
     @IBInspectable var livingColor: UIColor = UIColor.greenColor()
     @IBInspectable var emptyColor: UIColor = UIColor.whiteColor()
     @IBInspectable var bornColor: UIColor = UIColor.blueColor()
@@ -63,17 +61,6 @@ import UIKit
             //print("Old value is \(oldValue), new value is \(grid)")
         }
     }
-    
-/*
-    override init(frame: CGRect) {
-        //self.grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
-        super.init(frame: frame)
-    }
-    
-    required init(coder aDecoder: NSCoder) {
-        //self.grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
-        super.init(coder: aDecoder)!
-    }*/
     
     override func drawRect(gridRect: CGRect) {
         
@@ -249,7 +236,7 @@ import UIKit
         let xPosition: Int = Int(actualXPosition)
         let yPosition: Int = Int(actualYPosition)
 
-        print("The Touch Location is \(touchLocation) and the GridSpace and \(xCoordinate) and the X is \(xPosition) and the Y is \(yPosition)")
+        //print("The Touch Location is \(touchLocation) and the GridSpace and \(xCoordinate) and the X is \(xPosition) and the Y is \(yPosition)")
         
         let currentCell: CellState  = grid[xPosition][yPosition]
 
@@ -265,7 +252,6 @@ import UIKit
         let touch = touches.allObjects[0] as! UITouch
         let touchLocation = touch.locationInView(self)
         
-        
         let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
         
         let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpace))
@@ -279,21 +265,18 @@ import UIKit
         
         if previousPositionX != xPosition || previousPositionY != yPosition {
             
-            let currentCell: CellState  = grid[xPosition][yPosition]
-            
-            print(currentCell.toggle(currentCell))
-            
-            grid[xPosition][yPosition] = currentCell.toggle(currentCell)
-            
-            self.setNeedsDisplay()
+            //Keeps Touch within the Grid
+            if xPosition < rows && xPosition >= 0 && yPosition < cols && yPosition >= 0 {
+                let currentCell: CellState  = grid[xPosition][yPosition]
+                grid[xPosition][yPosition] = currentCell.toggle(currentCell)
+                self.setNeedsDisplay()
+            }
         }
         
         previousPositionX = xPosition
         previousPositionY = yPosition
         
-        print("The Touch Location is \(touchLocation) and the GridSpace and \(previousPositionX) and the X is \(xPosition) and the Y is \(yPosition)")
-        
-        
+        //print("The Touch Location is \(touchLocation) and the GridSpace and \(previousPositionX) and the X is \(xPosition) and the Y is \(yPosition)")
     }
     
 }

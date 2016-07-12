@@ -54,6 +54,7 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R0q-xB-73e">
                                 <rect key="frame" x="180" y="523" width="240" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8mR-9p-mzW"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="XUT-oU-faB"/>
