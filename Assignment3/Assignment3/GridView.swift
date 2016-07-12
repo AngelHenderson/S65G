@@ -173,23 +173,9 @@ import UIKit
                 //UIColor(white: 0.7, alpha: 1.0).setStroke()
                 inner.stroke()
                 inner.fill()
-
-                let tagName: String = "\(w)\(h)"
-                let tagNumber: Int = Int(tagName)!
-                let cellButton = UIButton()
-                cellButton.frame = CGRectMake(xCoordinate, yCoordinate, gridSpace, gridSpace)
-                cellButton.addTarget(self, action: #selector(GridView.pressed(_:)), forControlEvents: .TouchUpInside)
-                cellButton.tag = tagNumber
-                //self.addSubview(cellButton)
             }
         }
     }
-    
-    func pressed(sender: UIButton!) {
-       // print(sender.tag)
-    }
-    
-    
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         for touch in touches {
@@ -216,7 +202,7 @@ import UIKit
     func processTouch(touch: UITouch) {
         let point = touch.locationInView(self)
         self.allPoints[touch]?.append(point)
-        self.setNeedsDisplay()
+        //self.setNeedsDisplay()
     }
     
     func currentTouches(touches: NSSet!) {
