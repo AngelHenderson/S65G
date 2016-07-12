@@ -224,7 +224,7 @@ import UIKit
         grid[xPosition][yPosition] = currentCell.toggle(currentCell)
 
         //self.setNeedsDisplay()
-        let specificRect = CGRectMake(CGFloat(touchLocation.x-gridSpace), CGFloat(touchLocation.y-gridSpace),gridSpace*2, gridSpace*2);
+        let specificRect = CGRectMake(CGFloat(touchLocation.x-gridSpace/2), CGFloat(touchLocation.y-gridSpace/2),gridSpace, gridSpace);
         self.setNeedsDisplayInRect(specificRect)
     }
     
@@ -250,7 +250,7 @@ import UIKit
             if xPosition < rows && xPosition >= 0 && yPosition < cols && yPosition >= 0 {
                 let currentCell: CellState  = grid[xPosition][yPosition]
                 grid[xPosition][yPosition] = currentCell.toggle(currentCell)
-                let specificRect = CGRectMake(CGFloat(touchLocation.x-gridSpace), CGFloat(touchLocation.y-gridSpace),gridSpace*2, gridSpace*2);
+                let specificRect = CGRectMake(CGFloat(touchLocation.x-gridSpace/2), CGFloat(touchLocation.y-gridSpace/2),gridSpace, gridSpace);
                 self.setNeedsDisplayInRect(specificRect)
             }
         }
