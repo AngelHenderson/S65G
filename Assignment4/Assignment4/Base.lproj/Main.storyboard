@@ -19,8 +19,18 @@
                         <subviews>
                             <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHe-hV-9Ty" userLabel="Background View">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Msv-6H-OVa">
+                                        <rect key="frame" x="252" y="292" width="97" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
                                 <color key="backgroundColor" red="0.66666666669999997" green="0.81960784310000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="R1D-Xg-cIS">
+                                <rect key="frame" x="253" y="329" width="94" height="29"/>
+                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -30,7 +40,7 @@
                             <constraint firstItem="NHe-hV-9Ty" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="sbV-dx-iZy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="LifeGrid" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -61,7 +71,7 @@
                             <constraint firstItem="HMY-cI-nJR" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="z80-7B-Feo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Simulation" image="second" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,7 +102,7 @@
                             <constraint firstItem="4dk-VP-7iY" firstAttribute="centerY" secondItem="W5q-0B-Pm6" secondAttribute="centerY" id="aoX-sJ-4GZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="third" image="second" id="cvl-Oj-33J"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="second" id="cvl-Oj-33J"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBt-1X-0dz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
