@@ -16,7 +16,19 @@
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NHe-hV-9Ty" userLabel="Background View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.81960784310000001" blue="0.2666666667" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="NHe-hV-9Ty" firstAttribute="height" secondItem="tsR-hK-woN" secondAttribute="height" id="32j-HP-vEe"/>
+                            <constraint firstItem="NHe-hV-9Ty" firstAttribute="centerY" secondItem="tsR-hK-woN" secondAttribute="centerY" id="FnA-LP-aeX"/>
+                            <constraint firstItem="NHe-hV-9Ty" firstAttribute="centerX" secondItem="tsR-hK-woN" secondAttribute="centerX" id="lm4-76-LSR"/>
+                            <constraint firstItem="NHe-hV-9Ty" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="sbV-dx-iZy"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
                 </viewController>
@@ -35,7 +47,19 @@
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HMY-cI-nJR" userLabel="Background View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="HMY-cI-nJR" firstAttribute="height" secondItem="QS5-Rx-YEW" secondAttribute="height" id="5zx-Kd-UhT"/>
+                            <constraint firstItem="HMY-cI-nJR" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="aPy-di-dpl"/>
+                            <constraint firstItem="HMY-cI-nJR" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="hHe-MV-2rR"/>
+                            <constraint firstItem="HMY-cI-nJR" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="z80-7B-Feo"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
                 </viewController>
@@ -54,7 +78,19 @@
                     <view key="view" contentMode="scaleToFill" id="W5q-0B-Pm6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.10000000149011612" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dk-VP-7iY" userLabel="Background View">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4dk-VP-7iY" firstAttribute="height" secondItem="W5q-0B-Pm6" secondAttribute="height" id="5Tc-Ck-EoE"/>
+                            <constraint firstItem="4dk-VP-7iY" firstAttribute="centerX" secondItem="W5q-0B-Pm6" secondAttribute="centerX" id="HFx-b5-ds5"/>
+                            <constraint firstItem="4dk-VP-7iY" firstAttribute="width" secondItem="W5q-0B-Pm6" secondAttribute="width" id="WCr-rA-3bo"/>
+                            <constraint firstItem="4dk-VP-7iY" firstAttribute="centerY" secondItem="W5q-0B-Pm6" secondAttribute="centerY" id="aoX-sJ-4GZ"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="third" image="second" id="cvl-Oj-33J"/>
                 </viewController>
