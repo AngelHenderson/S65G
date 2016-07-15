@@ -14,6 +14,7 @@
 		5800677C1D3950BF009EDD73 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5800677B1D3950BF009EDD73 /* Assets.xcassets */; };
 		5800677F1D3950BF009EDD73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5800677D1D3950BF009EDD73 /* LaunchScreen.storyboard */; };
 		580067871D3952A2009EDD73 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580067861D3952A2009EDD73 /* StatisticsViewController.swift */; };
+		580067891D395C5B009EDD73 /* GridProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580067881D395C5B009EDD73 /* GridProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		5800677E1D3950BF009EDD73 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		580067801D3950BF009EDD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		580067861D3952A2009EDD73 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		580067881D395C5B009EDD73 /* GridProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				580067761D3950BF009EDD73 /* SimulationViewController.swift */,
 				580067861D3952A2009EDD73 /* StatisticsViewController.swift */,
 				580067781D3950BF009EDD73 /* Main.storyboard */,
+				580067881D395C5B009EDD73 /* GridProtocol.swift */,
 				5800677B1D3950BF009EDD73 /* Assets.xcassets */,
 				5800677D1D3950BF009EDD73 /* LaunchScreen.storyboard */,
 				580067801D3950BF009EDD73 /* Info.plist */,
@@ -144,6 +147,7 @@
 				580067771D3950BF009EDD73 /* SimulationViewController.swift in Sources */,
 				580067731D3950BF009EDD73 /* AppDelegate.swift in Sources */,
 				580067751D3950BF009EDD73 /* InstrumentationViewController.swift in Sources */,
+				580067891D395C5B009EDD73 /* GridProtocol.swift in Sources */,
 				580067871D3952A2009EDD73 /* StatisticsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
