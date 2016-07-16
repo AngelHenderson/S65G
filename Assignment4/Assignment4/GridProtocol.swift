@@ -75,12 +75,10 @@ class Grid : GridProtocol {
     var cols: UInt = 10
     
     private var cells : [[CellState]] = Array (count: 10, repeatedValue: Array(count: 10, repeatedValue: .Empty))
-
     
     required init(rows: UInt,cols: UInt) {
         self.rows  = rows
         self.cols = cols
-        
         //cells = Array<CellState>(count: Int(self.rows), repeatedValue: .Empty)
         cells = Array (count: Int(self.rows), repeatedValue: Array(count: Int(self.cols), repeatedValue: .Empty))
     }
@@ -90,7 +88,6 @@ class Grid : GridProtocol {
             if cells.count < Int(row*col){
                 return nil
             }
-            
             return cells[Int(row)][Int(col)]
         }
         set (newValue) {
@@ -214,13 +211,29 @@ class Grid : GridProtocol {
 
 class StandardEngine  : EngineProtocol {
     
+    var delegate: EngineDelegate?
+    var grid: GridProtocol?
+    
+    var rows: UInt = 10
+    var cols: UInt = 10
+    
+    private var cells : [[CellState]] = Array (count: 10, repeatedValue: Array(count: 10, repeatedValue: .Empty))
+    
+    required init(rows: UInt,cols: UInt) {
+        self.rows  = rows
+        self.cols = cols
+        //cells = Array<CellState>(count: Int(self.rows), repeatedValue: .Empty)
+        cells = Array (count: Int(self.rows), repeatedValue: Array(count: Int(self.cols), repeatedValue: .Empty))
+    }
+    
+    
     private var timer:NSTimer?
     
     var refreshInterval: NSTimeInterval = 0 {
         didSet {
             if refreshInterval != 0 {
                 if let timer = timer { timer.invalidate() }
-                let sel = #selector(Grid.timerDidFire(_:))
+                let sel = #selector(StandardEngine.timerDidFire(_:))
                 timer = NSTimer.scheduledTimerWithTimeInterval(refreshInterval,
                                                                target: self,
                                                                selector: sel,
@@ -234,6 +247,12 @@ class StandardEngine  : EngineProtocol {
         }
     }
     
+    var refreshRate: Double = 0.0 {
+        didSet {
+            
+        }
+    }
+    
     @objc func timerDidFire(timer:NSTimer) {
         self.rows += 1
         let center = NSNotificationCenter.defaultCenter()
@@ -244,9 +263,76 @@ class StandardEngine  : EngineProtocol {
         print ("\(timer.userInfo?["name"] ?? "not fred")")
     }
     
-    var delegate: ExampleDelegateProtocol?
-    func step() -> [[Bool]] {
-        return [[false]]
+
+    
+    func step() -> GridProtocol
+    {
+        var height : Int = 0
+        var width : Int = 0
+        
+        height = grid.count
+        
+        for item in array {
+            width = item.count
+            break
+        }
+        
+        //Creating a 2-dimensional array of Bool's
+        var beforeTwoDBoolArray = Array<Array<CellState>>()
+        beforeTwoDBoolArray = array
+        
+        //Creating a 2-dimensional array of Bool's for After Array
+        var afterTwoDBoolArray = Array<Array<CellState>>()
+        afterTwoDBoolArray = beforeTwoDBoolArray
+        
+        
+        //For Loop to go through every Cell in the Array
+        for w in 0..<width {
+            for h in 0..<height {
+                
+                //Sums up Neighbors Living Cells
+                var neighborAliveCount = 0
+                
+                //Creation of Array of Tuples, A Tuple for each Cell is created
+                var tupleArray: [(row:Int,column:Int)] = []
+                
+                //Neighbor Function checks the neighbor cells of a specific cell
+                tupleArray = grid.neighbors((row: w, column: h), maxWidth: width-1, maxHeight: height-1)
+                
+                //Loops through the returned Array to determine neighbors living cell count for the specific cell
+                for tuple in tupleArray {
+                    //print("The Row is \(tuple.row) and The Column is \(tuple.column)")
+                    //neighborAliveCount += ((beforeTwoDBoolArray[tuple.row][tuple.column] == .Living) ? 1 : 0)
+                    
+                    if (beforeTwoDBoolArray[tuple.row][tuple.column] == .Living || beforeTwoDBoolArray[tuple.row][tuple.column] == .Born) {
+                        neighborAliveCount += 1
+                    }
+                }
+                
+                let currentCell: CellState  = beforeTwoDBoolArray[w][h]
+                
+                //Determines if Current Cell is Living or Dead Cell
+                if (currentCell == .Living || currentCell == .Born) {
+                    
+                    if neighborAliveCount == 2 || neighborAliveCount == 3 {
+                        afterTwoDBoolArray[w][h] = .Living
+                    } else {
+                        afterTwoDBoolArray[w][h] = .Died
+                    }
+                }
+                else if (currentCell == .Died || (currentCell == .Empty)) {
+                    if neighborAliveCount == 3 {
+                        afterTwoDBoolArray[w][h] = .Born
+                    }
+                    else {
+                        afterTwoDBoolArray[w][h] = .Empty
+                    }
+                }
+            }
+        }
+        
+        //Returns the Array
+        return afterTwoDBoolArray
     }
 
 }
