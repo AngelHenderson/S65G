@@ -215,11 +215,17 @@ class Grid : GridProtocol {
 
 class StandardEngine  : EngineProtocol {
     
+    
+    private static var _sharedInstance = StandardEngine(rows: 10, cols: 10)
+    static var sharedInstance: StandardEngine {
+        get {
+            return _sharedInstance
+        }
+    }
+    
     var delegate: EngineDelegate?
     var grid: GridProtocol  = Grid.sharedInstance
-    
-    private static var singleton = StandardEngine(rows:10,cols:10)
-    
+        
     var rows: UInt = 10 {
         didSet {
         }
