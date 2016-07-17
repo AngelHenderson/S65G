@@ -15,6 +15,7 @@
 		5800677F1D3950BF009EDD73 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5800677D1D3950BF009EDD73 /* LaunchScreen.storyboard */; };
 		580067871D3952A2009EDD73 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580067861D3952A2009EDD73 /* StatisticsViewController.swift */; };
 		580067891D395C5B009EDD73 /* GridProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580067881D395C5B009EDD73 /* GridProtocol.swift */; };
+		584C65F41D3B5D21001B50A0 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584C65F31D3B5D21001B50A0 /* GridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		580067801D3950BF009EDD73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		580067861D3952A2009EDD73 /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		580067881D395C5B009EDD73 /* GridProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridProtocol.swift; sourceTree = "<group>"; };
+		584C65F31D3B5D21001B50A0 /* GridView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				580067861D3952A2009EDD73 /* StatisticsViewController.swift */,
 				580067781D3950BF009EDD73 /* Main.storyboard */,
 				580067881D395C5B009EDD73 /* GridProtocol.swift */,
+				584C65F31D3B5D21001B50A0 /* GridView.swift */,
 				5800677B1D3950BF009EDD73 /* Assets.xcassets */,
 				5800677D1D3950BF009EDD73 /* LaunchScreen.storyboard */,
 				580067801D3950BF009EDD73 /* Info.plist */,
@@ -148,6 +151,7 @@
 				580067731D3950BF009EDD73 /* AppDelegate.swift in Sources */,
 				580067751D3950BF009EDD73 /* InstrumentationViewController.swift in Sources */,
 				580067891D395C5B009EDD73 /* GridProtocol.swift in Sources */,
+				584C65F41D3B5D21001B50A0 /* GridView.swift in Sources */,
 				580067871D3952A2009EDD73 /* StatisticsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -300,6 +304,7 @@
 				580067851D3950BF009EDD73 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
