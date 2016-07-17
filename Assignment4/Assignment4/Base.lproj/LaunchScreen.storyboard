@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +16,133 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credits For Icons:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yf-vj-wjR">
+                                <rect key="frame" x="0.0" y="289" width="600" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Jxm-fk-BtW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Node by Jamie Dickinson from the Noun Project" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAu-pH-DY3">
+                                <rect key="frame" x="0.0" y="320.5" width="600" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="E2b-rG-MQV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="E2b-rG-MQV"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://thenounproject.com/search/?q=cells&amp;i=39526" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pjw-Kb-8uI">
+                                <rect key="frame" x="0.0" y="346.5" width="600" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="brA-vG-wuA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="brA-vG-wuA"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Low gauge by romzicon from the Noun Project" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23c-bo-97Z">
+                                <rect key="frame" x="0.0" y="379.5" width="600" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="Uz1-Op-3NF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Uz1-Op-3NF"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graph by gayatri from the Noun Project" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RJh-34-YQB">
+                                <rect key="frame" x="0.0" y="438.5" width="600" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="elD-X2-gCg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="elD-X2-gCg"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://thenounproject.com/search/?q=Statistics&amp;i=154953" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VL1-RK-i2S">
+                                <rect key="frame" x="0.0" y="464.5" width="600" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="OfM-ez-0EV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OfM-ez-0EV"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="https://thenounproject.com/search/?q=instrument%20panel&amp;i=540908" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfi-OP-1vk">
+                                <rect key="frame" x="0.0" y="405.5" width="600" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="J85-cf-2Dm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="J85-cf-2Dm"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="WAu-pH-DY3" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="0N5-Lh-U4f"/>
+                            <constraint firstItem="RJh-34-YQB" firstAttribute="top" secondItem="pfi-OP-1vk" secondAttribute="bottom" constant="15" id="5Jr-PE-24L"/>
+                            <constraint firstItem="WAu-pH-DY3" firstAttribute="top" secondItem="6yf-vj-wjR" secondAttribute="bottom" constant="10.5" id="76Q-GC-dlJ"/>
+                            <constraint firstItem="6yf-vj-wjR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Emd-GV-h6f"/>
+                            <constraint firstItem="RJh-34-YQB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="OBU-cb-oRa"/>
+                            <constraint firstItem="VL1-RK-i2S" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="OH6-nr-fJm"/>
+                            <constraint firstItem="pfi-OP-1vk" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="RNk-fu-tct"/>
+                            <constraint firstItem="pfi-OP-1vk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Shz-CE-tej"/>
+                            <constraint firstItem="pjw-Kb-8uI" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="TSO-f7-EHa"/>
+                            <constraint firstItem="VL1-RK-i2S" firstAttribute="top" secondItem="RJh-34-YQB" secondAttribute="bottom" constant="8" id="Vzd-YC-GbP"/>
+                            <constraint firstItem="23c-bo-97Z" firstAttribute="top" secondItem="pjw-Kb-8uI" secondAttribute="bottom" constant="15" id="W39-TL-yUa"/>
+                            <constraint firstItem="23c-bo-97Z" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="WNw-oO-AFj"/>
+                            <constraint firstItem="6yf-vj-wjR" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="WsH-Qv-cmU"/>
+                            <constraint firstItem="WAu-pH-DY3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="abe-se-Rgh"/>
+                            <constraint firstItem="pjw-Kb-8uI" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="b1h-pY-Pis"/>
+                            <constraint firstItem="pjw-Kb-8uI" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="bxE-bq-cPT"/>
+                            <constraint firstItem="WAu-pH-DY3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eBc-UR-IRI"/>
+                            <constraint firstItem="23c-bo-97Z" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="h8x-X9-sFd"/>
+                            <constraint firstItem="RJh-34-YQB" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="hbK-UK-M7W"/>
+                            <constraint firstItem="pfi-OP-1vk" firstAttribute="top" secondItem="23c-bo-97Z" secondAttribute="bottom" constant="8" id="lLq-pN-YMx"/>
+                            <constraint firstItem="6yf-vj-wjR" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" id="lUP-Io-dL8"/>
+                            <constraint firstItem="pjw-Kb-8uI" firstAttribute="top" secondItem="WAu-pH-DY3" secondAttribute="bottom" constant="8" id="tyG-TN-qGN"/>
+                            <constraint firstItem="VL1-RK-i2S" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wDQ-dL-Mw9"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="abe-se-Rgh"/>
+                                <exclude reference="bxE-bq-cPT"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
