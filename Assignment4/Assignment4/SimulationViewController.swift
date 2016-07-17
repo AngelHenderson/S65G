@@ -10,9 +10,17 @@ import UIKit
 
 class SimulationViewController: UIViewController {
 
+    @IBOutlet weak var gridView: GridView!
+    @IBOutlet weak var runButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    @IBAction func runButtonAction(sender: AnyObject) {
+        
+      //  gridView.grid = step(gridView.grid)
     }
 
     override func didReceiveMemoryWarning() {

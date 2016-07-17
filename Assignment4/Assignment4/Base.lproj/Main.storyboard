@@ -40,7 +40,7 @@
                             <constraint firstItem="NHe-hV-9Ty" firstAttribute="width" secondItem="tsR-hK-woN" secondAttribute="width" id="sbV-dx-iZy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="LifeGrid" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" id="acW-dT-cKf" userLabel="Instrumentation"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,7 +71,7 @@
                             <constraint firstItem="HMY-cI-nJR" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" id="z80-7B-Feo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Simulation" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Simulation" image="Simulation" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -102,7 +102,7 @@
                             <constraint firstItem="4dk-VP-7iY" firstAttribute="centerY" secondItem="W5q-0B-Pm6" secondAttribute="centerY" id="aoX-sJ-4GZ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statistics" image="second" id="cvl-Oj-33J"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="Statistics" id="cvl-Oj-33J"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nBt-1X-0dz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -130,7 +130,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="first" width="30" height="30"/>
-        <image name="second" width="30" height="30"/>
+        <image name="Instrumentation" width="30" height="30"/>
+        <image name="Simulation" width="30" height="30"/>
+        <image name="Statistics" width="30" height="30"/>
     </resources>
 </document>

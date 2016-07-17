@@ -6,6 +6,23 @@
 //  Copyright © 2016 Angel Henderson. All rights reserved.
 //
 
+
+//Icons Citation 
+
+//Simulation Icon (Node)
+//node by Jamie Dickinson from the Noun Project
+//https://thenounproject.com/search/?q=cells&i=39526
+
+
+//Instrumentation
+//low gauge by romzicon from the Noun Project
+//https://thenounproject.com/search/?q=instrument%20panel&i=540908
+
+
+//Statistics Icon
+//Graph by gayatri from the Noun Project
+//https://thenounproject.com/search/?q=Statistics&i=154953
+
 import UIKit
 
 @UIApplicationMain
