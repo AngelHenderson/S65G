@@ -49,6 +49,7 @@ protocol GridProtocol {
     init(rows: Int, cols: Int)
     func neighbors(tuple:(row: Int, column: Int), maxWidth: Int, maxHeight: Int) -> [(row: Int, column: Int)]
     subscript(row: UInt, col: UInt) -> CellState? { get set }
+    var cells : [[CellState]] { get set }
 }
 
 protocol EngineDelegate {
@@ -57,7 +58,7 @@ protocol EngineDelegate {
 
 protocol EngineProtocol {
     var delegate: EngineDelegate? { get set }
-    var grid: Grid { get }
+    var grid: GridProtocol { get }
     var refreshRate: Double { get set }
     var refreshInterval: NSTimeInterval { get set }
     var rows: UInt { get set }
@@ -68,7 +69,6 @@ protocol EngineProtocol {
 
 
 class Grid : GridProtocol {
-    
     //private var cells : [CellState] =  Array<CellState>(count: 100, repeatedValue: .Empty)
     var rows: UInt = 10
     var cols: UInt = 10
@@ -80,7 +80,7 @@ class Grid : GridProtocol {
         }
     }
     
-    private var cells : [[CellState]] = Array (count: 10, repeatedValue: Array(count: 10, repeatedValue: .Empty))
+    var cells : [[CellState]] = Array (count: 10, repeatedValue: Array(count: 10, repeatedValue: .Empty))
     
     required init(rows: Int,cols: Int) {
         self.rows  = UInt(rows)
@@ -216,8 +216,8 @@ class Grid : GridProtocol {
 class StandardEngine  : EngineProtocol {
     
     var delegate: EngineDelegate?
-    var grid = Grid(rows:10,cols:10)
-    
+    var grid: GridProtocol  = Grid.sharedInstance
+
     var rows: UInt = 10 {
         didSet {
         }
@@ -227,12 +227,9 @@ class StandardEngine  : EngineProtocol {
         }
     }
     
-    private var cells : [[CellState]] = Array (count: 10, repeatedValue: Array(count: 10, repeatedValue: .Empty))
-    
      required init(rows: UInt,cols: UInt) {
         self.rows  = rows
         self.cols = cols
-        cells = Array (count: Int(self.rows), repeatedValue: Array(count: Int(self.cols), repeatedValue: .Empty))
     }
     
     private var timer:NSTimer?
@@ -278,16 +275,16 @@ class StandardEngine  : EngineProtocol {
         var height : Int = 0
         var width : Int = 0
         
-        height = cells.count
+        height = grid.cells.count
         
-        for item in cells {
+        for item in grid.cells {
             width = item.count
             break
         }
         
         //Creating a 2-dimensional array of Bool's
         var beforeTwoDBoolArray = Array<Array<CellState>>()
-        beforeTwoDBoolArray = cells
+        beforeTwoDBoolArray = grid.cells
         
         
         //For Loop to go through every Cell in the Array
@@ -316,17 +313,17 @@ class StandardEngine  : EngineProtocol {
                 if (currentCell == .Living || currentCell == .Born) {
                     
                     if neighborAliveCount == 2 || neighborAliveCount == 3 {
-                        cells[w][h] = .Living
+                        grid.cells[w][h] = .Living
                     } else {
-                        cells[w][h] = .Died
+                        grid.cells[w][h] = .Died
                     }
                 }
                 else if (currentCell == .Died || (currentCell == .Empty)) {
                     if neighborAliveCount == 3 {
-                        cells[w][h] = .Born
+                        grid.cells[w][h] = .Born
                     }
                     else {
-                        cells[w][h] = .Empty
+                        grid.cells[w][h] = .Empty
                     }
                 }
             }
