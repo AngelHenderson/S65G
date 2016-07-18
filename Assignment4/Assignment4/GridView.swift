@@ -29,16 +29,12 @@ import UIKit
     @IBInspectable var rows : Int = 10{
         didSet {
             grid = Grid (rows:rows, cols:cols)
-            let notification = NSNotification(name: "updateGridNotification", object: grid, userInfo: nil)
-            NSNotificationCenter.defaultCenter().postNotification(notification)
         }
     }
     
     @IBInspectable var cols : Int = 10 {
         didSet {
             grid = Grid (rows:rows, cols:cols)
-            let notification = NSNotification(name: "updateGridNotification", object: grid, userInfo: nil)
-            NSNotificationCenter.defaultCenter().postNotification(notification)
         }
     }
     
@@ -243,10 +239,6 @@ import UIKit
         
         previousPositionX = xPosition
         previousPositionY = yPosition
-        
-        let notification = NSNotification(name: "updateGridNotification", object: grid, userInfo: nil)
-        NSNotificationCenter.defaultCenter().postNotification(notification)
-        
     }
     
 }

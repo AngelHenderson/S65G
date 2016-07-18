@@ -204,12 +204,7 @@ class StandardEngine  : EngineProtocol {
     
     var delegate: EngineDelegateProtocol?
    
-    var grid:Grid {
-        didSet {
-            let notification = NSNotification(name: "updateGridNotification", object:grid, userInfo: nil)
-            NSNotificationCenter.defaultCenter().postNotification(notification)
-        }
-    }
+    var grid:Grid 
         
     var rows: Int = 10 {
         didSet {
@@ -240,7 +235,7 @@ class StandardEngine  : EngineProtocol {
                 timer = NSTimer.scheduledTimerWithTimeInterval(refreshInterval,
                                                                target: self,
                                                                selector: sel,
-                                                               userInfo: ["name": "fred"],
+                                                               userInfo: nil,
                                                                repeats: true)
             }
             else if let timer = timer {
