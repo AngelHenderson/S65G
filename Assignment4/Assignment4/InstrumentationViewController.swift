@@ -63,6 +63,13 @@ class InstrumentationViewController: UIViewController {
         colCountTextField.text  = String(StandardEngine.sharedInstance.cols)
     }
     
+    
+    @IBAction func sliderValueChanged(sender: UISlider) {
+        let currentValue = Double(sender.value)
+        print (currentValue)
+        StandardEngine.sharedInstance.refreshInterval = currentValue
+    }
+    
     @IBAction func updateTimeInterval(sender: UITextField) {
         if let text = sender.text,
             interval = Double(text)  {
