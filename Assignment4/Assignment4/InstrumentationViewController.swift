@@ -34,16 +34,14 @@ class InstrumentationViewController: UIViewController {
         print(Int(sender.value).description)
         
         if Double(sender.value) < incrementValue {
-            gameEngine.rows -= 10
+            StandardEngine.sharedInstance.rows -= 10
         }
         else {
-            gameEngine.rows += 10
+            StandardEngine.sharedInstance.rows += 10
         }
         
         incrementValue = sender.value
-        rowCountTextField.text  = String(gameEngine.rows)
-
-
+        rowCountTextField.text  = String(StandardEngine.sharedInstance.rows)
     }
     
     @IBAction func updateTimeInterval(sender: UITextField) {

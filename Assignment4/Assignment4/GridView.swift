@@ -28,6 +28,7 @@ import UIKit
     var grid: Grid = Grid (rows:10, cols:10)
     @IBInspectable var rows : Int = 10{
         didSet {
+            grid = Grid (rows:rows, cols:cols)
             let notification = NSNotification(name: "updateGridNotification", object: grid, userInfo: nil)
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }
@@ -35,6 +36,7 @@ import UIKit
     
     @IBInspectable var cols : Int = 10 {
         didSet {
+            grid = Grid (rows:rows, cols:cols)
             let notification = NSNotification(name: "updateGridNotification", object: grid, userInfo: nil)
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }
@@ -54,10 +56,10 @@ import UIKit
         gridLinePath.lineWidth = gridWidth
         
         //Draws Grid Lines for Rows
-        for i in 0..<rows {
+        for i in 0..<grid.rows {
             
             //print("Grid Line Row Drawn")
-            let gridSpace: CGFloat = CGFloat(self.frame.size.height) / CGFloat(rows)
+            let gridSpace: CGFloat = CGFloat(self.frame.size.height) / CGFloat(grid.rows)
             startPoint.x = gridSpace * CGFloat(i)
             startPoint.y = 0.0
             
@@ -79,8 +81,8 @@ import UIKit
         }
         
         //Draws Grid Lines for Columns
-        for j in 0..<cols {
-            let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(cols)
+        for j in 0..<grid.cols {
+            let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.cols)
             
             startPoint.x = 0.0;
             startPoint.y = gridSpace * CGFloat(j)
@@ -106,10 +108,10 @@ import UIKit
         
 
         //Add Circles
-        for w in 0..<rows {
-            for h in 0..<cols {
+        for w in 0..<grid.rows {
+            for h in 0..<grid.cols {
                 
-                let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
+                let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.rows)
                 let xCoordinate: CGFloat = CGFloat(w)*gridSpace
                 let yCoordinate: CGFloat = CGFloat(h)*gridSpace
 
@@ -182,14 +184,14 @@ import UIKit
         let touch = touches.allObjects[0] as! UITouch
         let touchLocation = touch.locationInView(self)
         
-        let cellWidth = bounds.width / CGFloat (cols)
-        let cellHeight = bounds.height / CGFloat (rows)
+        let cellWidth = bounds.width / CGFloat (grid.cols)
+        let cellHeight = bounds.height / CGFloat (grid.rows)
         
         let point = touch.locationInView(self)
         let row = Int (point.y / cellHeight)
         let col = Int (point.x / cellWidth)
         
-        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
+        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.rows)
         
         let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpace))
         let yCoordinate: CGFloat = (CGFloat(touchLocation.y)/CGFloat(gridSpace))
@@ -214,14 +216,14 @@ import UIKit
         let touch = touches.allObjects[0] as! UITouch
         let touchLocation = touch.locationInView(self)
         
-        let cellWidth = bounds.width / CGFloat (cols)
-        let cellHeight = bounds.height / CGFloat (rows)
+        let cellWidth = bounds.width / CGFloat (grid.cols)
+        let cellHeight = bounds.height / CGFloat (grid.rows)
         
         let point = touch.locationInView(self)
         let row = Int (point.y / cellHeight)
         let col = Int (point.x / cellWidth)
         
-        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
+        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.rows)
         let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpace))
         let yCoordinate: CGFloat = (CGFloat(touchLocation.y)/CGFloat(gridSpace))
         let actualXPosition: Float = floorf(Float(xCoordinate))
@@ -233,7 +235,7 @@ import UIKit
         
         if previousPositionX != xPosition || previousPositionY != yPosition {
             //Keeps Touch within the Grid
-            if xPosition < rows && xPosition >= 0 && yPosition < cols && yPosition >= 0 {
+            if xPosition < grid.rows && xPosition >= 0 && yPosition < grid.cols && yPosition >= 0 {
                 let currentCell: CellState  = grid[xPosition,yPosition]!
                 grid[xPosition,yPosition] = currentCell.toggle(currentCell)
                 self.setNeedsDisplayInRect(CGRect(x:CGFloat(col) * cellWidth + gridWidth/2, y:CGFloat(row) * cellHeight + gridWidth/2, width:cellWidth - gridWidth, height:cellHeight - gridWidth))
