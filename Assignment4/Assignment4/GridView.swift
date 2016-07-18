@@ -183,8 +183,8 @@ import UIKit
         let touch = touches.allObjects[0] as! UITouch
         let touchLocation = touch.locationInView(self)
         
-        let cellWidth = bounds.width / CGFloat (grid.cols)
-        let cellHeight = bounds.height / CGFloat (grid.rows)
+        let cellWidth = bounds.width / CGFloat (grid.rows)
+        let cellHeight = bounds.height / CGFloat (grid.cols)
         
         let point = touch.locationInView(self)
         let row = Int (point.y / cellHeight)
@@ -206,10 +206,7 @@ import UIKit
         let currentCell: CellState  = grid[xPosition,yPosition]!
         grid[xPosition,yPosition] = currentCell.toggle(currentCell)
 
-
-
         self.setNeedsDisplayInRect(CGRect(x:CGFloat(col) * cellWidth + gridWidth/2, y:CGFloat(row) * cellHeight + gridWidth/2, width:cellWidth - gridWidth, height:cellHeight - gridWidth))
-        self.setNeedsDisplay()
 
     }
     
@@ -218,8 +215,8 @@ import UIKit
         let touch = touches.allObjects[0] as! UITouch
         let touchLocation = touch.locationInView(self)
         
-        let cellWidth = bounds.width / CGFloat (grid.cols)
-        let cellHeight = bounds.height / CGFloat (grid.rows)
+        let cellWidth = bounds.width / CGFloat (grid.rows)
+        let cellHeight = bounds.height / CGFloat (grid.cols)
         
         let point = touch.locationInView(self)
         let row = Int (point.y / cellHeight)
@@ -243,7 +240,6 @@ import UIKit
                 let currentCell: CellState  = grid[xPosition,yPosition]!
                 grid[xPosition,yPosition] = currentCell.toggle(currentCell)
                 self.setNeedsDisplayInRect(CGRect(x:CGFloat(col) * cellWidth + gridWidth/2, y:CGFloat(row) * cellHeight + gridWidth/2, width:cellWidth - gridWidth, height:cellHeight - gridWidth))
-                self.setNeedsDisplay()
             }
         }
         
