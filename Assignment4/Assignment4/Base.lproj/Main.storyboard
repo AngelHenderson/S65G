@@ -175,6 +175,7 @@
                     <connections>
                         <outlet property="colCountTextField" destination="MDC-sn-dZN" id="Dt2-Ac-hhA"/>
                         <outlet property="colStepper" destination="mrL-iv-339" id="UqR-R7-8eC"/>
+                        <outlet property="mainSlider" destination="tLa-UH-LPt" id="WOF-0Z-h0F"/>
                         <outlet property="rowCountTextField" destination="hrt-dV-Yz2" id="Z6G-0v-W4v"/>
                         <outlet property="rowStepper" destination="Lbb-wu-AUm" id="gFJ-9q-5Wr"/>
                     </connections>

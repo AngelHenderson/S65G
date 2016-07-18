@@ -16,6 +16,7 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var colStepper: UIStepper!
     @IBOutlet weak var colCountTextField: UITextField!
     var colIncrementValue: Double = 0.0
+    @IBOutlet weak var mainSlider: UISlider!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,8 +66,10 @@ class InstrumentationViewController: UIViewController {
         if sender.on {
             let notification = NSNotification(name: "switchNotification", object: nil, userInfo: ["switchOn": true])
             NSNotificationCenter.defaultCenter().postNotification(notification)
+            StandardEngine.sharedInstance.refreshInterval = Double(mainSlider.value)
         }
         else {
+            StandardEngine.sharedInstance.refreshInterval = 0.0
             let notification = NSNotification(name: "switchNotification", object: nil, userInfo: ["switchOn": false])
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }

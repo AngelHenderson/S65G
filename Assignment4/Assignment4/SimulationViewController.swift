@@ -46,10 +46,9 @@ class SimulationViewController: UIViewController, EngineDelegateProtocol {
     
     func stopTimerNotification (notification:NSNotification){
         
-        print("Stop Timer Called")
-        let userInfo: Dictionary = (notification.userInfo as? Dictionary< String, Bool >)!
-        let switchSetting: Bool = userInfo["switchOn"]!
-        StandardEngine.sharedInstance.refreshInterval = ((switchSetting == true) ? StandardEngine.sharedInstance.refreshInterval : 0.0)
+//        let userInfo: Dictionary = (notification.userInfo as? Dictionary< String, Bool >)!
+ //       let switchSetting: Bool = userInfo["switchOn"]!
+ //       StandardEngine.sharedInstance.refreshInterval = ((switchSetting == true) ? StandardEngine.sharedInstance.refreshInterval : 0.0)
         gameEngine.grid = gameEngine.step()
         gridView.grid = gameEngine.grid
         gridView.setNeedsDisplay()
