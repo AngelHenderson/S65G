@@ -14,14 +14,10 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var bornCellCount: UILabel!
     @IBOutlet weak var deadCellCount: UILabel!
     @IBOutlet weak var emptyCellCount: UILabel!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //livingCellCount.text = "0"
-        //bornCellCount.text = "0"
-        //deadCellCount.text = "0"
-        //emptyCellCount.text = "0"
         
         //NSNotification for Counting Each Cell Type
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StatisticsViewController.cellCountNotification(_:)), name: "cellCountNotification", object: nil)    

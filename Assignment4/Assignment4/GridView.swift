@@ -101,7 +101,6 @@ import UIKit
             //draw the stroke
             gridLinePath.stroke()
 
-            //print("Columns: The x point is \(startPoint.y) and the y point \(endPoint.y)")
         }
         
 
@@ -122,7 +121,6 @@ import UIKit
                 
                 let xValue: Int = Int(w)
                 let yValue: Int = Int(h)
-                //print("[\(xValue),\(yValue)] and the Grid Cell is \(grid[w,h])")
                 
                 let currentCell: CellState  = grid[xValue,yValue]!
                 
@@ -249,7 +247,6 @@ import UIKit
         let notification = NSNotification(name: "updateGridNotification", object: grid, userInfo: nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)
         
-        //print("The Touch Location is \(touchLocation) and the GridSpace and \(previousPositionX) and the X is \(xPosition) and the Y is \(yPosition)")
     }
     
 }

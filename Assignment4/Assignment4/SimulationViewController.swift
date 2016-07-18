@@ -22,7 +22,6 @@ class SimulationViewController: UIViewController, EngineDelegateProtocol {
         gridView.grid = gameEngine.grid
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.actionTimerNotification(_:)), name: "timerNotification", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.stopTimerNotification(_:)), name: "switchNotification", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {

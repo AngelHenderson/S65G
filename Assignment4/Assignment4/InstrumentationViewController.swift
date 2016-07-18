@@ -35,7 +35,6 @@ class InstrumentationViewController: UIViewController {
     
     
     @IBAction func increment(sender: UIStepper) {
-        print(Int(sender.value).description)
         
         if Double(sender.value) < incrementValue {
             StandardEngine.sharedInstance.rows -= 10
@@ -49,7 +48,6 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func colIncrement(sender: UIStepper) {
-        print(Int(sender.value).description)
         
         if Double(sender.value) < colIncrementValue {
             StandardEngine.sharedInstance.cols -= 10
@@ -64,20 +62,19 @@ class InstrumentationViewController: UIViewController {
     
     @IBAction func switchIsChanged(sender:UISwitch) {
         if sender.on {
-            let notification = NSNotification(name: "switchNotification", object: nil, userInfo: ["switchOn": true])
+            let notification = NSNotification(name: "timerNotification", object: nil, userInfo: ["switchOn": true])
             NSNotificationCenter.defaultCenter().postNotification(notification)
             StandardEngine.sharedInstance.refreshInterval = Double(mainSlider.value)
         }
         else {
             StandardEngine.sharedInstance.refreshInterval = 0.0
-            let notification = NSNotification(name: "switchNotification", object: nil, userInfo: ["switchOn": false])
+            let notification = NSNotification(name: "timerNotification", object: nil, userInfo: ["switchOn": false])
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }
     }
     
     func sliderValueChanged(sender: UISlider) {
         let currentValue = Double(sender.value)
-        print (currentValue)
         StandardEngine.sharedInstance.refreshInterval = currentValue
     }
     
