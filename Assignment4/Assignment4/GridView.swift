@@ -49,7 +49,6 @@ import UIKit
 
         var startPoint: CGPoint = CGPoint(x: 0, y: 0)
         var endPoint: CGPoint = CGPoint(x: 0, y: 0)
-        
         let gridLinePath = UIBezierPath()
         
         //set the path's line width to the height of the stroke
@@ -58,7 +57,6 @@ import UIKit
         //Draws Grid Lines for Rows
         for i in 0..<grid.rows {
             
-            //print("Grid Line Row Drawn")
             let gridSpace: CGFloat = CGFloat(self.frame.size.height) / CGFloat(grid.rows)
             startPoint.x = gridSpace * CGFloat(i)
             startPoint.y = 0.0
@@ -82,10 +80,10 @@ import UIKit
         
         //Draws Grid Lines for Columns
         for j in 0..<grid.cols {
-            let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.cols)
-            
+            let gridSpaceY: CGFloat = CGFloat(self.frame.size.height) / CGFloat(grid.cols)
+
             startPoint.x = 0.0;
-            startPoint.y = gridSpace * CGFloat(j)
+            startPoint.y = gridSpaceY * CGFloat(j)
 
             endPoint.x = self.frame.size.width;
             endPoint.y = startPoint.y;
@@ -111,11 +109,12 @@ import UIKit
         for w in 0..<grid.rows {
             for h in 0..<grid.cols {
                 
-                let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.rows)
-                let xCoordinate: CGFloat = CGFloat(w)*gridSpace
-                let yCoordinate: CGFloat = CGFloat(h)*gridSpace
+                let gridSpaceX: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.rows)
+                let gridSpaceY: CGFloat = CGFloat(self.frame.size.height) / CGFloat(grid.cols)
+                let xCoordinate: CGFloat = CGFloat(w)*gridSpaceX
+                let yCoordinate: CGFloat = CGFloat(h)*gridSpaceY
 
-                let rect = CGRectMake(xCoordinate, yCoordinate, gridSpace, gridSpace)
+                let rect = CGRectMake(xCoordinate, yCoordinate, gridSpaceX, gridSpaceY)
                 let width = rect.size.width
                 let innerRingRect = CGRectInset(rect, width * 0.15, width * 0.15)
                 let inner = UIBezierPath(ovalInRect: innerRingRect)
@@ -191,10 +190,11 @@ import UIKit
         let row = Int (point.y / cellHeight)
         let col = Int (point.x / cellWidth)
         
-        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.rows)
+        let gridSpaceX: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.rows)
+        let gridSpaceY: CGFloat = CGFloat(self.frame.size.height) / CGFloat(grid.cols)
         
-        let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpace))
-        let yCoordinate: CGFloat = (CGFloat(touchLocation.y)/CGFloat(gridSpace))
+        let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpaceX))
+        let yCoordinate: CGFloat = (CGFloat(touchLocation.y)/CGFloat(gridSpaceY))
         
         let actualXPosition: Float = floorf(Float(xCoordinate))
         let actualYPosition: Float = floorf(Float(yCoordinate))
@@ -209,6 +209,8 @@ import UIKit
 
 
         self.setNeedsDisplayInRect(CGRect(x:CGFloat(col) * cellWidth + gridWidth/2, y:CGFloat(row) * cellHeight + gridWidth/2, width:cellWidth - gridWidth, height:cellHeight - gridWidth))
+        self.setNeedsDisplay()
+
     }
     
     func dragTouches(touches: NSSet!) {
@@ -223,9 +225,11 @@ import UIKit
         let row = Int (point.y / cellHeight)
         let col = Int (point.x / cellWidth)
         
-        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.rows)
-        let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpace))
-        let yCoordinate: CGFloat = (CGFloat(touchLocation.y)/CGFloat(gridSpace))
+        let gridSpaceX: CGFloat = CGFloat(self.frame.size.width) / CGFloat(grid.rows)
+        let gridSpaceY: CGFloat = CGFloat(self.frame.size.height) / CGFloat(grid.cols)
+        
+        let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpaceX))
+        let yCoordinate: CGFloat = (CGFloat(touchLocation.y)/CGFloat(gridSpaceY))
         let actualXPosition: Float = floorf(Float(xCoordinate))
         let actualYPosition: Float = floorf(Float(yCoordinate))
         let xPosition: Int = Int(actualXPosition)
@@ -239,6 +243,7 @@ import UIKit
                 let currentCell: CellState  = grid[xPosition,yPosition]!
                 grid[xPosition,yPosition] = currentCell.toggle(currentCell)
                 self.setNeedsDisplayInRect(CGRect(x:CGFloat(col) * cellWidth + gridWidth/2, y:CGFloat(row) * cellHeight + gridWidth/2, width:cellWidth - gridWidth, height:cellHeight - gridWidth))
+                self.setNeedsDisplay()
             }
         }
         
