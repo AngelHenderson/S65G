@@ -21,8 +21,10 @@ class SimulationViewController: UIViewController, EngineDelegateProtocol {
         gameEngine.delegate = self
         gridView.grid = gameEngine.grid
         
-        let sel = #selector(SimulationViewController.actionTimerNotification(_:))
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: sel, name: "timerNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.actionTimerNotification(_:)), name: "timerNotification", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.stopTimerNotification(_:)), name: "switchNotification", object: nil)
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -37,7 +39,17 @@ class SimulationViewController: UIViewController, EngineDelegateProtocol {
     }
     
     func actionTimerNotification (notification:NSNotification){
-        print("Timer went off")
+        gameEngine.grid = gameEngine.step()
+        gridView.grid = gameEngine.grid
+        gridView.setNeedsDisplay()
+    }
+    
+    func stopTimerNotification (notification:NSNotification){
+        
+        print("Stop Timer Called")
+        let userInfo: Dictionary = (notification.userInfo as? Dictionary< String, Bool >)!
+        let switchSetting: Bool = userInfo["switchOn"]!
+        StandardEngine.sharedInstance.refreshInterval = ((switchSetting == true) ? StandardEngine.sharedInstance.refreshInterval : 0.0)
         gameEngine.grid = gameEngine.step()
         gridView.grid = gameEngine.grid
         gridView.setNeedsDisplay()

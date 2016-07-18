@@ -10,11 +10,9 @@ import UIKit
 
 class InstrumentationViewController: UIViewController {
     var gameEngine: StandardEngine!
-
     @IBOutlet weak var rowStepper: UIStepper!
     @IBOutlet weak var rowCountTextField: UITextField!
     var incrementValue: Double = 0.0
-    
     @IBOutlet weak var colStepper: UIStepper!
     @IBOutlet weak var colCountTextField: UITextField!
     var colIncrementValue: Double = 0.0
@@ -63,8 +61,18 @@ class InstrumentationViewController: UIViewController {
         colCountTextField.text  = String(StandardEngine.sharedInstance.cols)
     }
     
+    @IBAction func switchIsChanged(sender:UISwitch) {
+        if sender.on {
+            let notification = NSNotification(name: "switchNotification", object: nil, userInfo: ["switchOn": true])
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+        }
+        else {
+            let notification = NSNotification(name: "switchNotification", object: nil, userInfo: ["switchOn": false])
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+        }
+    }
     
-    @IBAction func sliderValueChanged(sender: UISlider) {
+    func sliderValueChanged(sender: UISlider) {
         let currentValue = Double(sender.value)
         print (currentValue)
         StandardEngine.sharedInstance.refreshInterval = currentValue
