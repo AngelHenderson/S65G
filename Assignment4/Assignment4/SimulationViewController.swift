@@ -8,21 +8,39 @@
 
 import UIKit
 
-class SimulationViewController: UIViewController {
-
+class SimulationViewController: UIViewController, EngineDelegateProtocol {
+    
     @IBOutlet weak var gridView: GridView!
     @IBOutlet weak var runButton: UIButton!
-
+    var gameEngine: StandardEngine!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        gameEngine = StandardEngine.sharedInstance
+        gameEngine.delegate = self
+        gridView.grid = gameEngine.grid
+        
+        let sel = #selector(SimulationViewController.actionTimerNotification(_:))
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: sel, name: "FireTimerNotification", object: nil)
     }
     
     @IBAction func runButtonAction(sender: AnyObject) {
-        
-      //  gridView.grid = step(gridView.grid)
+        gameEngine.grid = gameEngine.step()
+        gridView.grid = gameEngine.grid
+        gridView.setNeedsDisplay()
     }
-
+    
+    func actionTimerNotification (notification:NSNotification){
+        gameEngine.grid = gameEngine.step()
+        gridView.grid = gameEngine.grid
+        gridView.setNeedsDisplay()
+    }
+    
+    func engineDidUpdate(withGrid: Grid) {
+        gridView.grid = withGrid
+        gridView.setNeedsDisplay()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

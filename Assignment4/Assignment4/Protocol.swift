@@ -17,13 +17,13 @@ enum CellState : String {
     func description() -> String {
         switch self {
         case .Living:
-            return "Living"
+            return self.rawValue
         case .Empty:
-            return "Empty"
+            return self.rawValue
         case .Born:
-            return "Born"
+            return self.rawValue
         case .Died:
-            return "Died"
+            return self.rawValue
         }
     }
     
@@ -42,66 +42,46 @@ enum CellState : String {
 }
 
 
-//Previously Array
 protocol GridProtocol {
-    var rows: UInt { get }
-    var cols: UInt { get }
+    var rows: Int { get }
+    var cols: Int { get }
     init(rows: Int, cols: Int)
     func neighbors(tuple:(row: Int, column: Int), maxWidth: Int, maxHeight: Int) -> [(row: Int, column: Int)]
-    subscript(row: UInt, col: UInt) -> CellState? { get set }
-    var cells : [[CellState]] { get set }
+    subscript(row: Int, col: Int) -> CellState? { get set }
 }
 
-protocol EngineDelegate {
-    func engineDidUpdate(withGrid: GridProtocol)
+protocol EngineDelegateProtocol {
+    func engineDidUpdate(withGrid: Grid)
 }
 
 protocol EngineProtocol {
-    var delegate: EngineDelegate? { get set }
-    var grid: GridProtocol { get }
+    var delegate: EngineDelegateProtocol? { get set }
+    var grid: Grid { get }
     var refreshRate: Double { get set }
     var refreshInterval: NSTimeInterval { get set }
-    var rows: UInt { get set }
-    var cols: UInt { get set }
-    init(rows: UInt, cols: UInt)
-    func step() -> GridProtocol
+    var rows: Int { get set }
+    var cols: Int { get set }
+    init(rows: Int, cols: Int)
+    func step() -> Grid
 }
 
-
 class Grid : GridProtocol {
-    //private var cells : [CellState] =  Array<CellState>(count: 100, repeatedValue: .Empty)
-    var rows: UInt = 10
-    var cols: UInt = 10
-    
-    private static var _sharedInstance = Grid(rows: 10, cols: 10)
-    static var sharedInstance: Grid {
-        get {
-            return _sharedInstance
-        }
-    }
-    
-    var cells : [[CellState]] = Array (count: 10, repeatedValue: Array(count: 10, repeatedValue: .Empty))
+    var rows: Int
+    var cols: Int
+    var cells : [[CellState]]
     
     required init(rows: Int,cols: Int) {
-        self.rows  = UInt(rows)
-        self.cols = UInt(cols)
-        //cells = Array<CellState>(count: Int(self.rows), repeatedValue: .Empty)
-        cells = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
+        self.rows  = rows
+        self.cols = cols
+        cells = [[CellState]] (count:rows, repeatedValue:[CellState](count:cols, repeatedValue:.Empty))
     }
     
-    subscript(row: UInt, col: UInt) -> CellState? {
+    subscript(row: Int, col: Int) -> CellState? {
         get {
-            if cells.count < Int(row*col){
-                return nil
-            }
-            return cells[Int(row)][Int(col)]
+            return cells[row][col]
         }
         set (newValue) {
-            if newValue == nil { return }
-            if row < 0 || row >= rows || col < 0 || col >= cols {
-                return
-            }
-            cells[Int(row)][Int(col)] = newValue!
+            cells[row][col] = newValue!
         }
     }
     
@@ -215,7 +195,6 @@ class Grid : GridProtocol {
 
 class StandardEngine  : EngineProtocol {
     
-    
     private static var _sharedInstance = StandardEngine(rows: 10, cols: 10)
     static var sharedInstance: StandardEngine {
         get {
@@ -223,21 +202,32 @@ class StandardEngine  : EngineProtocol {
         }
     }
     
-    var delegate: EngineDelegate?
-    var grid: GridProtocol  = Grid.sharedInstance
-        
-    var rows: UInt = 10 {
+    var delegate: EngineDelegateProtocol?
+   
+    var grid:Grid {
         didSet {
+            let notification = NSNotification(name: "updateGridNotification", object:grid, userInfo: nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
         }
     }
-    var cols: UInt = 10 {
+        
+    var rows: Int = 10 {
         didSet {
+            grid = Grid (rows:rows, cols:cols)
+            delegate?.engineDidUpdate(grid)
+        }
+    }
+    var cols: Int = 10 {
+        didSet {
+            grid = Grid (rows:rows, cols:cols)
+            delegate?.engineDidUpdate(grid)
         }
     }
     
-     required init(rows: UInt,cols: UInt) {
+     required init(rows: Int,cols: Int) {
         self.rows  = rows
         self.cols = cols
+        grid = Grid(rows:rows, cols:cols)
     }
     
     private var timer:NSTimer?
@@ -268,32 +258,24 @@ class StandardEngine  : EngineProtocol {
     
     @objc func timerDidFire(timer:NSTimer) {
         self.rows += 1
-        let center = NSNotificationCenter.defaultCenter()
-        let n = NSNotification(name: "ExampleNotification",
-                               object: nil,
-                               userInfo: ["name": "fred"])
-        center.postNotification(n)
-        print ("\(timer.userInfo?["name"] ?? "not fred")")
+        let timerNotification = NSNotification(name: "timerNotification", object: nil, userInfo: nil)
+        NSNotificationCenter.defaultCenter().postNotification(timerNotification)
     }
     
-
-    
-    func step() -> GridProtocol
+    func step() -> Grid
     {
+        var livingCount = 0
+        var bornCount = 0
+        var deadCount = 0
+        var emptyCount = 0
+
+        let newGrid = Grid(rows:rows,cols:cols)
+        
         var height : Int = 0
         var width : Int = 0
         
-        height = grid.cells.count
-        
-        for item in grid.cells {
-            width = item.count
-            break
-        }
-        
-        //Creating a 2-dimensional array of Bool's
-        var beforeTwoDBoolArray = Array<Array<CellState>>()
-        beforeTwoDBoolArray = grid.cells
-        
+        height = cols
+        width = rows
         
         //For Loop to go through every Cell in the Array
         for w in 0..<width {
@@ -310,35 +292,41 @@ class StandardEngine  : EngineProtocol {
 
                 //Loops through the returned Array to determine neighbors living cell count for the specific cell
                 for tuple in tupleArray {
-                    if (beforeTwoDBoolArray[tuple.row][tuple.column] == .Living || beforeTwoDBoolArray[tuple.row][tuple.column] == .Born) {
+                    if (grid[tuple.row,tuple.column] == .Living || grid[tuple.row,tuple.column] == .Born) {
                         neighborAliveCount += 1
                     }
                 }
                 
-                let currentCell: CellState  = beforeTwoDBoolArray[w][h]
-                
                 //Determines if Current Cell is Living or Dead Cell
-                if (currentCell == .Living || currentCell == .Born) {
+                if (grid[w,h] == .Living || grid[w,h] == .Born) {
                     
                     if neighborAliveCount == 2 || neighborAliveCount == 3 {
-                        grid.cells[w][h] = .Living
+                        newGrid[w,h] = .Living
+                        livingCount += 1
                     } else {
-                        grid.cells[w][h] = .Died
+                        newGrid[w,h] = .Died
+                        deadCount += 1
+
                     }
                 }
-                else if (currentCell == .Died || (currentCell == .Empty)) {
+                else if (grid[w,h] == .Died || (grid[w,h] == .Empty)) {
                     if neighborAliveCount == 3 {
-                        grid.cells[w][h] = .Born
+                        newGrid[w,h] = .Born
+                        bornCount += 1
                     }
                     else {
-                        grid.cells[w][h] = .Empty
+                        newGrid[w,h] = .Empty
+                        emptyCount += 1
                     }
                 }
             }
         }
+        
+        let notificationDict = [ "livingCount": livingCount, "deadCount": deadCount, "bornCount": bornCount, "emptyCount": emptyCount]
+        let notification = NSNotification(name: "cellCountNotification", object:nil, userInfo: notificationDict)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
 
-        //Returns the Array
-        return grid
+        return newGrid
     }
 
 }

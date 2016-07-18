@@ -9,11 +9,22 @@
 import UIKit
 
 class StatisticsViewController: UIViewController {
-
+    
+    @IBOutlet weak var livingCellCount: UILabel!
+    @IBOutlet weak var bornCellCount: UILabel!
+    @IBOutlet weak var deadCellCount: UILabel!
+    @IBOutlet weak var emptyCellCount: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        //livingCellCount.text = "0"
+        //bornCellCount.text = "0"
+        //deadCellCount.text = "0"
+        //emptyCellCount.text = "0"
+        
+        //NSNotification for Counting Each Cell Type
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StatisticsViewController.cellCountNotification(_:)), name: "cellCountNotification", object: nil)    
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,15 +32,20 @@ class StatisticsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func cellCountNotification (notification:NSNotification){
+        let userInfo: Dictionary = (notification.userInfo as? Dictionary< String, AnyObject >)!
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        let livingCountString = userInfo["livingCount"]
+        livingCellCount.text = String(livingCountString!)
+        
+        let bornCountString = userInfo["bornCount"]
+        bornCellCount.text = String(bornCountString!)
+        
+        let deadCountString = userInfo["deadCount"]
+        deadCellCount.text = String(deadCountString!)
+        
+        let emptyCountString = userInfo["emptyCount"]
+        emptyCellCount.text = String(emptyCountString!)
     }
-    */
 
 }

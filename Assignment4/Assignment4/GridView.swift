@@ -25,43 +25,26 @@ import UIKit
     @IBInspectable var diedColor: UIColor = UIColor.redColor()
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridWidth: CGFloat = 10
+    var grid: Grid = Grid (rows:10, cols:10)
+    @IBInspectable var rows : Int = 10{
+        didSet {
+            let notification = NSNotification(name: "updateGridNotification", object: grid, userInfo: nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+        }
+    }
     
-    //var specificRect = CGRectMake(0, 0, 0, 0);
+    @IBInspectable var cols : Int = 10 {
+        didSet {
+            let notification = NSNotification(name: "updateGridNotification", object: grid, userInfo: nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+        }
+    }
+    
     var previousPositionX: Int = 0
     var previousPositionY: Int = 0
     
-    var grid:[[CellState]] = [] {
-        //Finaly this
-        didSet {
-            self.setNeedsDisplay()
-        }
-    }
-
-    @IBInspectable var rows : Int = 20{
-        //First this
-        willSet {
-            //print("Old value is \(rows), new value is \(newValue)")
-        }
-        
-        //Finaly this
-        didSet {
-            self.grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
-            //print("Old value is \(oldValue), new value is \(grid)")
-        }
-    }
-    
-    @IBInspectable var cols : Int = 20 {
-        willSet {
-            //print("Old value is \(rows), new value is \(newValue)")
-        }        
-        didSet {
-            self.grid = Array (count: rows, repeatedValue: Array(count: cols, repeatedValue: .Empty))
-            //print("Old value is \(oldValue), new value is \(grid)")
-        }
-    }
-    
     override func drawRect(gridRect: CGRect) {
-        
+
         var startPoint: CGPoint = CGPoint(x: 0, y: 0)
         var endPoint: CGPoint = CGPoint(x: 0, y: 0)
         
@@ -93,8 +76,6 @@ import UIKit
             
             //draw the stroke
             gridLinePath.stroke()
-            
-            //print("Rows: The x point is \(startPoint.x) and the y point \(endPoint.x)")
         }
         
         //Draws Grid Lines for Columns
@@ -126,8 +107,6 @@ import UIKit
 
         //Add Circles
         for w in 0..<rows {
-            //print("Circle Drawn")
-
             for h in 0..<cols {
                 
                 let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
@@ -142,9 +121,9 @@ import UIKit
                 
                 let xValue: Int = Int(w)
                 let yValue: Int = Int(h)
-
-                let currentCell: CellState  = grid[xValue][yValue]
-                //print(currentCell)
+                //print("[\(xValue),\(yValue)] and the Grid Cell is \(grid[w,h])")
+                
+                let currentCell: CellState  = grid[xValue,yValue]!
                 
                 //Sets Color for each Circle
                 switch (currentCell) {
@@ -203,7 +182,13 @@ import UIKit
         let touch = touches.allObjects[0] as! UITouch
         let touchLocation = touch.locationInView(self)
         
-
+        let cellWidth = bounds.width / CGFloat (cols)
+        let cellHeight = bounds.height / CGFloat (rows)
+        
+        let point = touch.locationInView(self)
+        let row = Int (point.y / cellHeight)
+        let col = Int (point.x / cellWidth)
+        
         let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
         
         let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpace))
@@ -215,17 +200,13 @@ import UIKit
         let xPosition: Int = Int(actualXPosition)
         let yPosition: Int = Int(actualYPosition)
 
-        //print("The Touch Location is \(touchLocation) and the GridSpace and \(xCoordinate) and the X is \(xPosition) and the Y is \(yPosition)")
         
-        let currentCell: CellState  = grid[xPosition][yPosition]
+        let currentCell: CellState  = grid[xPosition,yPosition]!
+        grid[xPosition,yPosition] = currentCell.toggle(currentCell)
 
-        print(currentCell.toggle(currentCell))
-        
-        grid[xPosition][yPosition] = currentCell.toggle(currentCell)
 
-        //self.setNeedsDisplay()
-        let specificRect = CGRectMake(CGFloat(touchLocation.x-gridSpace/2), CGFloat(touchLocation.y-gridSpace/2),gridSpace, gridSpace);
-        self.setNeedsDisplayInRect(specificRect)
+
+        self.setNeedsDisplayInRect(CGRect(x:CGFloat(col) * cellWidth + gridWidth/2, y:CGFloat(row) * cellHeight + gridWidth/2, width:cellWidth - gridWidth, height:cellHeight - gridWidth))
     }
     
     func dragTouches(touches: NSSet!) {
@@ -233,30 +214,37 @@ import UIKit
         let touch = touches.allObjects[0] as! UITouch
         let touchLocation = touch.locationInView(self)
         
-        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
+        let cellWidth = bounds.width / CGFloat (cols)
+        let cellHeight = bounds.height / CGFloat (rows)
         
+        let point = touch.locationInView(self)
+        let row = Int (point.y / cellHeight)
+        let col = Int (point.x / cellWidth)
+        
+        let gridSpace: CGFloat = CGFloat(self.frame.size.width) / CGFloat(rows)
         let xCoordinate: CGFloat = (CGFloat(touchLocation.x)/CGFloat(gridSpace))
         let yCoordinate: CGFloat = (CGFloat(touchLocation.y)/CGFloat(gridSpace))
-        
         let actualXPosition: Float = floorf(Float(xCoordinate))
         let actualYPosition: Float = floorf(Float(yCoordinate))
-        
         let xPosition: Int = Int(actualXPosition)
         let yPosition: Int = Int(actualYPosition)
         
+
+        
         if previousPositionX != xPosition || previousPositionY != yPosition {
-            
             //Keeps Touch within the Grid
             if xPosition < rows && xPosition >= 0 && yPosition < cols && yPosition >= 0 {
-                let currentCell: CellState  = grid[xPosition][yPosition]
-                grid[xPosition][yPosition] = currentCell.toggle(currentCell)
-                let specificRect = CGRectMake(CGFloat(touchLocation.x-gridSpace/2), CGFloat(touchLocation.y-gridSpace/2),gridSpace, gridSpace);
-                self.setNeedsDisplayInRect(specificRect)
+                let currentCell: CellState  = grid[xPosition,yPosition]!
+                grid[xPosition,yPosition] = currentCell.toggle(currentCell)
+                self.setNeedsDisplayInRect(CGRect(x:CGFloat(col) * cellWidth + gridWidth/2, y:CGFloat(row) * cellHeight + gridWidth/2, width:cellWidth - gridWidth, height:cellHeight - gridWidth))
             }
         }
         
         previousPositionX = xPosition
         previousPositionY = yPosition
+        
+        let notification = NSNotification(name: "updateGridNotification", object: grid, userInfo: nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
         
         //print("The Touch Location is \(touchLocation) and the GridSpace and \(previousPositionX) and the X is \(xPosition) and the Y is \(yPosition)")
     }
