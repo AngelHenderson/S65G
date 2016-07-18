@@ -257,7 +257,7 @@ class StandardEngine  : EngineProtocol {
     }
     
     @objc func timerDidFire(timer:NSTimer) {
-        self.rows += 1
+        
         let timerNotification = NSNotification(name: "timerNotification", object: nil, userInfo: nil)
         NSNotificationCenter.defaultCenter().postNotification(timerNotification)
     }
