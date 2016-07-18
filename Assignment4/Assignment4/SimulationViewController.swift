@@ -16,13 +16,27 @@ class SimulationViewController: UIViewController, EngineDelegateProtocol {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        gameEngine = StandardEngine.sharedInstance
-        gameEngine.delegate = self
-        gridView.grid = gameEngine.grid
+
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.updateGrid(_:)), name: "updateGridNotification", object: nil)
         
         let sel = #selector(SimulationViewController.actionTimerNotification(_:))
         NSNotificationCenter.defaultCenter().addObserver(self, selector: sel, name: "FireTimerNotification", object: nil)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        gameEngine = StandardEngine.sharedInstance
+        gameEngine.delegate = self
+        gridView.grid = gameEngine.grid
+        gridView.rows = gameEngine.rows
+        gridView.cols = gameEngine.cols
+        
+        print("Grid updated with \(gridView.rows)")
+        gridView.setNeedsDisplay()
+
+
+    }
+
     
     @IBAction func runButtonAction(sender: AnyObject) {
         gameEngine.grid = gameEngine.step()
@@ -36,8 +50,19 @@ class SimulationViewController: UIViewController, EngineDelegateProtocol {
         gridView.setNeedsDisplay()
     }
     
+    func updateGrid (notification:NSNotification){
+        print("Update Grid Notification Added")
+    }
+    
     func engineDidUpdate(withGrid: Grid) {
-        gridView.grid = withGrid
+        
+        gameEngine.grid = withGrid
+        gridView.grid = gameEngine.grid
+        
+       // print("Grid updated with \(gridView.grid.rows)")
+
+
+       // gridView.grid = withGrid
         gridView.setNeedsDisplay()
     }
     

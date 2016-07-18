@@ -14,12 +14,13 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var timeIntervalTextField: UITextField!
     @IBOutlet weak var rowStepper: UIStepper!
     @IBOutlet weak var rowCountTextField: UITextField!
+    var incrementValue: Double = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         gameEngine = StandardEngine.sharedInstance
-
+        incrementValue = rowStepper.value
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -29,8 +30,20 @@ class InstrumentationViewController: UIViewController {
     }
     
     
-    @IBAction func increment(sender: AnyObject) {
-        gameEngine.rows += 10
+    @IBAction func increment(sender: UIStepper) {
+        print(Int(sender.value).description)
+        
+        if Double(sender.value) < incrementValue {
+            gameEngine.rows -= 10
+        }
+        else {
+            gameEngine.rows += 10
+        }
+        
+        incrementValue = sender.value
+        rowCountTextField.text  = String(gameEngine.rows)
+
+
     }
     
     @IBAction func updateTimeInterval(sender: UITextField) {
