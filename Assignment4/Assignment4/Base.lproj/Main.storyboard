@@ -73,7 +73,7 @@
                                             <action selector="colIncrement:" destination="9pv-A4-QxB" eventType="valueChanged" id="T6I-rD-UBM"/>
                                         </connections>
                                     </stepper>
-                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.10000000000000001" minValue="0.10000000000000001" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tLa-UH-LPt">
+                                    <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.10000000000000001" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="tLa-UH-LPt">
                                         <rect key="frame" x="118" y="255" width="364" height="31"/>
                                         <connections>
                                             <action selector="sliderValueChanged:" destination="9pv-A4-QxB" eventType="valueChanged" id="QxZ-I9-CuR"/>
