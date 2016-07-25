@@ -5,15 +5,13 @@ import UIKit
 let daysInMonth:[Int] = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
 func isLeap(year:Int) -> Bool {
-    let leapYear = (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)
-    return leapYear
+    return (year % 4 == 0) && (year % 100 != 0) || (year % 400 == 0)
 }
 
 func julianDate(year: Int, month: Int, day: Int) -> Int {
-    let yearDuration: Int = Array(1900...year).filter{$0 % year != 0}.reduce(0, combine:{$0 + (isLeap($1) == true ? 366 : 365)})
-    let monthDuration: Int = Array(1...month).filter{$0 % month != 0}.reduce(0, combine:{$0 + daysInMonth[$1]})
-    let februaryCheck: Int = (isLeap(year) == true && month > 2 ? 1 : 0)
-    return yearDuration + monthDuration + day + februaryCheck
+    let yearDuration: Int = Array(1900..<year).reduce(0, combine:{$0 + (isLeap($1) == true ? 366 : 365)})
+    let monthDuration: Int = Array(1..<month).reduce(0, combine:{$0 + daysInMonth[$1]})
+    return yearDuration + monthDuration + day + (isLeap(year) == true && month > 2 ? 1 : 0)
 }
 
 julianDate(1960, month:  9, day: 28)
