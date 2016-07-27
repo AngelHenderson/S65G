@@ -67,7 +67,7 @@
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="n6y-74-cnZ" secondAttribute="bottom" constant="8" id="yNE-OF-JYL"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Simulation" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Simulation" image="Simulation" id="cPa-gy-q4n"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,7 +106,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Statistics" id="KBB-GK-HgT"/>
+                    <tabBarItem key="tabBarItem" title="Statistics" image="Statistics" id="KBB-GK-HgT"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvv-hQ-DqS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -139,6 +139,7 @@
                             <constraint firstItem="5ha-7r-YZT" firstAttribute="trailing" secondItem="iSh-FR-kEh" secondAttribute="trailingMargin" id="wfX-ik-h1n"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" id="frh-5Z-BMx"/>
                     <navigationItem key="navigationItem" id="gDW-YP-Umt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEm-V0-cAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -196,6 +197,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="second" width="30" height="30"/>
+        <image name="Instrumentation" width="30" height="30"/>
+        <image name="Simulation" width="30" height="30"/>
+        <image name="Statistics" width="30" height="30"/>
     </resources>
 </document>
