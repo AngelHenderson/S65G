@@ -31,7 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		FB97CDD11D441B610022CC4A /* ProjectPrototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectPrototype.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB97CDD11D441B610022CC4A /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB97CDD41D441B610022CC4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB97CDD61D441B610022CC4A /* InstrumentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
 		FB97CDD81D441B610022CC4A /* SimulationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimulationViewController.swift; sourceTree = "<group>"; };
@@ -39,7 +39,7 @@
 		FB97CDDD1D441B610022CC4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB97CDE01D441B610022CC4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB97CDE21D441B610022CC4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB97CDE71D441B610022CC4A /* ProjectPrototypeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjectPrototypeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB97CDE71D441B610022CC4A /* FinalProject.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProject.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB97CDF61D44249F0022CC4A /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		FB97CDF81D4424C90022CC4A /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		FB97CDFA1D4439FF0022CC4A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -76,8 +76,8 @@
 		FB97CDD21D441B610022CC4A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FB97CDD11D441B610022CC4A /* ProjectPrototype.app */,
-				FB97CDE71D441B610022CC4A /* ProjectPrototypeTests.xctest */,
+				FB97CDD11D441B610022CC4A /* FinalProject.app */,
+				FB97CDE71D441B610022CC4A /* FinalProject.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -104,9 +104,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FB97CDD01D441B610022CC4A /* ProjectPrototype */ = {
+		FB97CDD01D441B610022CC4A /* FinalProject */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FB97CDF01D441B610022CC4A /* Build configuration list for PBXNativeTarget "ProjectPrototype" */;
+			buildConfigurationList = FB97CDF01D441B610022CC4A /* Build configuration list for PBXNativeTarget "FinalProject" */;
 			buildPhases = (
 				FB97CDCD1D441B610022CC4A /* Sources */,
 				FB97CDCE1D441B610022CC4A /* Frameworks */,
@@ -116,14 +116,14 @@
 			);
 			dependencies = (
 			);
-			name = ProjectPrototype;
+			name = FinalProject;
 			productName = ProjectPrototype;
-			productReference = FB97CDD11D441B610022CC4A /* ProjectPrototype.app */;
+			productReference = FB97CDD11D441B610022CC4A /* FinalProject.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FB97CDE61D441B610022CC4A /* ProjectPrototypeTests */ = {
+		FB97CDE61D441B610022CC4A /* FinalProjectTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FB97CDF31D441B610022CC4A /* Build configuration list for PBXNativeTarget "ProjectPrototypeTests" */;
+			buildConfigurationList = FB97CDF31D441B610022CC4A /* Build configuration list for PBXNativeTarget "FinalProjectTests" */;
 			buildPhases = (
 				FB97CDE31D441B610022CC4A /* Sources */,
 				FB97CDE41D441B610022CC4A /* Frameworks */,
@@ -134,9 +134,9 @@
 			dependencies = (
 				FB97CDE91D441B610022CC4A /* PBXTargetDependency */,
 			);
-			name = ProjectPrototypeTests;
+			name = FinalProjectTests;
 			productName = ProjectPrototypeTests;
-			productReference = FB97CDE71D441B610022CC4A /* ProjectPrototypeTests.xctest */;
+			productReference = FB97CDE71D441B610022CC4A /* FinalProject.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -158,7 +158,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FB97CDCC1D441B610022CC4A /* Build configuration list for PBXProject "ProjectPrototype" */;
+			buildConfigurationList = FB97CDCC1D441B610022CC4A /* Build configuration list for PBXProject "FinalProject" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -171,8 +171,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FB97CDD01D441B610022CC4A /* ProjectPrototype */,
-				FB97CDE61D441B610022CC4A /* ProjectPrototypeTests */,
+				FB97CDD01D441B610022CC4A /* FinalProject */,
+				FB97CDE61D441B610022CC4A /* FinalProjectTests */,
 			);
 		};
 /* End PBXProject section */
@@ -225,7 +225,7 @@
 /* Begin PBXTargetDependency section */
 		FB97CDE91D441B610022CC4A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FB97CDD01D441B610022CC4A /* ProjectPrototype */;
+			target = FB97CDD01D441B610022CC4A /* FinalProject */;
 			targetProxy = FB97CDE81D441B610022CC4A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -342,7 +342,7 @@
 				INFOPLIST_FILE = ProjectPrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.harvard.s65g.ProjectPrototype;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FinalProject;
 			};
 			name = Debug;
 		};
@@ -353,7 +353,7 @@
 				INFOPLIST_FILE = ProjectPrototype/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.harvard.s65g.ProjectPrototype;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = FinalProject;
 			};
 			name = Release;
 		};
@@ -364,8 +364,8 @@
 				INFOPLIST_FILE = ProjectPrototypeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.harvard.s65g.ProjectPrototypeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjectPrototype.app/ProjectPrototype";
+				PRODUCT_NAME = FinalProject;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalProject.app/FinalProject";
 			};
 			name = Debug;
 		};
@@ -376,15 +376,15 @@
 				INFOPLIST_FILE = ProjectPrototypeTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = edu.harvard.s65g.ProjectPrototypeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProjectPrototype.app/ProjectPrototype";
+				PRODUCT_NAME = FinalProject;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalProject.app/FinalProject";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FB97CDCC1D441B610022CC4A /* Build configuration list for PBXProject "ProjectPrototype" */ = {
+		FB97CDCC1D441B610022CC4A /* Build configuration list for PBXProject "FinalProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FB97CDEE1D441B610022CC4A /* Debug */,
@@ -393,7 +393,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FB97CDF01D441B610022CC4A /* Build configuration list for PBXNativeTarget "ProjectPrototype" */ = {
+		FB97CDF01D441B610022CC4A /* Build configuration list for PBXNativeTarget "FinalProject" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FB97CDF11D441B610022CC4A /* Debug */,
@@ -402,7 +402,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FB97CDF31D441B610022CC4A /* Build configuration list for PBXNativeTarget "ProjectPrototypeTests" */ = {
+		FB97CDF31D441B610022CC4A /* Build configuration list for PBXNativeTarget "FinalProjectTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FB97CDF41D441B610022CC4A /* Debug */,

@@ -6,6 +6,27 @@
 //  Copyright © 2016 S65g. All rights reserved.
 //
 
+//Icons Citation
+
+//Simulation Icon (Node)
+//node by Jamie Dickinson from the Noun Project
+//https://thenounproject.com/search/?q=cells&i=39526
+
+
+//Instrumentation
+//low gauge by romzicon from the Noun Project
+//https://thenounproject.com/search/?q=instrument%20panel&i=540908
+
+
+//Statistics Icon
+//Graph by gayatri from the Noun Project
+//https://thenounproject.com/search/?q=Statistics&i=154953
+
+
+//Main Icon
+//Conways Game Of Life by  Pablo Andrés Dorado Suárez from the Noun Project
+//https://thenounproject.com/search/?q=conway&i=14951
+
 import UIKit
 
 @UIApplicationMain
