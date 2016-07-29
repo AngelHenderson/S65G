@@ -20,16 +20,6 @@
 		FB97CDFF1D443A8D0022CC4A /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97CDFE1D443A8D0022CC4A /* GridView.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		FB97CDE81D441B610022CC4A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FB97CDC91D441B610022CC4A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FB97CDD01D441B610022CC4A;
-			remoteInfo = ProjectPrototype;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		FB97CDD11D441B610022CC4A /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB97CDD41D441B610022CC4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,7 +29,6 @@
 		FB97CDDD1D441B610022CC4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FB97CDE01D441B610022CC4A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FB97CDE21D441B610022CC4A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FB97CDE71D441B610022CC4A /* FinalProject.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FinalProject.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB97CDF61D44249F0022CC4A /* Engine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		FB97CDF81D4424C90022CC4A /* StatisticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		FB97CDFA1D4439FF0022CC4A /* ConfigurationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
@@ -49,13 +38,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		FB97CDCE1D441B610022CC4A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FB97CDE41D441B610022CC4A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -77,7 +59,6 @@
 			isa = PBXGroup;
 			children = (
 				FB97CDD11D441B610022CC4A /* FinalProject.app */,
-				FB97CDE71D441B610022CC4A /* FinalProject.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,24 +102,6 @@
 			productReference = FB97CDD11D441B610022CC4A /* FinalProject.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FB97CDE61D441B610022CC4A /* FinalProjectTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = FB97CDF31D441B610022CC4A /* Build configuration list for PBXNativeTarget "FinalProjectTests" */;
-			buildPhases = (
-				FB97CDE31D441B610022CC4A /* Sources */,
-				FB97CDE41D441B610022CC4A /* Frameworks */,
-				FB97CDE51D441B610022CC4A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				FB97CDE91D441B610022CC4A /* PBXTargetDependency */,
-			);
-			name = FinalProjectTests;
-			productName = ProjectPrototypeTests;
-			productReference = FB97CDE71D441B610022CC4A /* FinalProject.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -151,10 +114,6 @@
 				TargetAttributes = {
 					FB97CDD01D441B610022CC4A = {
 						CreatedOnToolsVersion = 7.3.1;
-					};
-					FB97CDE61D441B610022CC4A = {
-						CreatedOnToolsVersion = 7.3.1;
-						TestTargetID = FB97CDD01D441B610022CC4A;
 					};
 				};
 			};
@@ -172,7 +131,6 @@
 			projectRoot = "";
 			targets = (
 				FB97CDD01D441B610022CC4A /* FinalProject */,
-				FB97CDE61D441B610022CC4A /* FinalProjectTests */,
 			);
 		};
 /* End PBXProject section */
@@ -185,13 +143,6 @@
 				FB97CDE11D441B610022CC4A /* LaunchScreen.storyboard in Resources */,
 				FB97CDDE1D441B610022CC4A /* Assets.xcassets in Resources */,
 				FB97CDDC1D441B610022CC4A /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		FB97CDE51D441B610022CC4A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,22 +164,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		FB97CDE31D441B610022CC4A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		FB97CDE91D441B610022CC4A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = FB97CDD01D441B610022CC4A /* FinalProject */;
-			targetProxy = FB97CDE81D441B610022CC4A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FB97CDDA1D441B610022CC4A /* Main.storyboard */ = {
@@ -357,30 +293,6 @@
 			};
 			name = Release;
 		};
-		FB97CDF41D441B610022CC4A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ProjectPrototypeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.harvard.s65g.ProjectPrototypeTests;
-				PRODUCT_NAME = FinalProject;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalProject.app/FinalProject";
-			};
-			name = Debug;
-		};
-		FB97CDF51D441B610022CC4A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = ProjectPrototypeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = edu.harvard.s65g.ProjectPrototypeTests;
-				PRODUCT_NAME = FinalProject;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FinalProject.app/FinalProject";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -398,15 +310,6 @@
 			buildConfigurations = (
 				FB97CDF11D441B610022CC4A /* Debug */,
 				FB97CDF21D441B610022CC4A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		FB97CDF31D441B610022CC4A /* Build configuration list for PBXNativeTarget "FinalProjectTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				FB97CDF41D441B610022CC4A /* Debug */,
-				FB97CDF51D441B610022CC4A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

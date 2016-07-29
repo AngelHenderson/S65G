@@ -64,37 +64,7 @@ class GridView: UIView {
         //draw the stroke
         gridLinePath.stroke()
         
-        
         //Add Circles
-//        for row in 0..<StandardEngine.sharedInstance.rows {
-//            for col in 0..<StandardEngine.sharedInstance.cols {
-//                
-//                let innerRingRect = CGRect(x: CGFloat(col) * gridSpaceBetweenCols + gridWidth / 2, y: CGFloat(row) * gridSpaceBetweenRows + gridWidth / 2, width: (gridSpaceBetweenCols - gridWidth) * 0.85, height: (gridSpaceBetweenRows - gridWidth) * 0.85)
-//                let inner = UIBezierPath(ovalInRect: innerRingRect)
-//                //inner.lineWidth = 1
-//                
-//                //Sets Color for each Circle
-//                switch StandardEngine.sharedInstance.grid[row,col] {
-//                case .Alive:
-//                    livingColor.setStroke()
-//                    livingColor.setFill()
-//                case .Empty:
-//                    emptyColor.setStroke()
-//                    emptyColor.setFill()
-//                case .Born:
-//                    bornColor.setStroke()
-//                    bornColor.setFill()
-//                case .Died:
-//                    diedColor.setStroke()
-//                    diedColor.setFill()
-//                }
-//                
-//                inner.stroke()
-//                inner.fill()
-//            }
-//        }
-//    }
-        
         for row in 0..<StandardEngine.sharedInstance.rows {
             for col in 0..<StandardEngine.sharedInstance.cols {
                 
