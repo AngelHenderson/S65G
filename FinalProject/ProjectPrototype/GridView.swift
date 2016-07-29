@@ -17,8 +17,7 @@ class GridView: UIView {
     @IBInspectable var bornColor: UIColor = UIColor.blueColor()
     @IBInspectable var diedColor: UIColor = UIColor.redColor()
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
-    @IBInspectable var gridWidth: CGFloat = 10
-    var grid: GridProtocol
+    @IBInspectable var gridWidth: CGFloat = 1
     
     override func awakeFromNib() {
         self.multipleTouchEnabled = true
@@ -26,49 +25,105 @@ class GridView: UIView {
     
     override func drawRect(rect: CGRect) {
         super.drawRect(rect)
-    
-        var startPoint: CGPoint = CGPoint(x: 0, y: 0)
-        var endPoint: CGPoint = CGPoint(x: 0, y: 0)
+        
+        //creation of Path
         let gridLinePath = UIBezierPath()
-        
-        //Draws Grid Lines for Rows
-        for i in 0..<grid.rows {
-            let gridSpace: CGFloat = CGFloat(self.frame.size.height) / CGFloat(grid.rows)
-            startPoint.x = gridSpace * CGFloat(i)
-            startPoint.y = 0.0
-            endPoint.x = startPoint.x;
-            endPoint.y = self.frame.size.height;
-            
-            //move the initial point of the path to the start of the horizontal stroke
-            gridLinePath.moveToPoint(CGPoint(x: startPoint.x, y: startPoint.y))
-            //add a point to the path at the end of the stroke
-            gridLinePath.addLineToPoint(CGPoint(x: endPoint.x, y: endPoint.y))
-            //set the stroke color
-            gridColor.setStroke()
-            //draw the stroke
-            gridLinePath.stroke()
-        }
-        
-        //Draws Grid Lines for Columns
-        for j in 0..<grid.cols {
-            let gridSpaceY: CGFloat = CGFloat(self.frame.size.height) / CGFloat(grid.cols)
-            startPoint.x = 0.0;
-            startPoint.y = gridSpaceY * CGFloat(j)
-            endPoint.x = self.frame.size.width;
-            endPoint.y = startPoint.y;
-            
-            //move the initial point of the path to the start of the horizontal stroke
-            gridLinePath.moveToPoint(CGPoint(x: startPoint.x, y: startPoint.y))
-            //add a point to the path at the end of the stroke
-            gridLinePath.addLineToPoint(CGPoint(x: endPoint.x, y: endPoint.y))
-            //set the stroke color
-            gridColor.setStroke()
-            //draw the stroke
-            gridLinePath.stroke()
-        }
         
         //set the path's line width to the height of the stroke
         gridLinePath.lineWidth = gridWidth
+        
+        //Sets Coordinates and Grid Space
+        let gridRowX = bounds.origin.x
+        var gridRowY = bounds.origin.y
+        let gridSpaceBetweenRows = bounds.height / CGFloat(StandardEngine.sharedInstance.rows)
+
+        var gridColX = bounds.origin.x
+        let gridColY = bounds.origin.y
+        let gridSpaceBetweenCols = bounds.width / CGFloat(StandardEngine.sharedInstance.cols)
+
+        //Draws Grid Lines for Rows
+        for _ in 0...StandardEngine.sharedInstance.rows {
+            gridLinePath.moveToPoint(CGPoint(x: gridRowX, y: gridRowY))
+            gridLinePath.addLineToPoint(CGPoint(x:gridRowX + bounds.width, y: gridRowY))
+            gridRowY += gridSpaceBetweenRows
+        }
+        
+        //Draws Grid Lines for Columns
+        for _ in 0...StandardEngine.sharedInstance.cols {
+            gridLinePath.moveToPoint(CGPoint(x: gridColX, y: gridColY))
+            gridLinePath.addLineToPoint(CGPoint(x:gridColX, y: gridColY + bounds.height))
+            gridColX += gridSpaceBetweenCols
+        }
+        
+        //set the stroke color
+        gridColor.setStroke()
+        
+        //draw the stroke
+        gridLinePath.stroke()
+        
+        
+        //Add Circles
+        for row in 0..<StandardEngine.sharedInstance.rows {
+            for col in 0..<StandardEngine.sharedInstance.cols {
+                
+                let innerRingRect = CGRect(x: CGFloat(col) * gridSpaceBetweenCols + gridWidth / 2, y: CGFloat(row) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
+                let inner = UIBezierPath(ovalInRect: innerRingRect)
+                //inner.lineWidth = 1
+                
+                //Sets Color for each Circle
+                switch StandardEngine.sharedInstance.grid[row,col] {
+                case .Alive:
+                    livingColor.setStroke()
+                    livingColor.setFill()
+                case .Empty:
+                    emptyColor.setStroke()
+                    emptyColor.setFill()
+                case .Born:
+                    bornColor.setStroke()
+                    bornColor.setFill()
+                case .Died:
+                    diedColor.setStroke()
+                    diedColor.setFill()
+                
+                inner.stroke()
+                inner.fill()
+                }
+            }
+        }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            currentTouches(touch)
+        }
+    }
+    
+    override func touchesMoved(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        for touch in touches {
+            currentTouches(touch)
+        }
     }
 
+
+    func currentTouches(touch: UITouch) {
+        // Get the first touch and its location in this view controller's view coordinate system
+        let touchLocation = touch.locationInView(self)
+        
+        let gridSpaceBetweenCols = bounds.width / CGFloat(StandardEngine.sharedInstance.cols)
+        let gridSpaceBetweenRows = bounds.height / CGFloat(StandardEngine.sharedInstance.rows)
+
+        let rowIndex = Int (CGFloat(touchLocation.x) / gridSpaceBetweenCols)
+        let colIndex = Int (CGFloat(touchLocation.y) / gridSpaceBetweenRows)
+
+        let currentCell: CellState  = StandardEngine.sharedInstance.grid[colIndex,rowIndex]
+
+        StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? currentCell.toggle(currentCell) : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
+        
+        let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
+        
+        let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo: nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+        
+        self.setNeedsDisplayInRect(gridRect)
+    }
 }
