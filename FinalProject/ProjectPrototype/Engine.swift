@@ -14,15 +14,6 @@ enum CellState {
         case .Died, .Empty: return false
         }
     }
-    
-    func toggle(value:CellState) -> CellState {
-        switch self {
-        case .Empty,.Died:
-            return .Alive
-        case .Alive,.Born:
-            return .Empty
-        }
-    }
 }
 
 typealias Cell = (position: Position, state: CellState)

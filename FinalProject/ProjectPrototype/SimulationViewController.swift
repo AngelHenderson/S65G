@@ -15,10 +15,10 @@ class SimulationViewController: UIViewController, EngineDelegate {
         gameEngine = StandardEngine._sharedInstance
         gameEngine.delegate = self
 
-        //let e = gameEngine.grid[1,1]
-        //print ("\(e)")
-        
         gridView.points = [(0,0),(1,1),(2,2),(3,3)]
+        
+//        let e = gameEngine.grid[1,1]
+//        print ("\(e)")
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.updateGridNotification(_:)), name: "updateGridNotification", object: nil)
         
@@ -42,13 +42,13 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
     
     @IBAction func saveButtonAction(sender: AnyObject) {
+        
     }
     
     @IBAction func resetButtonAction(sender: AnyObject) {
+        gridView.points = []
         let notification = NSNotification(name: "resetNotification", object:nil, userInfo:nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)
-        
-        
     }
     
     override func didReceiveMemoryWarning() {

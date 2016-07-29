@@ -28,6 +28,7 @@ class GridView: UIView {
                     StandardEngine.sharedInstance.grid[row,col] = containsTuple(newValue, tuple: (row,col)) == true ?  .Alive : .Empty
                 }
             }
+            self.setNeedsDisplay()
         }
     }
     
@@ -142,10 +143,10 @@ class GridView: UIView {
         let colIndex = Int (CGFloat(touchLocation.y) / gridSpaceBetweenRows)
         
         if previousPositionX != rowIndex || previousPositionY != colIndex {
-            let currentCell: CellState  = StandardEngine.sharedInstance.grid[colIndex,rowIndex]
             
-            StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? currentCell.toggle(currentCell) : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
-            
+            //Toggles Between Cell States
+            StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? StandardEngine.sharedInstance.grid[colIndex,rowIndex].isLiving() == true ? .Empty : .Alive : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
+
             let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
             
             let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])

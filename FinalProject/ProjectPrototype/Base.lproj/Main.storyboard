@@ -71,6 +71,9 @@
                                             <constraint firstAttribute="height" constant="30" id="ngU-CZ-HaJ"/>
                                         </constraints>
                                         <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonAction:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="VxP-GG-x8E"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Qn-W2-iej">
                                         <rect key="frame" x="392" y="436" width="168" height="30"/>
@@ -79,6 +82,9 @@
                                             <constraint firstAttribute="height" constant="30" id="vqb-mb-ffv"/>
                                         </constraints>
                                         <state key="normal" title="Reset"/>
+                                        <connections>
+                                            <action selector="resetButtonAction:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="4vH-xf-5Oa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
