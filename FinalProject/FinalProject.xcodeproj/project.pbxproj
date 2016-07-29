@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		587FBAFA1D4C0ABF00C1E8B4 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587FBAF91D4C0ABF00C1E8B4 /* Fetcher.swift */; };
 		FB97CDD51D441B610022CC4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97CDD41D441B610022CC4A /* AppDelegate.swift */; };
 		FB97CDD71D441B610022CC4A /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97CDD61D441B610022CC4A /* InstrumentationViewController.swift */; };
 		FB97CDD91D441B610022CC4A /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97CDD81D441B610022CC4A /* SimulationViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		587FBAF91D4C0ABF00C1E8B4 /* Fetcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
 		FB97CDD11D441B610022CC4A /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB97CDD41D441B610022CC4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB97CDD61D441B610022CC4A /* InstrumentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				FB97CDFC1D443A450022CC4A /* ConfigurationEditorViewController.swift */,
 				FB97CDFE1D443A8D0022CC4A /* GridView.swift */,
 				FB97CDF61D44249F0022CC4A /* Engine.swift */,
+				587FBAF91D4C0ABF00C1E8B4 /* Fetcher.swift */,
 				FB97CDDA1D441B610022CC4A /* Main.storyboard */,
 				FB97CDDD1D441B610022CC4A /* Assets.xcassets */,
 				FB97CDDF1D441B610022CC4A /* LaunchScreen.storyboard */,
@@ -161,6 +164,7 @@
 				FB97CDD51D441B610022CC4A /* AppDelegate.swift in Sources */,
 				FB97CDD71D441B610022CC4A /* InstrumentationViewController.swift in Sources */,
 				FB97CDFB1D4439FF0022CC4A /* ConfigurationViewController.swift in Sources */,
+				587FBAFA1D4C0ABF00C1E8B4 /* Fetcher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

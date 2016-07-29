@@ -3,6 +3,8 @@ import UIKit
 
 class InstrumentationViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+
     var gameEngine: EngineProtocol!
     @IBOutlet weak var rowStepper: UIStepper!
     @IBOutlet weak var rowCountTextField: UITextField!
