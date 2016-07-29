@@ -6,7 +6,9 @@ class SimulationViewController: UIViewController, EngineDelegate {
     var gameEngine: EngineProtocol!
     @IBOutlet weak var gridView: GridView!
     @IBOutlet weak var runButton: UIButton!
-    
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var restButton: UIButton!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,9 +39,17 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBAction func runButtonAction(sender: AnyObject) {
         print(gridView.points)
-
     }
     
+    @IBAction func saveButtonAction(sender: AnyObject) {
+    }
+    
+    @IBAction func resetButtonAction(sender: AnyObject) {
+        let notification = NSNotification(name: "resetNotification", object:nil, userInfo:nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+        
+        
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

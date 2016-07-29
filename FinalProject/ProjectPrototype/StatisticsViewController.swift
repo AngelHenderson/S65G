@@ -17,6 +17,7 @@ class StatisticsViewController: UIViewController {
         countCells(StandardEngine._sharedInstance.grid)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StatisticsViewController.cellCountNotification(_:)), name: "updateGridNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StatisticsViewController.resetNotification(_:)), name: "resetNotification", object: nil)
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,6 +30,13 @@ class StatisticsViewController: UIViewController {
             let withGrid = (userInfo["grid"] as! GridView.GridProtocolWrapper).grid
             countCells(withGrid)
         }
+    }
+    
+    func resetNotification (notification:NSNotification){
+        livingCellCount.text = String(0)
+        bornCellCount.text = String(0)
+        deadCellCount.text = String(0)
+        emptyCellCount.text = String(0)
     }
     
     func countCells (grid:GridProtocol){
