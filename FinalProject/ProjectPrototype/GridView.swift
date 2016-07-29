@@ -164,35 +164,4 @@ class GridView: UIView {
         previousPositionX = rowIndex
         previousPositionY = colIndex
     }
-    
-//    func currentTouches(touch: UITouch) {
-//        // Get the first touch and its location in this view controller's view coordinate system
-//        let touchLocation = touch.locationInView(self)
-//        
-//        print("Touch Happened")
-//        
-//        let gridSpaceBetweenCols = bounds.width / CGFloat(StandardEngine.sharedInstance.cols)
-//        let gridSpaceBetweenRows = bounds.height / CGFloat(StandardEngine.sharedInstance.rows)
-//
-//        let rowIndex = Int (CGFloat(touchLocation.x) / gridSpaceBetweenCols)
-//        let colIndex = Int (CGFloat(touchLocation.y) / gridSpaceBetweenRows)
-//
-//        let currentCell: CellState  = StandardEngine.sharedInstance.grid[colIndex,rowIndex]
-//
-//        StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? currentCell.toggle(currentCell) : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
-//        
-//        let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
-//        
-//        let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo: nil)
-//        NSNotificationCenter.defaultCenter().postNotification(notification)
-//        
-//        if previousPositionX != rowIndex || previousPositionY != colIndex {
-//
-//        }
-//        
-//        previousPositionX = rowIndex
-//        previousPositionY = colIndex
-//        
-//        self.setNeedsDisplayInRect(gridRect)
-//    }
 }
