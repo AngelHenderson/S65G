@@ -124,11 +124,10 @@ class GridView: UIView {
         }
     }
 
-
-    class GridChangedNotification {
-        let myGridProtocol : GridProtocol
+    class GridProtocolWrapper {
+        let grid : GridProtocol
         init(s : GridProtocol) {
-            myGridProtocol = s
+            grid = s
         }
     }
     
@@ -149,7 +148,7 @@ class GridView: UIView {
             
             let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
             
-            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridChangedNotification(s: StandardEngine.sharedInstance.grid)])
+            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
 
             NSNotificationCenter.defaultCenter().postNotification(notification)
             

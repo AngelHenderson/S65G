@@ -26,7 +26,7 @@ class StatisticsViewController: UIViewController {
     
     func cellCountNotification (notification:NSNotification){
         if let userInfo = notification.userInfo {
-            let withGrid = (userInfo["grid"] as! GridView.GridChangedNotification).myGridProtocol
+            let withGrid = (userInfo["grid"] as! GridView.GridProtocolWrapper).grid
             countCells(withGrid)
         }
     }
