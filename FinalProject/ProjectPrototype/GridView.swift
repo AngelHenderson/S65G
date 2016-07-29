@@ -13,11 +13,14 @@ class GridView: UIView {
     var points:[(Int,Int)] = []
     
     @IBInspectable var livingColor: UIColor = UIColor.greenColor()
-    @IBInspectable var emptyColor: UIColor = UIColor.whiteColor()
+    @IBInspectable var emptyColor: UIColor = UIColor.darkGrayColor()
     @IBInspectable var bornColor: UIColor = UIColor.blueColor()
     @IBInspectable var diedColor: UIColor = UIColor.redColor()
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
-    @IBInspectable var gridWidth: CGFloat = 1
+    @IBInspectable var gridWidth: CGFloat = 2
+    
+    var previousPositionX: Int = 0
+    var previousPositionY: Int = 0
     
     override func awakeFromNib() {
         self.multipleTouchEnabled = true
@@ -63,12 +66,41 @@ class GridView: UIView {
         
         
         //Add Circles
+//        for row in 0..<StandardEngine.sharedInstance.rows {
+//            for col in 0..<StandardEngine.sharedInstance.cols {
+//                
+//                let innerRingRect = CGRect(x: CGFloat(col) * gridSpaceBetweenCols + gridWidth / 2, y: CGFloat(row) * gridSpaceBetweenRows + gridWidth / 2, width: (gridSpaceBetweenCols - gridWidth) * 0.85, height: (gridSpaceBetweenRows - gridWidth) * 0.85)
+//                let inner = UIBezierPath(ovalInRect: innerRingRect)
+//                //inner.lineWidth = 1
+//                
+//                //Sets Color for each Circle
+//                switch StandardEngine.sharedInstance.grid[row,col] {
+//                case .Alive:
+//                    livingColor.setStroke()
+//                    livingColor.setFill()
+//                case .Empty:
+//                    emptyColor.setStroke()
+//                    emptyColor.setFill()
+//                case .Born:
+//                    bornColor.setStroke()
+//                    bornColor.setFill()
+//                case .Died:
+//                    diedColor.setStroke()
+//                    diedColor.setFill()
+//                }
+//                
+//                inner.stroke()
+//                inner.fill()
+//            }
+//        }
+//    }
+        
         for row in 0..<StandardEngine.sharedInstance.rows {
             for col in 0..<StandardEngine.sharedInstance.cols {
                 
-                let innerRingRect = CGRect(x: CGFloat(col) * gridSpaceBetweenCols + gridWidth / 2, y: CGFloat(row) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
+                let innerRingRect = CGRect(x: CGFloat(col) * gridSpaceBetweenCols + (gridWidth / 4) + (gridSpaceBetweenCols * 0.125), y: CGFloat(row) * gridSpaceBetweenRows + (gridWidth / 4) + (gridSpaceBetweenRows * 0.125), width: (gridSpaceBetweenCols - gridWidth) * 0.75, height: (gridSpaceBetweenRows - gridWidth) * 0.75)
                 let inner = UIBezierPath(ovalInRect: innerRingRect)
-                //inner.lineWidth = 1
+                inner.lineWidth = 1
                 
                 //Sets Color for each Circle
                 switch StandardEngine.sharedInstance.grid[row,col] {
@@ -83,9 +115,8 @@ class GridView: UIView {
                     bornColor.setFill()
                 case .Died:
                     diedColor.setStroke()
-                    diedColor.setFill()                
+                    diedColor.setFill()
                 }
-                
                 inner.stroke()
                 inner.fill()
             }
@@ -113,19 +144,55 @@ class GridView: UIView {
         
         let gridSpaceBetweenCols = bounds.width / CGFloat(StandardEngine.sharedInstance.cols)
         let gridSpaceBetweenRows = bounds.height / CGFloat(StandardEngine.sharedInstance.rows)
-
+        
         let rowIndex = Int (CGFloat(touchLocation.x) / gridSpaceBetweenCols)
         let colIndex = Int (CGFloat(touchLocation.y) / gridSpaceBetweenRows)
-
-        let currentCell: CellState  = StandardEngine.sharedInstance.grid[colIndex,rowIndex]
-
-        StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? currentCell.toggle(currentCell) : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
         
-        let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
+        if previousPositionX != rowIndex || previousPositionY != colIndex {
+            let currentCell: CellState  = StandardEngine.sharedInstance.grid[colIndex,rowIndex]
+            
+            StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? currentCell.toggle(currentCell) : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
+            
+            let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
+            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo: nil)
+            
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+            
+            self.setNeedsDisplayInRect(gridRect)
+        }
         
-        let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo: nil)
-        NSNotificationCenter.defaultCenter().postNotification(notification)
-        
-        self.setNeedsDisplayInRect(gridRect)
+        previousPositionX = rowIndex
+        previousPositionY = colIndex
     }
+    
+//    func currentTouches(touch: UITouch) {
+//        // Get the first touch and its location in this view controller's view coordinate system
+//        let touchLocation = touch.locationInView(self)
+//        
+//        print("Touch Happened")
+//        
+//        let gridSpaceBetweenCols = bounds.width / CGFloat(StandardEngine.sharedInstance.cols)
+//        let gridSpaceBetweenRows = bounds.height / CGFloat(StandardEngine.sharedInstance.rows)
+//
+//        let rowIndex = Int (CGFloat(touchLocation.x) / gridSpaceBetweenCols)
+//        let colIndex = Int (CGFloat(touchLocation.y) / gridSpaceBetweenRows)
+//
+//        let currentCell: CellState  = StandardEngine.sharedInstance.grid[colIndex,rowIndex]
+//
+//        StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? currentCell.toggle(currentCell) : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
+//        
+//        let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
+//        
+//        let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo: nil)
+//        NSNotificationCenter.defaultCenter().postNotification(notification)
+//        
+//        if previousPositionX != rowIndex || previousPositionY != colIndex {
+//
+//        }
+//        
+//        previousPositionX = rowIndex
+//        previousPositionY = colIndex
+//        
+//        self.setNeedsDisplayInRect(gridRect)
+//    }
 }
