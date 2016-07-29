@@ -10,7 +10,26 @@ import UIKit
 
 class GridView: UIView {
 
-    var points:[(Int,Int)] = []
+    var points:[(Int,Int)] {
+        get {
+            //The getter for points should return an array of coordinates which are currently living (born or alive)
+            var pointsArray: [(Int,Int)] = []
+            for row in 0..<StandardEngine.sharedInstance.rows {
+                for col in 0..<StandardEngine.sharedInstance.cols {
+                    if StandardEngine.sharedInstance.grid[row,col].isLiving() == true { pointsArray.append(row,col)}
+                }
+            }
+            return pointsArray
+        }
+        set (newValue) {
+            //when points is set, all cells EXCEPT for those in points are set to off
+            for row in 0..<StandardEngine.sharedInstance.rows {
+                for col in 0..<StandardEngine.sharedInstance.cols {
+                    StandardEngine.sharedInstance.grid[row,col] = containsTuple(newValue, tuple: (row,col)) == true ?  .Alive : .Empty
+                }
+            }
+        }
+    }
     
     @IBInspectable var livingColor: UIColor = UIColor.greenColor()
     @IBInspectable var emptyColor: UIColor = UIColor.darkGrayColor()
@@ -106,12 +125,17 @@ class GridView: UIView {
     }
 
 
+    class GridChangedNotification {
+        let myGridProtocol : GridProtocol
+        init(s : GridProtocol) {
+            myGridProtocol = s
+        }
+    }
+    
     func currentTouches(touch: UITouch) {
         // Get the first touch and its location in this view controller's view coordinate system
         let touchLocation = touch.locationInView(self)
-        
-        print("Touch Happened")
-        
+                
         let gridSpaceBetweenCols = bounds.width / CGFloat(StandardEngine.sharedInstance.cols)
         let gridSpaceBetweenRows = bounds.height / CGFloat(StandardEngine.sharedInstance.rows)
         
@@ -124,8 +148,9 @@ class GridView: UIView {
             StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? currentCell.toggle(currentCell) : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
             
             let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
-            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo: nil)
             
+            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridChangedNotification(s: StandardEngine.sharedInstance.grid)])
+
             NSNotificationCenter.defaultCenter().postNotification(notification)
             
             self.setNeedsDisplayInRect(gridRect)
@@ -133,5 +158,9 @@ class GridView: UIView {
         
         previousPositionX = rowIndex
         previousPositionY = colIndex
+    }
+    
+    func containsTuple(tupleArray:[(Int,Int)], tuple:(Int,Int)) -> Bool {
+        return tupleArray.filter{$0.0 == tuple.0 && $0.1 == tuple.1 }.count > 0
     }
 }
