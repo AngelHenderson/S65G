@@ -83,11 +83,11 @@ class GridView: UIView {
                     bornColor.setFill()
                 case .Died:
                     diedColor.setStroke()
-                    diedColor.setFill()
+                    diedColor.setFill()                
+                }
                 
                 inner.stroke()
                 inner.fill()
-                }
             }
         }
     }
@@ -108,6 +108,8 @@ class GridView: UIView {
     func currentTouches(touch: UITouch) {
         // Get the first touch and its location in this view controller's view coordinate system
         let touchLocation = touch.locationInView(self)
+        
+        print("Touch Happened")
         
         let gridSpaceBetweenCols = bounds.width / CGFloat(StandardEngine.sharedInstance.cols)
         let gridSpaceBetweenRows = bounds.height / CGFloat(StandardEngine.sharedInstance.rows)
