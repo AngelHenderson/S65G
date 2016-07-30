@@ -45,7 +45,6 @@ protocol EngineProtocol {
     var cols: Int { get set }
     var grid: GridProtocol { get }
     weak var delegate: EngineDelegate? { get set }
-    
     var refreshRate:  Double { get set }
     var refreshTimer: NSTimer? { get set }
     
@@ -63,15 +62,29 @@ class StandardEngine: EngineProtocol {
 
     var rows: Int = 20 {
         didSet {
+            // Validate
+            if rows < 0 {
+                rows = 0
+            }
+            // Reset
             grid = Grid(self.rows, self.cols) { _,_ in .Empty }
             if let delegate = delegate { delegate.engineDidUpdate(grid) }
+            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
         }
     }
     
     var cols: Int = 20 {
         didSet {
+            // Validate
+            if cols < 0 {
+                cols = 0
+            }
+            // Reset
             grid = Grid(self.rows, self.cols) { _,_ in .Empty }
             if let delegate = delegate { delegate.engineDidUpdate(grid) }
+            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:nil)
+            NSNotificationCenter.defaultCenter().postNotification(notification)
         }
     }
     
@@ -88,8 +101,6 @@ class StandardEngine: EngineProtocol {
             grid.cells[i*cols+j].state = newValue
         }
     }
-    
-
     
     init(_ rows: Int, _ cols: Int, cellInitializer: CellInitializer = {_ in .Empty }) {
         self.rows = rows

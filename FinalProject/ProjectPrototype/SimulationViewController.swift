@@ -32,11 +32,13 @@ class SimulationViewController: UIViewController, EngineDelegate {
 
     
     func updateGridNotification (notification:NSNotification){
+        gridView.setNeedsDisplay()
     }
     
     
     @IBAction func runButtonAction(sender: AnyObject) {
         print(gridView.points)
+        
     }
     
     @IBAction func saveButtonAction(sender: AnyObject) {

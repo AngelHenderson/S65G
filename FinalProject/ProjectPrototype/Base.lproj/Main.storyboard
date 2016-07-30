@@ -307,7 +307,7 @@
                                             <rect key="frame" x="373" y="101" width="97" height="30"/>
                                         </variation>
                                     </textField>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="p7f-A6-cSm">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="p7f-A6-cSm">
                                         <rect key="frame" x="403" y="45" width="94" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="94" id="0Zm-ya-vm3"/>
@@ -363,7 +363,7 @@
                                             <rect key="frame" x="488" y="174" width="36.5" height="21"/>
                                         </variation>
                                     </label>
-                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="7nP-fs-Kd4">
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" stepValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="7nP-fs-Kd4">
                                         <rect key="frame" x="403" y="8" width="94" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="29" id="I5c-D8-POP"/>
