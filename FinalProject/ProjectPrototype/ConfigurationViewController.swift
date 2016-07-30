@@ -10,7 +10,8 @@ import UIKit
 
 class ConfigurationViewController: UITableViewController {
 
-    private var names:Array<String> = []
+    private var JSONArray:Array<GridData> = []
+    //private var names:Array<String> = []
 
     struct GridData {
         let title: String
@@ -38,7 +39,7 @@ class ConfigurationViewController: UITableViewController {
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
             if let json = json {
-                let JSONArray = (json as! Array<AnyObject>).map({ element in
+                self.JSONArray = (json as! Array<AnyObject>).map({ element in
                     return GridData.fromJSON(element)
                 })
                 let op = NSBlockOperation {
@@ -62,7 +63,7 @@ class ConfigurationViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return JSONArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -70,12 +71,12 @@ class ConfigurationViewController: UITableViewController {
             else {
                 preconditionFailure("missing Default reuse identifier")
         }
-//        let row = indexPath.row
-//        guard let nameLabel = cell.textLabel else {
-//            preconditionFailure("wtf?")
-//        }
-//        nameLabel.text = names[row]
-//        cell.tag = row
+        let row = indexPath.row
+        guard let nameLabel = cell.textLabel else {
+            preconditionFailure("wtf?")
+        }
+        nameLabel.text = JSONArray[row].title
+        cell.tag = row
         return cell
     }
     
@@ -83,7 +84,7 @@ class ConfigurationViewController: UITableViewController {
                    commitEditingStyle editingStyle: UITableViewCellEditingStyle,
                                       forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            names.removeAtIndex(indexPath.row)
+            JSONArray.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath],
                                              withRowAnimation: .Automatic)
         }
@@ -91,8 +92,8 @@ class ConfigurationViewController: UITableViewController {
     
     
     @IBAction func addGridType(sender: AnyObject) {
-        names.append("Add new name...")
-        let itemRow = names.count - 1
+//        JSONArray.append("Add new name...")
+        let itemRow = JSONArray.count - 1
         let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
         tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
     }
