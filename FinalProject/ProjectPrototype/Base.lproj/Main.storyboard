@@ -316,6 +316,9 @@
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="375" y="64" width="94" height="29"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="increment:" destination="xrk-m4-FgQ" eventType="valueChanged" id="Xfu-Jb-jJ5"/>
+                                        </connections>
                                     </stepper>
                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.10000000149011612" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jas-xw-zif">
                                         <rect key="frame" x="118" y="82" width="364" height="31"/>
@@ -369,6 +372,9 @@
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="122" y="64" width="94" height="29"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="increment:" destination="xrk-m4-FgQ" eventType="valueChanged" id="BJx-Fv-j9G"/>
+                                        </connections>
                                     </stepper>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -438,6 +444,13 @@
                     <navigationItem key="navigationItem" id="gDW-YP-Umt">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="QoV-Bb-LTG"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="colCountTextField" destination="qQb-RV-38g" id="eyS-NJ-6La"/>
+                        <outlet property="colStepper" destination="p7f-A6-cSm" id="kz0-WB-dBv"/>
+                        <outlet property="mainSlider" destination="Jas-xw-zif" id="1Ig-hW-6LH"/>
+                        <outlet property="rowCountTextField" destination="ZYI-x9-mQp" id="sof-kK-iPd"/>
+                        <outlet property="rowStepper" destination="7nP-fs-Kd4" id="3H2-yw-hRb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEm-V0-cAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
