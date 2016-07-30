@@ -3,8 +3,6 @@ import UIKit
 
 class InstrumentationViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-
     var gameEngine: EngineProtocol!
     @IBOutlet weak var rowStepper: UIStepper!
     @IBOutlet weak var rowCountTextField: UITextField!
@@ -14,6 +12,8 @@ class InstrumentationViewController: UIViewController {
     var colIncrementValue: Double = 0.0
     @IBOutlet weak var mainSlider: UISlider!
     
+    private var names:Array<String> = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +24,11 @@ class InstrumentationViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    override func viewDidAppear(animated: Bool) {
+
+    }
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,7 +47,21 @@ class InstrumentationViewController: UIViewController {
             colCountTextField.text  = String(StandardEngine.sharedInstance.cols)
         }
     }
-    
+        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        let editingRow = (sender as! UITableViewCell).tag
+//        let editingString = names[editingRow]
+//        guard let editingVC = segue.destinationViewController as? EditViewController
+//            else {
+//                preconditionFailure("Another wtf?")
+//        }
+//        editingVC.name = editingString
+//        editingVC.commit = {
+//            self.names[editingRow] = $0
+//            let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
+//            self.tableView.reloadRowsAtIndexPaths([indexPath],
+//                                                  withRowAnimation: .Automatic)
+//        }
+    }
     
     
 }

@@ -21,8 +21,6 @@ class SimulationViewController: UIViewController, EngineDelegate {
 //        print ("\(e)")
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.updateGridNotification(_:)), name: "updateGridNotification", object: nil)
-        
-        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.actionTimerNotification(_:)), name: "timerNotification", object: nil)
     }
     
     override func viewWillAppear(animated: Bool) {

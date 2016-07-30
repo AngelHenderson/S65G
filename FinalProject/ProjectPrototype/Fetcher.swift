@@ -39,7 +39,6 @@ class Fetcher: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     func requestJSON(url: NSURL, completion: JSONRequestCompletionHandler) {
         request(url) { (data, message) in
             var json: NSObject?
-            print(data)
             if let data = data {
                 json = try? NSJSONSerialization
                     .JSONObjectWithData(data,
@@ -52,7 +51,6 @@ class Fetcher: NSObject, NSURLSessionDelegate, NSURLSessionTaskDelegate {
     
     func parseResponse(response: NSURLResponse?, error: NSError?) -> String? {
         if let statusCode = (response as? NSHTTPURLResponse)?.statusCode {
-            print(statusCode)
             if statusCode == 200 {
                 return nil
             }
