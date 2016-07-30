@@ -13,6 +13,9 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var mainSlider: UISlider!
     @IBOutlet var refreshSwitch: UISwitch!
 
+    @IBOutlet weak var reloadButton: UIButton!
+    @IBOutlet weak var urlTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         gameEngine = StandardEngine._sharedInstance
@@ -50,6 +53,11 @@ class InstrumentationViewController: UIViewController {
     @IBAction func switchIsChanged(sender:UISwitch) {
         gameEngine.runTimer = sender.on
         refreshUI(gameEngine)
+    }
+
+    @IBAction func reloadAction(sender: AnyObject) {
+        let notification = NSNotification(name: "updateSourceNotification", object:nil, userInfo:["url": urlTextField.text!])
+        NSNotificationCenter.defaultCenter().postNotification(notification)
     }
     
     // MARK: - Private Methods

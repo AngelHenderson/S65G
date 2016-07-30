@@ -31,7 +31,7 @@ class ConfigurationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateSource(_:)), name: "updateSourceNotification", object: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -98,6 +98,29 @@ class ConfigurationViewController: UITableViewController {
         tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
     }
 
+    func updateSource(notification:NSNotification) {
+        if let urlString = notification.userInfo!["url"] as? String {
+            //Empty Array and Reset Table
+            self.JSONArray = []
+            self.tableView.reloadData()
+
+            //Fetch New Data from Url
+            let url = NSURL(string: urlString)!
+            let fetcher = Fetcher()
+            fetcher.requestJSON(url) { (json, message) in
+                if let json = json {
+                    self.JSONArray = (json as! Array<AnyObject>).map({ element in
+                        return GridData.fromJSON(element)
+                    })
+                    let op = NSBlockOperation {
+                        self.tableView.reloadData()
+                    }
+                    NSOperationQueue.mainQueue().addOperation(op)
+                }
+            }
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

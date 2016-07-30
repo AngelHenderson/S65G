@@ -280,7 +280,7 @@
                                     <constraint firstItem="5ha-7r-YZT" firstAttribute="centerY" secondItem="Va4-3x-nWo" secondAttribute="centerY" id="mAj-KV-RtX"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cli-hY-fxi" userLabel="Container View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cli-hY-fxi" userLabel="Instrument View">
                                 <rect key="frame" x="0.0" y="391" width="600" height="160"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Rows" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZYI-x9-mQp">
@@ -421,6 +421,9 @@
                                 <state key="normal" title="Reload">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="reloadAction:" destination="xrk-m4-FgQ" eventType="touchUpInside" id="JDJ-WX-Osk"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -455,8 +458,10 @@
                         <outlet property="colStepper" destination="p7f-A6-cSm" id="kz0-WB-dBv"/>
                         <outlet property="mainSlider" destination="Jas-xw-zif" id="1Ig-hW-6LH"/>
                         <outlet property="refreshSwitch" destination="MPu-Xt-1rf" id="CsM-Mk-Wbq"/>
+                        <outlet property="reloadButton" destination="AhQ-8m-oox" id="KSb-Tw-SWP"/>
                         <outlet property="rowCountTextField" destination="ZYI-x9-mQp" id="sof-kK-iPd"/>
                         <outlet property="rowStepper" destination="7nP-fs-Kd4" id="3H2-yw-hRb"/>
+                        <outlet property="urlTextField" destination="r9i-We-0iJ" id="MjJ-rb-YKS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uEm-V0-cAv" userLabel="First Responder" sceneMemberID="firstResponder"/>
