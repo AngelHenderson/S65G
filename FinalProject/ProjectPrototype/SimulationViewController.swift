@@ -33,6 +33,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
 
     func updateGridNotification (notification:NSNotification){
         //gridView.setNeedsDisplay()
+        print("Upgrade Notification")
     }
     
     

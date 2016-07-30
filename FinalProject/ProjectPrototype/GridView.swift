@@ -8,6 +8,13 @@
 
 import UIKit
 
+class GridProtocolWrapper {
+    let grid : GridProtocol
+    init(s : GridProtocol) {
+        grid = s
+    }
+}
+
 class GridView: UIView {
 
     var points:[(Int,Int)] {
@@ -125,12 +132,7 @@ class GridView: UIView {
         }
     }
 
-    class GridProtocolWrapper {
-        let grid : GridProtocol
-        init(s : GridProtocol) {
-            grid = s
-        }
-    }
+
     
     func currentTouches(touch: UITouch) {
         // Get the first touch and its location in this view controller's view coordinate system

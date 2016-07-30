@@ -52,16 +52,13 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func switchIsChanged(sender:UISwitch) {
-        if sender.on {
-            let notification = NSNotification(name: "timerNotification", object: nil, userInfo: ["switchOn": true])
-            NSNotificationCenter.defaultCenter().postNotification(notification)
+
+        let notification = NSNotification(name: "timerNotification", object: nil, userInfo: ["switchOn": true])
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+        gameEngine.runTimer = sender.on
+
             //StandardEngine.sharedInstance.refreshInterval = Double(mainSlider.value)
-        }
-        else {
-            //StandardEngine.sharedInstance.refreshInterval = 0.0
-            let notification = NSNotification(name: "timerNotification", object: nil, userInfo: ["switchOn": false])
-            NSNotificationCenter.defaultCenter().postNotification(notification)
-        }
+
         refreshUI(gameEngine)
     }
     

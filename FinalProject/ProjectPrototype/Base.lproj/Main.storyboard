@@ -325,12 +325,18 @@
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="118" y="169" width="364" height="31"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="sliderChanged:" destination="xrk-m4-FgQ" eventType="valueChanged" id="QM2-iK-0XO"/>
+                                        </connections>
                                     </slider>
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="MPu-Xt-1rf">
                                         <rect key="frame" x="314.5" y="118" width="51" height="31"/>
                                         <variation key="heightClass=compact" misplaced="YES">
                                             <rect key="frame" x="275" y="237" width="51" height="31"/>
                                         </variation>
+                                        <connections>
+                                            <action selector="switchIsChanged:" destination="xrk-m4-FgQ" eventType="valueChanged" id="mKd-Bo-iG0"/>
+                                        </connections>
                                     </switch>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timed Refresh" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Du7-xU-6c3">
                                         <rect key="frame" x="195.5" y="125" width="94" height="17"/>
@@ -448,6 +454,7 @@
                         <outlet property="colCountTextField" destination="qQb-RV-38g" id="eyS-NJ-6La"/>
                         <outlet property="colStepper" destination="p7f-A6-cSm" id="kz0-WB-dBv"/>
                         <outlet property="mainSlider" destination="Jas-xw-zif" id="1Ig-hW-6LH"/>
+                        <outlet property="refreshSwitch" destination="MPu-Xt-1rf" id="CsM-Mk-Wbq"/>
                         <outlet property="rowCountTextField" destination="ZYI-x9-mQp" id="sof-kK-iPd"/>
                         <outlet property="rowStepper" destination="7nP-fs-Kd4" id="3H2-yw-hRb"/>
                     </connections>

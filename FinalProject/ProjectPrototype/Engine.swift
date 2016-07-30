@@ -47,7 +47,8 @@ protocol EngineProtocol {
     weak var delegate: EngineDelegate? { get set }
     var refreshRate:  Double { get set }
     var refreshTimer: NSTimer? { get set }
-    
+    var runTimer: Bool {get set}
+
     func step() -> GridProtocol
 }
 
@@ -90,8 +91,55 @@ class StandardEngine: EngineProtocol {
     
     weak var delegate: EngineDelegate?
     
-    var refreshRate:  Double = 0.0
+    var refreshRate:  Double = 0.0 {
+        didSet {
+            // clear it
+            refreshTimer?.invalidate()
+            if refreshRate > 0 && runTimer{
+                refreshTimer = NSTimer
+                    .scheduledTimerWithTimeInterval(refreshRate,
+                                                    target: self,
+                                                    selector: #selector(timerTriggered),
+                                                    userInfo: nil,
+                                                    repeats: true)
+            }
+        }
+    }
+    
     var refreshTimer: NSTimer?
+    
+    func notifyObservers() {
+        let notification = NSNotification(name: "updateGridNotification", object: nil, userInfo:["fireDate": refreshTimer!.fireDate,
+            "grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+    }
+    
+    // MARK: - Private Helper Methods
+    @objc func timerTriggered(timer: NSTimer) {
+        print("Timed Trigger Called")
+        refreshTimer = timer
+        notifyObservers()
+    }
+    
+    var runTimer: Bool {
+
+        didSet {
+            //clear it
+            refreshTimer?.invalidate()
+            
+            // Set back up the timer
+            // Usually, I prefer helper functions, when there's any
+            // repeated code like this...
+            if runTimer && refreshRate > 0 {
+                refreshTimer = NSTimer
+                    .scheduledTimerWithTimeInterval(refreshRate,
+                                                    target: self,
+                                                    selector: #selector(timerTriggered),
+                                                    userInfo: nil,
+                                                    repeats: true)
+            }
+        }
+    }
     
     subscript (i:Int, j:Int) -> CellState {
         get {
@@ -106,6 +154,7 @@ class StandardEngine: EngineProtocol {
         self.rows = rows
         self.cols = cols
         self.grid = Grid(rows,cols, cellInitializer: cellInitializer)
+        self.runTimer = false
     }
     
     func step() -> GridProtocol {
