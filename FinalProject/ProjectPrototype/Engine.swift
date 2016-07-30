@@ -116,7 +116,6 @@ class StandardEngine: EngineProtocol {
     
     // MARK: - Private Helper Methods
     @objc func timerTriggered(timer: NSTimer) {
-        print("Timed Trigger Called")
         refreshTimer = timer
         notifyObservers()
     }

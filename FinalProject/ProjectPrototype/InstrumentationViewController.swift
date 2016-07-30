@@ -13,12 +13,10 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var mainSlider: UISlider!
     @IBOutlet var refreshSwitch: UISwitch!
 
-    private var names:Array<String> = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         gameEngine = StandardEngine._sharedInstance
+        refreshUI(gameEngine)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -45,20 +43,12 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func sliderChanged(slider: UISlider) {
-        // Validation isn't needed because slider can only go from
-        // 0.1...10
         gameEngine.refreshRate = Double(slider.value)
         refreshUI(gameEngine)
     }
     
     @IBAction func switchIsChanged(sender:UISwitch) {
-
-        let notification = NSNotification(name: "timerNotification", object: nil, userInfo: ["switchOn": true])
-        NSNotificationCenter.defaultCenter().postNotification(notification)
         gameEngine.runTimer = sender.on
-
-            //StandardEngine.sharedInstance.refreshInterval = Double(mainSlider.value)
-
         refreshUI(gameEngine)
     }
     
@@ -70,6 +60,7 @@ class InstrumentationViewController: UIViewController {
         rowCountTextField.text = engine.rows.description
         colCountTextField.text = engine.cols.description
         mainSlider.value = Float(engine.refreshRate)
+        refreshSwitch.on = engine.runTimer
     }
     
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
