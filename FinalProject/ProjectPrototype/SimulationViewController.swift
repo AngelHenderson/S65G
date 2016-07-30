@@ -27,18 +27,16 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
 
     func engineDidUpdate(withGrid: GridProtocol) {
-
+        print("The withGrid")
+        gridView.setNeedsDisplay()
     }
 
-    
     func updateGridNotification (notification:NSNotification){
-        gridView.setNeedsDisplay()
+        //gridView.setNeedsDisplay()
     }
     
     
     @IBAction func runButtonAction(sender: AnyObject) {
-        print(gridView.points)
-        
     }
     
     @IBAction func saveButtonAction(sender: AnyObject) {

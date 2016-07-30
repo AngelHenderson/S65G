@@ -41,6 +41,14 @@ class InstrumentationViewController: UIViewController {
             gameEngine.cols = Int(sender.value)
             colCountTextField.text  = String(StandardEngine.sharedInstance.cols)
         }
+        refreshUI(gameEngine)
+    }
+    
+    @IBAction func sliderChanged(slider: UISlider) {
+        // Validation isn't needed because slider can only go from
+        // 0.1...10
+        gameEngine.refreshRate = Double(slider.value)
+        refreshUI(gameEngine)
     }
     
     @IBAction func switchIsChanged(sender:UISwitch) {
@@ -54,7 +62,7 @@ class InstrumentationViewController: UIViewController {
             let notification = NSNotification(name: "timerNotification", object: nil, userInfo: ["switchOn": false])
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }
-       // refreshUI(gameEngine)
+        refreshUI(gameEngine)
     }
     
     // MARK: - Private Methods
