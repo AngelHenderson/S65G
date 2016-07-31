@@ -41,10 +41,10 @@
                                 <rect key="frame" x="20" y="20" width="560" height="523"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bj-RX-Vou" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
-                                        <rect key="frame" x="56" y="8" width="448" height="418"/>
+                                        <rect key="frame" x="71" y="8" width="418" height="418"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="4Bj-RX-Vou" secondAttribute="height" multiplier="224:209" id="RN4-gc-yON"/>
+                                            <constraint firstAttribute="width" secondItem="4Bj-RX-Vou" secondAttribute="height" multiplier="1:1" id="RN4-gc-yON"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVh-Sm-JNb">
@@ -511,20 +511,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="284"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PsL-6O-j3P">
-                                <rect key="frame" x="90.5" y="20" width="420" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u5V-JI-kxc">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="235"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PsL-6O-j3P">
+                                        <rect key="frame" x="90" y="8" width="420" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6y-H6-Vkf" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                        <rect key="frame" x="205.5" y="43" width="188" height="188"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="B6y-H6-Vkf" secondAttribute="height" multiplier="1:1" id="5OJ-Ag-lkY"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="PsL-6O-j3P" firstAttribute="top" secondItem="u5V-JI-kxc" secondAttribute="top" constant="8" id="24z-Pg-VYl"/>
+                                    <constraint firstItem="B6y-H6-Vkf" firstAttribute="height" secondItem="u5V-JI-kxc" secondAttribute="height" priority="750" id="EnR-hf-BrG"/>
+                                    <constraint firstItem="PsL-6O-j3P" firstAttribute="width" secondItem="u5V-JI-kxc" secondAttribute="width" multiplier="0.7" id="QEI-k9-OGo"/>
+                                    <constraint firstItem="B6y-H6-Vkf" firstAttribute="top" secondItem="PsL-6O-j3P" secondAttribute="bottom" constant="5" id="Xvv-vW-pv4"/>
+                                    <constraint firstItem="B6y-H6-Vkf" firstAttribute="centerX" secondItem="u5V-JI-kxc" secondAttribute="centerX" id="YPd-3e-Z1X"/>
+                                    <constraint firstItem="B6y-H6-Vkf" firstAttribute="width" relation="lessThanOrEqual" secondItem="u5V-JI-kxc" secondAttribute="width" multiplier="0.8" id="YtI-AB-T0S"/>
+                                    <constraint firstItem="B6y-H6-Vkf" firstAttribute="width" secondItem="u5V-JI-kxc" secondAttribute="width" priority="750" id="d7I-c1-VqJ"/>
+                                    <constraint firstItem="PsL-6O-j3P" firstAttribute="centerX" secondItem="u5V-JI-kxc" secondAttribute="centerX" id="gOb-3J-ozG"/>
+                                    <constraint firstItem="B6y-H6-Vkf" firstAttribute="height" relation="lessThanOrEqual" secondItem="u5V-JI-kxc" secondAttribute="height" multiplier="0.8" id="mR2-lq-0GQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="PsL-6O-j3P" firstAttribute="width" secondItem="jSo-Tg-fvB" secondAttribute="width" multiplier="0.7" id="MF1-BW-Q5c"/>
-                            <constraint firstItem="PsL-6O-j3P" firstAttribute="top" secondItem="ZOt-fP-PEx" secondAttribute="bottom" constant="20" id="Xg2-Mh-Fog"/>
-                            <constraint firstItem="PsL-6O-j3P" firstAttribute="centerX" secondItem="jSo-Tg-fvB" secondAttribute="centerX" id="b7L-r1-awn"/>
+                            <constraint firstItem="cdd-FN-x9p" firstAttribute="top" secondItem="u5V-JI-kxc" secondAttribute="bottom" id="HGt-G9-Yko"/>
+                            <constraint firstItem="u5V-JI-kxc" firstAttribute="centerX" secondItem="jSo-Tg-fvB" secondAttribute="centerX" id="IOa-GK-Cj9"/>
+                            <constraint firstItem="u5V-JI-kxc" firstAttribute="top" secondItem="ZOt-fP-PEx" secondAttribute="bottom" id="KMi-zw-PIA"/>
+                            <constraint firstItem="u5V-JI-kxc" firstAttribute="width" secondItem="jSo-Tg-fvB" secondAttribute="width" id="POf-XF-FBA"/>
                         </constraints>
                     </view>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="gridView" destination="B6y-H6-Vkf" id="t58-8T-58r"/>
                         <outlet property="titleTextField" destination="PsL-6O-j3P" id="V9a-Ry-xOd"/>
                     </connections>
                 </viewController>
