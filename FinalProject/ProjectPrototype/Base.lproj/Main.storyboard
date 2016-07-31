@@ -453,7 +453,7 @@
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" id="frh-5Z-BMx"/>
                     <navigationItem key="navigationItem" id="gDW-YP-Umt">
                         <rightBarButtonItems>
-                            <barButtonItem title="Edit" style="plain" id="Yqj-Iy-Bl7">
+                            <barButtonItem title="Edit" id="Yqj-Iy-Bl7">
                                 <connections>
                                     <action selector="editAction:" destination="xrk-m4-FgQ" id="3Af-lF-jgu"/>
                                 </connections>

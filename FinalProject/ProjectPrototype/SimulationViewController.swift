@@ -33,7 +33,11 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
 
     func updateGridNotification (notification:NSNotification){
-        //gridView.setNeedsDisplay()
+       // if let userInfo = notification.userInfo {
+        //    let editTitle: String! = (userInfo["setEditing"]! as! Bool) == true ? "Done" : "Edit"
+       //     self.editBarItem.title = editTitle
+       // }
+        gridView.setNeedsDisplay()
         print("Upgrade Notification")
     }
     

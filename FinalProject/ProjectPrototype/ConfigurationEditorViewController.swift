@@ -16,7 +16,7 @@ class ConfigurationEditorViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     var jsonTitle: String!
     var jsonContent: [[Int]]!
-
+    var originalPoints: [(Int,Int)]!
 
     var gridToEdit : String = ""
 
@@ -38,31 +38,34 @@ class ConfigurationEditorViewController: UIViewController {
 
         // Refresh the name of the Grid to edit
         titleTextField.text = gridToEdit
-        
         textView.text = textView.text + "JSON Content"
         textView.text = textView.text + "\n" + "\n" + jsonTitle
         textView.text = textView.text + " : " + jsonContent.description
         
-        print(jsonContent)
+        //Save Original State of Points
+        originalPoints = gridView.points
+        
         gridView.points = jsonContent.isEmpty ? [] : jsonContent.map{Array in (Array[0],Array[1])}
-//        gridView.points = mappedTuples
     }
 
     @IBAction func saveButtonPressed(button: UIButton) {
-        print("Print Saved")
-
+        let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+        
         let mappedArray = gridView.points.map { [$0.0,$0.1] }
-        print(mappedArray)
-        if let commit = commit {
-            commit(titleTextField.text!)
-        }
         if let commitPoints = commitPoints {
             commitPoints(mappedArray)
         }
+        if let commit = commit {
+            commit(titleTextField.text!)
+        }
+
+
     }
     
     @IBAction func cancelButtonPressed(button: UIButton) {
-        print("Pop Navigation")
+        //Restores Original State if Canceled
+        gridView.points = originalPoints
         self.navigationController?.popViewControllerAnimated(true)
     }
 
