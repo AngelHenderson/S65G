@@ -85,19 +85,6 @@ class InstrumentationViewController: UIViewController {
     }
     
         override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        let editingRow = (sender as! UITableViewCell).tag
-//        let editingString = names[editingRow]
-//        guard let editingVC = segue.destinationViewController as? EditViewController
-//            else {
-//                preconditionFailure("Another wtf?")
-//        }
-//        editingVC.name = editingString
-//        editingVC.commit = {
-//            self.names[editingRow] = $0
-//            let indexPath = NSIndexPath(forRow: editingRow, inSection: 0)
-//            self.tableView.reloadRowsAtIndexPaths([indexPath],
-//                                                  withRowAnimation: .Automatic)
-//        }
     }
     
     

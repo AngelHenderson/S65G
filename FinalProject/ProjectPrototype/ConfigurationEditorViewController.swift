@@ -21,14 +21,9 @@ class ConfigurationEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save,
-                                                                 target: nil,
-                                                                 action: #selector(saveButtonPressed))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save,target: self,action: #selector(saveButtonPressed))
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,
-                                                                 target: nil,
-                                                                 action: #selector(cancelButtonPressed))
-        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,target: self,action: #selector(cancelButtonPressed))
     }
     
     override func viewWillAppear(animated: Bool) {
