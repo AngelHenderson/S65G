@@ -10,10 +10,51 @@ import UIKit
 
 class ConfigurationEditorViewController: UIViewController {
 
+    @IBOutlet var titleTextField : UITextField!
+    @IBOutlet weak var gridView: GridView!
+
+    var gridToEdit : String = ""
+
+    /// Closure that can be triggered on the save
+    var commit: (String -> Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save,
+                                                                 target: nil,
+                                                                 action: #selector(saveButtonPressed))
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,
+                                                                 target: nil,
+                                                                 action: #selector(cancelButtonPressed))
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        // Change the title
+        title = "Editing: \(gridToEdit)"
+        print(gridToEdit)
 
-        // Do any additional setup after loading the view.
+        // Refresh the name of the Grid to edit
+        titleTextField.text = gridToEdit
+        
+        // Set it to be editing now
+        //titleTextField.becomeFirstResponder()
+    }
+
+    
+    @IBAction func saveButtonPressed(button: UIButton) {
+        print("Print Saved")
+
+        if let commit = commit {
+            commit(titleTextField.text!)
+        }
+    }
+    
+    @IBAction func cancelButtonPressed(button: UIButton) {
+        print("Pop Navigation")
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
     override func didReceiveMemoryWarning() {

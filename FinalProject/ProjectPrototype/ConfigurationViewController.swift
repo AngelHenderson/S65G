@@ -14,7 +14,7 @@ class ConfigurationViewController: UITableViewController {
     //private var names:Array<String> = []
 
     struct GridData {
-        let title: String
+        var title: String
         let contents: [[Int]]
         
         static func fromJSON(json: AnyObject) -> GridData {
@@ -84,8 +84,15 @@ class ConfigurationViewController: UITableViewController {
                    commitEditingStyle editingStyle: UITableViewCellEditingStyle,
                                       forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            //Deletes Object from Local Array and Removes TableViewCell
             JSONArray.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath],
+                                             withRowAnimation: .Automatic)
+        }
+        else if editingStyle == .Insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            //JSONArray.removeAtIndex(indexPath.row)
+            tableView.insertRowsAtIndexPaths([indexPath],
                                              withRowAnimation: .Automatic)
         }
     }
@@ -100,8 +107,6 @@ class ConfigurationViewController: UITableViewController {
 
     func updateSource(notification:NSNotification) {
         if let urlString = notification.userInfo!["url"] as? String {
-            print("Url Printed \(urlString)")
-
             //Empty Array and Reset Table
             self.JSONArray = []
             self.tableView.reloadData()
@@ -123,14 +128,37 @@ class ConfigurationViewController: UITableViewController {
         }
     }
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "editSegue" {
+            guard let editViewController = segue.destinationViewController as? ConfigurationEditorViewController,
+                let tappedCell = sender as? UITableViewCell else {
+                    print ("Not as expected")
+                    return
+            }
+            let editingRow = tappedCell.tag
+    //        print(editViewController.gridToEdit)
+     //       print(JSONArray[editingRow])
+            editViewController.gridToEdit = JSONArray[editingRow].title
+            
+            editViewController.commit = {
+                // Update the row
+                self.JSONArray[editingRow].title = $0
+                // Refresh the cells in the tableview
+                let indexPath = NSIndexPath(forRow: editingRow,
+                                            inSection: 0)
+                self.tableView.reloadRowsAtIndexPaths([indexPath],
+                                                      withRowAnimation: .Automatic)
+                // Pop the view controller back to this
+                self.navigationController?.popViewControllerAnimated(false)
+            }
+        }
     }
-    */
+ 
 
 }

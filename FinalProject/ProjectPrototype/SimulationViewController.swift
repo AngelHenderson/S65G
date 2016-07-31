@@ -8,6 +8,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
     @IBOutlet weak var runButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var restButton: UIButton!
+    var points:[(Int,Int)] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
