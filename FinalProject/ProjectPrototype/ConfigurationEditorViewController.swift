@@ -49,7 +49,7 @@ class ConfigurationEditorViewController: UIViewController {
     }
 
     @IBAction func saveButtonPressed(button: UIButton) {
-        let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:nil)
+        let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
         NSNotificationCenter.defaultCenter().postNotification(notification)
         
         let mappedArray = gridView.points.map { [$0.0,$0.1] }

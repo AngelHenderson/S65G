@@ -70,7 +70,7 @@ class StandardEngine: EngineProtocol {
             // Reset
             grid = Grid(self.rows, self.cols) { _,_ in .Empty }
             if let delegate = delegate { delegate.engineDidUpdate(grid) }
-            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:nil)
+            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }
     }
@@ -84,7 +84,7 @@ class StandardEngine: EngineProtocol {
             // Reset
             grid = Grid(self.rows, self.cols) { _,_ in .Empty }
             if let delegate = delegate { delegate.engineDidUpdate(grid) }
-            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:nil)
+            let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }
     }

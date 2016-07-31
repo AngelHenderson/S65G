@@ -27,17 +27,13 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
 
     func engineDidUpdate(withGrid: GridProtocol) {
-        print("The withGrid")
+        //print("The withGrid")
         gridView.setNeedsDisplay()
     }
 
     func updateGridNotification (notification:NSNotification){
-       // if let userInfo = notification.userInfo {
-        //    let editTitle: String! = (userInfo["setEditing"]! as! Bool) == true ? "Done" : "Edit"
-       //     self.editBarItem.title = editTitle
-       // }
         gridView.setNeedsDisplay()
-        print("Upgrade Notification")
+       // print("Upgrade Notification")
     }
     
     
@@ -51,7 +47,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBAction func resetButtonAction(sender: AnyObject) {
         gridView.points = []
-        let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:nil)
+        let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
         NSNotificationCenter.defaultCenter().postNotification(notification)
     }
     
