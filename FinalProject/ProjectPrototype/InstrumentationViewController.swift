@@ -20,9 +20,12 @@ class InstrumentationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Standard Engine Set
         gameEngine = StandardEngine._sharedInstance
         refreshUI(gameEngine)
         
+        //AlertView for Checking Empty Textfield
         alert = UIAlertController(title: "Empty Url", message: "The url must be provided to pull in data. We will restore the default url.", preferredStyle: UIAlertControllerStyle.Alert)
         // add an action (button)
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
@@ -65,11 +68,7 @@ class InstrumentationViewController: UIViewController {
 
     @IBAction func reloadAction(sender: AnyObject) {
         let notification = NSNotification(name: "updateSourceNotification", object:nil, userInfo:["url": urlTextField.text!])
-        
-
-        //self.presentViewController(alert, animated: true, completion: nil)
-       // NSNotificationCenter.defaultCenter().postNotification(notification)
-        
+        //Bonus: Check for Empty Textfield
         urlTextField.text != "" ? NSNotificationCenter.defaultCenter().postNotification(notification) : self.presentViewController(alert, animated: true, completion: nil)
 
     }

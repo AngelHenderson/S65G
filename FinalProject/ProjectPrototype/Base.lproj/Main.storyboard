@@ -167,49 +167,49 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Living Cells: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PJw-z5-Tq2">
-                                <rect key="frame" x="28" y="103" width="87" height="18"/>
+                                <rect key="frame" x="28" y="74" width="87" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Tb-La-7n0" userLabel="Living Cells Count">
-                                <rect key="frame" x="121" y="112" width="0.0" height="0.0"/>
+                                <rect key="frame" x="121" y="83" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Born Cells: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gda-J7-xEa">
-                                <rect key="frame" x="28" y="131" width="79" height="18"/>
+                                <rect key="frame" x="28" y="102" width="79" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDh-UG-Qup" userLabel="Living Cells Count">
-                                <rect key="frame" x="113" y="140" width="0.0" height="0.0"/>
+                                <rect key="frame" x="113" y="111" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dead Cells: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vda-At-jGC">
-                                <rect key="frame" x="28" y="159" width="82" height="18"/>
+                                <rect key="frame" x="28" y="130" width="82" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VaT-dy-hmt" userLabel="Living Cells Count">
-                                <rect key="frame" x="116" y="168" width="0.0" height="0.0"/>
+                                <rect key="frame" x="116" y="139" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Empty Cells: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gji-xM-LXC">
-                                <rect key="frame" x="28" y="187" width="90" height="18"/>
+                                <rect key="frame" x="28" y="158" width="90" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7QN-rB-dTx" userLabel="Living Cells Count">
-                                <rect key="frame" x="124" y="196" width="0.0" height="0.0"/>
+                                <rect key="frame" x="124" y="167" width="0.0" height="0.0"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -234,7 +234,7 @@
                             <constraint firstItem="N9r-U7-QXh" firstAttribute="centerX" secondItem="aF8-Ev-8KT" secondAttribute="centerX" id="ZFf-wp-BUG"/>
                             <constraint firstItem="aDh-UG-Qup" firstAttribute="leading" secondItem="Gda-J7-xEa" secondAttribute="trailing" constant="6" id="eRk-LQ-tFy"/>
                             <constraint firstItem="Gda-J7-xEa" firstAttribute="leading" secondItem="aF8-Ev-8KT" secondAttribute="leadingMargin" constant="8" id="hO4-yc-fCi"/>
-                            <constraint firstItem="PJw-z5-Tq2" firstAttribute="top" secondItem="N9r-U7-QXh" secondAttribute="bottom" constant="54" id="jB8-Co-iZ3"/>
+                            <constraint firstItem="PJw-z5-Tq2" firstAttribute="top" secondItem="N9r-U7-QXh" secondAttribute="bottom" constant="25" id="jB8-Co-iZ3"/>
                             <constraint firstItem="7Tb-La-7n0" firstAttribute="centerY" secondItem="PJw-z5-Tq2" secondAttribute="centerY" id="zK7-2r-6q9"/>
                         </constraints>
                     </view>
