@@ -16,6 +16,8 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var urlTextField: UITextField!
     
+    @IBOutlet weak var editBarItem: UIBarButtonItem!
+
     @IBOutlet var alert: UIAlertController!
 
     override func viewDidLoad() {
@@ -31,6 +33,8 @@ class InstrumentationViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
             self.urlTextField.text = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
         }))
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.editButtonUpdate(_:)), name: "editingNotification", object: nil)
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -73,8 +77,20 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func addAction(sender: UIBarButtonItem) {
-        let notification = NSNotification(name: "addGridNotification", object:nil, userInfo:nil)
+        let notification = NSNotification(name: "addToTableNotification", object:nil, userInfo:nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)
+    }
+    
+    @IBAction func editAction(sender: UIBarButtonItem) {
+        let notification = NSNotification(name: "editTableNotification", object:nil, userInfo:nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
+    }
+    
+    func editButtonUpdate(notification:NSNotification) {
+        if let userInfo = notification.userInfo {
+            let editTitle: String! = (userInfo["setEditing"]! as! Bool) == true ? "Done" : "Edit"
+            self.editBarItem.title = editTitle
+        }
     }
     
     // MARK: - Private Methods
@@ -88,7 +104,9 @@ class InstrumentationViewController: UIViewController {
         refreshSwitch.on = engine.runTimer
     }
     
-        override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    
     }
     
     

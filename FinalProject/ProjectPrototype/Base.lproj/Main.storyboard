@@ -6,6 +6,7 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Navigation-->
@@ -451,15 +452,23 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" id="frh-5Z-BMx"/>
                     <navigationItem key="navigationItem" id="gDW-YP-Umt">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QoV-Bb-LTG">
-                            <connections>
-                                <action selector="addAction:" destination="xrk-m4-FgQ" id="c5p-mN-pO4"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Edit" style="plain" id="Yqj-Iy-Bl7">
+                                <connections>
+                                    <action selector="editAction:" destination="xrk-m4-FgQ" id="3Af-lF-jgu"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="add" id="QoV-Bb-LTG">
+                                <connections>
+                                    <action selector="addAction:" destination="xrk-m4-FgQ" id="c5p-mN-pO4"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="colCountTextField" destination="qQb-RV-38g" id="eyS-NJ-6La"/>
                         <outlet property="colStepper" destination="p7f-A6-cSm" id="kz0-WB-dBv"/>
+                        <outlet property="editBarItem" destination="Yqj-Iy-Bl7" id="ril-SD-F9m"/>
                         <outlet property="mainSlider" destination="Jas-xw-zif" id="1Ig-hW-6LH"/>
                         <outlet property="refreshSwitch" destination="MPu-Xt-1rf" id="CsM-Mk-Wbq"/>
                         <outlet property="reloadButton" destination="AhQ-8m-oox" id="KSb-Tw-SWP"/>

@@ -47,8 +47,11 @@ class ConfigurationViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateSource(_:)), name: "updateSourceNotification", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.addButton(_:)), name: "addGridNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.addButton(_:)), name: "addToTableNotification", object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.editButton(_:)), name: "editTableNotification", object: nil)
+
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -134,6 +137,29 @@ class ConfigurationViewController: UITableViewController {
         let itemPath = NSIndexPath(forRow: itemRow, inSection: 0)
         tableView.insertRowsAtIndexPaths([itemPath],
                                          withRowAnimation: .Automatic)
+    }
+    
+    
+    // MARK: - Add Elements
+    func editButton(notification:NSNotification) {
+        if (self.tableView.editing) {
+            //editButton.title = "Edit"
+            self.tableView.setEditing(false, animated: true)
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "editingNotification", object:nil, userInfo:["setEditing":false]))
+
+        } else {
+            //editButton.title = "Done"
+            self.tableView.setEditing(true, animated: true)
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "editingNotification", object:nil, userInfo:["setEditing":true]))
+
+        }
+    }
+    
+    override func setEditing(editing: Bool, animated: Bool) {
+        // Toggles the edit button state
+        super.setEditing(editing, animated: animated)
+        // Toggles the actual editing actions appearing on a table view
+        tableView.setEditing(editing, animated: true)
     }
     
     // MARK: - Navigation
