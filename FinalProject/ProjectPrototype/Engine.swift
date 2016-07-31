@@ -109,10 +109,9 @@ class StandardEngine: EngineProtocol {
     var refreshTimer: NSTimer?
     
     func notifyObservers() {
-//        let notification = NSNotification(name: "updateGridNotification", object: nil, userInfo:["fireDate": refreshTimer!.fireDate,
-//            "grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
-//        NSNotificationCenter.defaultCenter().postNotification(notification)
         self.step()
+        let notification = NSNotification(name: "updateGridNotification", object: nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
+        NSNotificationCenter.defaultCenter().postNotification(notification)
     }
     
     // MARK: - Private Helper Methods

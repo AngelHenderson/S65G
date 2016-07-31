@@ -16,7 +16,7 @@ class StatisticsViewController: UIViewController {
         gameEngine = StandardEngine._sharedInstance
         countCells(StandardEngine._sharedInstance.grid)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StatisticsViewController.cellCountNotification(_:)), name: "updateGridNotification", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.cellCountNotification(_:)), name: "updateGridNotification", object: nil)
     }
     
     override func didReceiveMemoryWarning() {
