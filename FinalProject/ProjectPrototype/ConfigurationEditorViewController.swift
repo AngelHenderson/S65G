@@ -34,7 +34,6 @@ class ConfigurationEditorViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         // Change the title
         title = "Editing: \(gridToEdit)"
-        print(gridToEdit)
 
         // Refresh the name of the Grid to edit
         titleTextField.text = gridToEdit
@@ -43,12 +42,10 @@ class ConfigurationEditorViewController: UIViewController {
         textView.text = textView.text + "\n" + "\n" + jsonTitle
         textView.text = textView.text + " : " + jsonContent.description
 
-        
-        // Set it to be editing now
-        //titleTextField.becomeFirstResponder()
+        let mappedTuples = jsonContent.map{Array in (Array[0],Array[1])}
+        gridView.points = mappedTuples
     }
 
-    
     @IBAction func saveButtonPressed(button: UIButton) {
         print("Print Saved")
 
