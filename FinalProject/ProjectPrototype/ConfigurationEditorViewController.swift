@@ -10,8 +10,13 @@ import UIKit
 
 class ConfigurationEditorViewController: UIViewController {
 
+    
     @IBOutlet var titleTextField : UITextField!
     @IBOutlet weak var gridView: GridView!
+    @IBOutlet weak var textView: UITextView!
+    var jsonTitle: String!
+    var jsonContent: [[Int]]!
+
 
     var gridToEdit : String = ""
 
@@ -33,6 +38,11 @@ class ConfigurationEditorViewController: UIViewController {
 
         // Refresh the name of the Grid to edit
         titleTextField.text = gridToEdit
+        
+        textView.text = textView.text + "JSON Content"
+        textView.text = textView.text + "\n" + "\n" + jsonTitle
+        textView.text = textView.text + " : " + jsonContent.description
+
         
         // Set it to be editing now
         //titleTextField.becomeFirstResponder()

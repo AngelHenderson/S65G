@@ -145,7 +145,9 @@ class ConfigurationViewController: UITableViewController {
     //        print(editViewController.gridToEdit)
      //       print(JSONArray[editingRow])
             editViewController.gridToEdit = JSONArray[editingRow].title
-            
+            editViewController.jsonTitle = JSONArray[editingRow].title
+            editViewController.jsonContent = JSONArray[editingRow].contents
+
             editViewController.commit = {
                 // Update the row
                 self.JSONArray[editingRow].title = $0
