@@ -16,10 +16,18 @@ class InstrumentationViewController: UIViewController {
     @IBOutlet weak var reloadButton: UIButton!
     @IBOutlet weak var urlTextField: UITextField!
     
+    @IBOutlet var alert: UIAlertController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         gameEngine = StandardEngine._sharedInstance
         refreshUI(gameEngine)
+        
+        alert = UIAlertController(title: "Empty Url", message: "The url must be provided to pull in data. We will restore the default url.", preferredStyle: UIAlertControllerStyle.Alert)
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
+            self.urlTextField.text = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
+        }))
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -57,7 +65,13 @@ class InstrumentationViewController: UIViewController {
 
     @IBAction func reloadAction(sender: AnyObject) {
         let notification = NSNotification(name: "updateSourceNotification", object:nil, userInfo:["url": urlTextField.text!])
-        NSNotificationCenter.defaultCenter().postNotification(notification)
+        
+
+        //self.presentViewController(alert, animated: true, completion: nil)
+       // NSNotificationCenter.defaultCenter().postNotification(notification)
+        
+        urlTextField.text != "" ? NSNotificationCenter.defaultCenter().postNotification(notification) : self.presentViewController(alert, animated: true, completion: nil)
+
     }
     
     // MARK: - Private Methods

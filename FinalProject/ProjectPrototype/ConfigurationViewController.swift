@@ -100,6 +100,8 @@ class ConfigurationViewController: UITableViewController {
 
     func updateSource(notification:NSNotification) {
         if let urlString = notification.userInfo!["url"] as? String {
+            print("Url Printed \(urlString)")
+
             //Empty Array and Reset Table
             self.JSONArray = []
             self.tableView.reloadData()
