@@ -15,7 +15,7 @@ class ConfigurationViewController: UITableViewController {
 
     struct GridData {
         var title: String
-        let contents: [[Int]]
+        var contents: [[Int]]
         
         static func fromJSON(json: AnyObject) -> GridData {
             if let dict = json as? Dictionary<String, AnyObject> {
@@ -31,10 +31,6 @@ class ConfigurationViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateSource(_:)), name: "updateSourceNotification", object: nil)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
@@ -48,6 +44,15 @@ class ConfigurationViewController: UITableViewController {
                 NSOperationQueue.mainQueue().addOperation(op)
             }
         }
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.updateSource(_:)), name: "updateSourceNotification", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.addButton(_:)), name: "addGridNotification", object: nil)
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -97,13 +102,7 @@ class ConfigurationViewController: UITableViewController {
         }
     }
     
-    
-    @IBAction func addGridType(sender: AnyObject) {
-//        JSONArray.append("Add new name...")
-        let itemRow = JSONArray.count - 1
-        let itemPath = NSIndexPath(forRow:itemRow, inSection: 0)
-        tableView.insertRowsAtIndexPaths([itemPath], withRowAnimation: .Automatic)
-    }
+
 
     func updateSource(notification:NSNotification) {
         if let urlString = notification.userInfo!["url"] as? String {
@@ -128,6 +127,14 @@ class ConfigurationViewController: UITableViewController {
         }
     }
     
+    // MARK: - Add Elements
+    func addButton(notification:NSNotification) {
+        JSONArray.append(GridData(title:"New Grid",contents: []))
+        let itemRow = JSONArray.count - 1
+        let itemPath = NSIndexPath(forRow: itemRow, inSection: 0)
+        tableView.insertRowsAtIndexPaths([itemPath],
+                                         withRowAnimation: .Automatic)
+    }
     
     // MARK: - Navigation
 
@@ -142,15 +149,19 @@ class ConfigurationViewController: UITableViewController {
                     return
             }
             let editingRow = tappedCell.tag
-    //        print(editViewController.gridToEdit)
-     //       print(JSONArray[editingRow])
             editViewController.gridToEdit = JSONArray[editingRow].title
             editViewController.jsonTitle = JSONArray[editingRow].title
             editViewController.jsonContent = JSONArray[editingRow].contents
 
+            editViewController.commitPoints = {
+                // Update the row
+                self.JSONArray[editingRow].contents = $0
+            }
+            
             editViewController.commit = {
                 // Update the row
                 self.JSONArray[editingRow].title = $0
+
                 // Refresh the cells in the tableview
                 let indexPath = NSIndexPath(forRow: editingRow,
                                             inSection: 0)

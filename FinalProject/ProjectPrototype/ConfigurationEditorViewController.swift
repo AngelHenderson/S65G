@@ -22,7 +22,8 @@ class ConfigurationEditorViewController: UIViewController {
 
     /// Closure that can be triggered on the save
     var commit: (String -> Void)?
-    
+    var commitPoints: ([[Int]] -> Void)?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,16 +42,22 @@ class ConfigurationEditorViewController: UIViewController {
         textView.text = textView.text + "JSON Content"
         textView.text = textView.text + "\n" + "\n" + jsonTitle
         textView.text = textView.text + " : " + jsonContent.description
-
-        let mappedTuples = jsonContent.map{Array in (Array[0],Array[1])}
-        gridView.points = mappedTuples
+        
+        print(jsonContent)
+        gridView.points = jsonContent.isEmpty ? [] : jsonContent.map{Array in (Array[0],Array[1])}
+//        gridView.points = mappedTuples
     }
 
     @IBAction func saveButtonPressed(button: UIButton) {
         print("Print Saved")
 
+        let mappedArray = gridView.points.map { [$0.0,$0.1] }
+        print(mappedArray)
         if let commit = commit {
             commit(titleTextField.text!)
+        }
+        if let commitPoints = commitPoints {
+            commitPoints(mappedArray)
         }
     }
     

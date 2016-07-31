@@ -253,7 +253,7 @@
         <!--Instrumentation-->
         <scene sceneID="P8a-39-040">
             <objects>
-                <viewController id="xrk-m4-FgQ" userLabel="Instrumentation" customClass="InstrumentationViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="xrk-m4-FgQ" userLabel="Instrumentation" customClass="InstrumentationViewController" customModule="FinalProject" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NUX-dI-6yI"/>
                         <viewControllerLayoutGuide type="bottom" id="Mii-Hi-fHh"/>
@@ -451,7 +451,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Instrumentation" image="Instrumentation" id="frh-5Z-BMx"/>
                     <navigationItem key="navigationItem" id="gDW-YP-Umt">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QoV-Bb-LTG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QoV-Bb-LTG">
+                            <connections>
+                                <action selector="addAction:" destination="xrk-m4-FgQ" id="c5p-mN-pO4"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="colCountTextField" destination="qQb-RV-38g" id="eyS-NJ-6La"/>

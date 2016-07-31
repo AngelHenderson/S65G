@@ -70,7 +70,11 @@ class InstrumentationViewController: UIViewController {
         let notification = NSNotification(name: "updateSourceNotification", object:nil, userInfo:["url": urlTextField.text!])
         //Bonus: Check for Empty Textfield
         urlTextField.text != "" ? NSNotificationCenter.defaultCenter().postNotification(notification) : self.presentViewController(alert, animated: true, completion: nil)
-
+    }
+    
+    @IBAction func addAction(sender: UIBarButtonItem) {
+        let notification = NSNotification(name: "addGridNotification", object:nil, userInfo:nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification)
     }
     
     // MARK: - Private Methods
