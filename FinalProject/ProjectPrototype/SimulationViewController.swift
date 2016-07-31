@@ -16,7 +16,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         gameEngine = StandardEngine._sharedInstance
         gameEngine.delegate = self
 
-        //gridView.points = [(0,0),(1,1),(2,2),(3,3)]        
+        //gridView.points = [(0,0),(1,1),(2,2),(3,3)]
 //        let e = gameEngine.grid[1,1]
 //        print ("\(e)")
 
@@ -42,6 +42,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     
     @IBAction func runButtonAction(sender: AnyObject) {
+        gameEngine.step()
     }
     
     @IBAction func saveButtonAction(sender: AnyObject) {
