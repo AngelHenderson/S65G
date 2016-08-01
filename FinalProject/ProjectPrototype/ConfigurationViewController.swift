@@ -11,7 +11,7 @@ import UIKit
 class ConfigurationViewController: UITableViewController {
 
     private var JSONArray:Array<GridData> = []
-    //private var names:Array<String> = []
+    private var userArray:Array<GridData> = []
 
     struct GridData {
         var title: String
@@ -77,11 +77,13 @@ class ConfigurationViewController: UITableViewController {
     
     //MARK: UITableViewDelegation
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return JSONArray.count
+        let rowCount: Int = section == 0 ? JSONArray.count : userArray.count
+        return rowCount
+        //return JSONArray.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -93,7 +95,9 @@ class ConfigurationViewController: UITableViewController {
         guard let nameLabel = cell.textLabel else {
             preconditionFailure("wtf?")
         }
-        nameLabel.text = JSONArray[row].title
+        
+        let rowTitle: String! = indexPath.section == 0 ? JSONArray[row].title : userArray[row].title
+        nameLabel.text = rowTitle
         cell.tag = row
         return cell
     }
@@ -103,13 +107,13 @@ class ConfigurationViewController: UITableViewController {
                                       forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             //Deletes Object from Local Array and Removes TableViewCell
-            JSONArray.removeAtIndex(indexPath.row)
+            if indexPath.section == 0 { JSONArray.removeAtIndex(indexPath.row) }
+            else{ userArray.removeAtIndex(indexPath.row) }
             tableView.deleteRowsAtIndexPaths([indexPath],
                                              withRowAnimation: .Automatic)
         }
         else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-            //JSONArray.removeAtIndex(indexPath.row)
             tableView.insertRowsAtIndexPaths([indexPath],
                                              withRowAnimation: .Automatic)
         }
@@ -143,10 +147,10 @@ class ConfigurationViewController: UITableViewController {
     // MARK: - Add Elements
     func addButton(notification:NSNotification) {
         if let message = notification.userInfo!["title"] as? String {
-            message != "" ? JSONArray.append(GridData(title:notification.userInfo!["title"] as! String,contents: notification.userInfo!["points"] as! [[Int]])) : JSONArray.append(GridData(title:"New Grid",contents: []))
+            message != "" ? userArray.append(GridData(title:notification.userInfo!["title"] as! String,contents: notification.userInfo!["points"] as! [[Int]])) : userArray.append(GridData(title:"New Grid",contents: []))
         }
-        let itemRow = JSONArray.count - 1
-        let itemPath = NSIndexPath(forRow: itemRow, inSection: 0)
+        let itemRow = userArray.count - 1
+        let itemPath = NSIndexPath(forRow: itemRow, inSection: 1)
         tableView.insertRowsAtIndexPaths([itemPath],
                                          withRowAnimation: .Automatic)
     }
@@ -187,25 +191,47 @@ class ConfigurationViewController: UITableViewController {
                     print ("Not as expected")
                     return
             }
+
+            let cell = sender as! UITableViewCell
+            let indexPathForCell = tableView.indexPathForCell(cell)
+            
             let editingRow = tappedCell.tag
-            editViewController.gridToEdit = JSONArray[editingRow].title
-            editViewController.jsonTitle = JSONArray[editingRow].title
-            editViewController.jsonContent = JSONArray[editingRow].contents
+            print(indexPathForCell!.section)
+           
+            let jsonTitle: String = indexPathForCell!.section == 0 ? JSONArray[editingRow].title : userArray[editingRow].title
+            let jsonContent: [[Int]]! = indexPathForCell!.section == 0 ? JSONArray[editingRow].contents : userArray[editingRow].contents
+            editViewController.gridToEdit = jsonTitle
+            editViewController.jsonTitle = jsonTitle
+            editViewController.jsonContent = jsonContent
 
             editViewController.commitPoints = {
                 // Update the row
-                self.JSONArray[editingRow].contents = $0
+                if indexPathForCell!.section == 0 { self.JSONArray[editingRow].contents = $0 }
+                else { self.userArray[editingRow].contents = $0 }
+
             }
             
             editViewController.commit = {
+                let cell = sender as! UITableViewCell
+                let indexPathForCell = self.tableView.indexPathForCell(cell)
                 // Update the row
-                self.JSONArray[editingRow].title = $0
-
-                // Refresh the cells in the tableview
-                let indexPath = NSIndexPath(forRow: editingRow,
-                                            inSection: 0)
-                self.tableView.reloadRowsAtIndexPaths([indexPath],
-                                                      withRowAnimation: .Automatic)
+                if indexPathForCell!.section == 0 {
+                    self.JSONArray[editingRow].title = $0
+                    // Refresh the cells in the tableview
+                    let indexPath = NSIndexPath(forRow: editingRow,
+                                                inSection: 0)
+                    self.tableView.reloadRowsAtIndexPaths([indexPath],
+                                                          withRowAnimation: .Automatic)
+                }
+                else {
+                    self.userArray[editingRow].title = $0
+                    // Refresh the cells in the tableview
+                    let indexPath = NSIndexPath(forRow: editingRow,
+                                                inSection: 1)
+                    self.tableView.reloadRowsAtIndexPaths([indexPath],
+                                                          withRowAnimation: .Automatic)
+                }
+   
                 // Pop the view controller back to this
                 self.navigationController?.popViewControllerAnimated(false)
             }
