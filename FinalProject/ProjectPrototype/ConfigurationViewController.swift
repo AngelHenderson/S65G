@@ -132,7 +132,9 @@ class ConfigurationViewController: UITableViewController {
     
     // MARK: - Add Elements
     func addButton(notification:NSNotification) {
-        JSONArray.append(GridData(title:"New Grid",contents: []))
+        if let message = notification.userInfo!["title"] as? String {
+            message != "" ? JSONArray.append(GridData(title:notification.userInfo!["title"] as! String,contents: notification.userInfo!["points"] as! [[Int]])) : JSONArray.append(GridData(title:"New Grid",contents: []))
+        }
         let itemRow = JSONArray.count - 1
         let itemPath = NSIndexPath(forRow: itemRow, inSection: 0)
         tableView.insertRowsAtIndexPaths([itemPath],
@@ -166,6 +168,7 @@ class ConfigurationViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if segue.identifier == "editSegue" {

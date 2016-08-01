@@ -77,7 +77,7 @@ class InstrumentationViewController: UIViewController {
     }
     
     @IBAction func addAction(sender: UIBarButtonItem) {
-        let notification = NSNotification(name: "addToTableNotification", object:nil, userInfo:nil)
+        let notification = NSNotification(name: "addToTableNotification", object:nil, userInfo:["title":""])
         NSNotificationCenter.defaultCenter().postNotification(notification)
     }
     

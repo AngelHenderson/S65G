@@ -8,6 +8,8 @@ class SimulationViewController: UIViewController, EngineDelegate {
     @IBOutlet weak var runButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet weak var restButton: UIButton!
+    @IBOutlet weak var titleTextfield: UITextField!
+
     var points:[(Int,Int)] = []
 
     override func viewDidLoad() {
@@ -43,6 +45,32 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBAction func saveButtonAction(sender: AnyObject) {
         
+        var inputTextField: UITextField?
+        
+        //Create the AlertController
+        let actionSheetController: UIAlertController = UIAlertController(title: "Rename", message: "A file with the same name already exists.", preferredStyle: .Alert)
+        
+        //Create and add the Cancel action
+        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
+        }
+        //Create and an option action
+        let nextAction: UIAlertAction = UIAlertAction(title: "OK", style: .Default) { action -> Void in
+            //Saved Current Points with Given Title
+            let mappedArray = self.gridView.points.map { [$0.0,$0.1] }
+            let notification = NSNotification(name: "addToTableNotification", object:nil, userInfo:["title":inputTextField!.text!,"points":mappedArray])
+            NSNotificationCenter.defaultCenter().postNotification(notification)
+        }
+        
+        actionSheetController.addAction(cancelAction)
+        actionSheetController.addAction(nextAction)
+        
+        //Add a text field
+        actionSheetController.addTextFieldWithConfigurationHandler { textField -> Void in
+            // Saves text field
+            inputTextField = textField
+        }
+        //Present the AlertController
+        self.presentViewController(actionSheetController, animated: true, completion: nil)
     }
     
     @IBAction func resetButtonAction(sender: AnyObject) {
