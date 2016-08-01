@@ -9,7 +9,6 @@
 import UIKit
 
 class ConfigurationEditorViewController: UIViewController {
-
     
     @IBOutlet var titleTextField : UITextField!
     @IBOutlet weak var gridView: GridView!
