@@ -19,9 +19,6 @@ enum CellState {
 typealias Cell = (position: Position, state: CellState)
 
 
-protocol  EngineDelegate: class {
-    func engineDidUpdate(withGrid: GridProtocol)
-}
 
 protocol EngineProtocol {
     var rows: Int { get set }
