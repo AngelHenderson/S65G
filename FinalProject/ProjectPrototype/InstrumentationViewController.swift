@@ -25,7 +25,26 @@ class InstrumentationViewController: UIViewController {
         
         //Standard Engine Set
         gameEngine = StandardEngine._sharedInstance
+        
+        //Loads User's Previous Settings
+        if let rowsKey = NSUserDefaults.standardUserDefaults().objectForKey("rows"){
+            gameEngine.rows = rowsKey as! Int
+        }
+        if let colsKey = NSUserDefaults.standardUserDefaults().objectForKey("cols"){
+            gameEngine.cols = colsKey as! Int
+        }
+        if let runTimerKey = NSUserDefaults.standardUserDefaults().objectForKey("runTimer"){
+            gameEngine.runTimer = runTimerKey as! Bool
+        }
+        if let refreshRateKey = NSUserDefaults.standardUserDefaults().objectForKey("refreshRate"){
+            gameEngine.refreshRate = refreshRateKey as! Double
+        }
+
         refreshUI(gameEngine)
+
+
+        //        mainSlider.value = Float(engine.refreshRate)
+        //        refreshSwitch.on = engine.runTimer
         
         //AlertView for Checking Empty Textfield
         alert = UIAlertController(title: "Empty Url", message: "The url must be provided to pull in data. We will restore the default url.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -53,20 +72,36 @@ class InstrumentationViewController: UIViewController {
         if sender == rowStepper {
             gameEngine.rows = Int(sender.value)
             rowCountTextField.text  = String(StandardEngine.sharedInstance.rows)
+
+            //Save User Settings
+            NSUserDefaults.standardUserDefaults().setInteger(Int(sender.value), forKey: "rows")
         } else {
             gameEngine.cols = Int(sender.value)
             colCountTextField.text  = String(StandardEngine.sharedInstance.cols)
+            
+            //Save User Settings
+            NSUserDefaults.standardUserDefaults().setInteger(Int(sender.value), forKey: "cols")
         }
         refreshUI(gameEngine)
     }
     
     @IBAction func sliderChanged(slider: UISlider) {
         gameEngine.refreshRate = Double(slider.value)
+        
+        //Save User Settings
+        NSUserDefaults.standardUserDefaults().setDouble(Double(slider.value), forKey: "refreshRate")
+
         refreshUI(gameEngine)
     }
     
     @IBAction func switchIsChanged(sender:UISwitch) {
         gameEngine.runTimer = sender.on
+        print(gameEngine.runTimer.description)
+        print(gameEngine.runTimer)
+
+        //Save User Settings
+        NSUserDefaults.standardUserDefaults().setBool(gameEngine.runTimer, forKey: "runTimer")
+
         refreshUI(gameEngine)
     }
 

@@ -59,6 +59,11 @@ class SimulationViewController: UIViewController, EngineDelegate {
             let mappedArray = self.gridView.points.map { [$0.0,$0.1] }
             let notification = NSNotification(name: "addToTableNotification", object:nil, userInfo:["title":inputTextField!.text!,"points":mappedArray])
             NSNotificationCenter.defaultCenter().postNotification(notification)
+            
+            //Alerts User the GridView was Saved
+            let alert = UIAlertController(title: "Grid Saved", message: "Your Grid can be accessed in the Instrumentation Tab", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Done", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
         }
         actionSheetController.addAction(cancelAction)
         actionSheetController.addAction(nextAction)
