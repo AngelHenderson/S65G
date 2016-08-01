@@ -34,6 +34,16 @@ class ConfigurationViewController: UITableViewController {
         let url = NSURL(string: "https://dl.dropboxusercontent.com/u/7544475/S65g.json")!
         let fetcher = Fetcher()
         fetcher.requestJSON(url) { (json, message) in
+            
+            if let message = message {
+                if message.rangeOfString("Error") != nil {
+                    //AlertView for Network Error
+                    let alert:UIAlertController = UIAlertController(title: "HTTP Error Occured", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: { action in
+                    }))
+                    self.presentViewController(alert, animated: true, completion: nil)                }
+            }
+            
             if let json = json {
                 self.JSONArray = (json as! Array<AnyObject>).map({ element in
                     return GridData.fromJSON(element)
