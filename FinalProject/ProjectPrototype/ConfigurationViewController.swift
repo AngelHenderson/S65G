@@ -61,6 +61,7 @@ class ConfigurationViewController: UITableViewController {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.editButton(_:)), name: "editTableNotification", object: nil)
 
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.saveGridAction(_:)), name: "saveUserGridsNotification", object: nil)
 
     }
     
@@ -156,7 +157,7 @@ class ConfigurationViewController: UITableViewController {
     }
     
     
-    // MARK: - Add Elements
+    // MARK: - Edit Elements
     func editButton(notification:NSNotification) {
         if (self.tableView.editing) {
             //editButton.title = "Edit"
@@ -176,6 +177,13 @@ class ConfigurationViewController: UITableViewController {
         super.setEditing(editing, animated: animated)
         // Toggles the actual editing actions appearing on a table view
         tableView.setEditing(editing, animated: true)
+    }
+    
+    // MARK: - Save Elements
+    func saveGridAction(notification:NSNotification) {
+       // var userArraySaved:Array<GridData> = userArray // to downcast to Array<String>, we unwrap it with AnyObject! first
+       // for titles in userArray.title
+       // NSUserDefaults.standardUserDefaults().setObject(userArraySaved.title, forKey: "userArray")
     }
     
     // MARK: - Navigation
