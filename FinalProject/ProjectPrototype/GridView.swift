@@ -8,12 +8,7 @@
 
 import UIKit
 
-class GridProtocolWrapper {
-    let grid : GridProtocol
-    init(s : GridProtocol) {
-        grid = s
-    }
-}
+
 
 class GridView: UIView {
 
