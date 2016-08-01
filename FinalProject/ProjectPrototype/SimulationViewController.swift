@@ -48,7 +48,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         var inputTextField: UITextField?
         
         //Create the AlertController
-        let actionSheetController: UIAlertController = UIAlertController(title: "Rename", message: "A file with the same name already exists.", preferredStyle: .Alert)
+        let actionSheetController: UIAlertController = UIAlertController(title: "Grid Name?", message: "Please provide a name for your grid configuration. If left empty the default name will be New Grid.", preferredStyle: .Alert)
         
         //Create and add the Cancel action
         let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: .Cancel) { action -> Void in
@@ -60,7 +60,6 @@ class SimulationViewController: UIViewController, EngineDelegate {
             let notification = NSNotification(name: "addToTableNotification", object:nil, userInfo:["title":inputTextField!.text!,"points":mappedArray])
             NSNotificationCenter.defaultCenter().postNotification(notification)
         }
-        
         actionSheetController.addAction(cancelAction)
         actionSheetController.addAction(nextAction)
         
