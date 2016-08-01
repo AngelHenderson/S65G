@@ -139,10 +139,10 @@ class GridView: UIView {
         let rowIndex = Int (CGFloat(touchLocation.x) / gridSpaceBetweenCols)
         let colIndex = Int (CGFloat(touchLocation.y) / gridSpaceBetweenRows)
         
-        if previousPositionX != rowIndex || previousPositionY != colIndex {
+        if previousPositionX != rowIndex || previousPositionY != colIndex  && rowIndex >= 0 && colIndex >= 0 && rowIndex < StandardEngine.sharedInstance.cols && colIndex < StandardEngine.sharedInstance.rows{
             
             //Toggles Between Cell States
-            StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? StandardEngine.sharedInstance.grid[colIndex,rowIndex].isLiving() == true ? .Empty : .Alive : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
+            StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (StandardEngine.sharedInstance.grid[colIndex,rowIndex].isLiving() == true ? .Empty : .Alive)
 
             let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
             
@@ -154,6 +154,8 @@ class GridView: UIView {
         
         previousPositionX = rowIndex
         previousPositionY = colIndex
+        
+        print("\(rowIndex),\(colIndex)")
     }
     
     func containsTuple(tupleArray:[(Int,Int)], tuple:(Int,Int)) -> Bool {

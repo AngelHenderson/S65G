@@ -41,10 +41,6 @@ class InstrumentationViewController: UIViewController {
         }
 
         refreshUI(gameEngine)
-
-
-        //        mainSlider.value = Float(engine.refreshRate)
-        //        refreshSwitch.on = engine.runTimer
         
         //AlertView for Checking Empty Textfield
         alert = UIAlertController(title: "Empty Url", message: "The url must be provided to pull in data. We will restore the default url.", preferredStyle: UIAlertControllerStyle.Alert)
