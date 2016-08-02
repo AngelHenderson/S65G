@@ -23,6 +23,8 @@ class InstrumentationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Instrumention"
+        
         //Standard Engine Set
         gameEngine = StandardEngine._sharedInstance
         
@@ -39,12 +41,6 @@ class InstrumentationViewController: UIViewController {
         if let refreshRateKey = NSUserDefaults.standardUserDefaults().objectForKey("refreshRate"){
             gameEngine.refreshRate = refreshRateKey as! Double
         }
-
-        refreshUI(gameEngine)
-
-
-        //        mainSlider.value = Float(engine.refreshRate)
-        //        refreshSwitch.on = engine.runTimer
         
         //AlertView for Checking Empty Textfield
         alert = UIAlertController(title: "Empty Url", message: "The url must be provided to pull in data. We will restore the default url.", preferredStyle: UIAlertControllerStyle.Alert)
@@ -57,7 +53,7 @@ class InstrumentationViewController: UIViewController {
     }
 
     override func viewDidAppear(animated: Bool) {
-
+        refreshUI(gameEngine)
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,8 +92,6 @@ class InstrumentationViewController: UIViewController {
     
     @IBAction func switchIsChanged(sender:UISwitch) {
         gameEngine.runTimer = sender.on
-        print(gameEngine.runTimer.description)
-        print(gameEngine.runTimer)
 
         //Save User Settings
         NSUserDefaults.standardUserDefaults().setBool(gameEngine.runTimer, forKey: "runTimer")

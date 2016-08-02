@@ -26,16 +26,15 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
     }
 
     func engineDidUpdate(withGrid: GridProtocol) {
-        //print("The withGrid")
         gridView.setNeedsDisplay()
     }
 
     func updateGridNotification (notification:NSNotification){
         gridView.setNeedsDisplay()
-       // print("Upgrade Notification")
     }
     
     

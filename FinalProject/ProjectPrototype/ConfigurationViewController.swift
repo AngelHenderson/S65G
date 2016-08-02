@@ -204,7 +204,6 @@ class ConfigurationViewController: UITableViewController {
             let indexPathForCell = tableView.indexPathForCell(cell)
             
             let editingRow = tappedCell.tag
-            print(indexPathForCell!.section)
            
             let jsonTitle: String = indexPathForCell!.section == 0 ? JSONArray[editingRow].title : userArray[editingRow].title
             let jsonContent: [[Int]]! = indexPathForCell!.section == 0 ? JSONArray[editingRow].contents : userArray[editingRow].contents

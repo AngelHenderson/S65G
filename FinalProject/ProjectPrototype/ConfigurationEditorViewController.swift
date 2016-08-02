@@ -13,6 +13,7 @@ class ConfigurationEditorViewController: UIViewController {
     @IBOutlet var titleTextField : UITextField!
     @IBOutlet weak var gridView: GridView!
     @IBOutlet weak var textView: UITextView!
+
     var jsonTitle: String!
     var jsonContent: [[Int]]!
     var originalPoints: [(Int,Int)]!
@@ -26,8 +27,9 @@ class ConfigurationEditorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save,target: self,action: #selector(saveButtonPressed))
+        //Standard Engine Set
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save,target: self,action: #selector(saveButtonPressed))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,target: self,action: #selector(cancelButtonPressed))
     }
     
@@ -44,10 +46,34 @@ class ConfigurationEditorViewController: UIViewController {
         //Save Original State of Points
         originalPoints = gridView.points
         
+        //Determine Grid Size Required
+        let maxSize = jsonContent.flatMap {$0}.reduce(0) {
+            $0 > $1 ? $0 : $1
+        }
+        
+        //Round to Nearest 10
+        let nearestTen: Int = 10 * Int(round(Double(maxSize) / 10.0))
+
+        //If New Grid then ignore changing Grid Size
+        if maxSize > 0 {
+            StandardEngine.sharedInstance.rows = Int(nearestTen)
+            StandardEngine.sharedInstance.cols = Int(nearestTen)
+        }
+
+
         gridView.points = jsonContent.isEmpty ? [] : jsonContent.map{Array in (Array[0],Array[1])}
     }
 
     @IBAction func saveButtonPressed(button: UIButton) {
+        
+        let maxSize = jsonContent.flatMap {$0}.reduce(0) {
+            $0 > $1 ? $0 : $1
+        }
+
+        //Save User Settings
+        NSUserDefaults.standardUserDefaults().setInteger(Int(maxSize), forKey: "rows")
+        NSUserDefaults.standardUserDefaults().setInteger(Int(maxSize), forKey: "cols")
+        
         let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
         NSNotificationCenter.defaultCenter().postNotification(notification)
         
