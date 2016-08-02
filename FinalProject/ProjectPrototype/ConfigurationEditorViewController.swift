@@ -70,9 +70,12 @@ class ConfigurationEditorViewController: UIViewController {
             $0 > $1 ? $0 : $1
         }
 
+        //Round to Nearest 10
+        let nearestTen: Int = 10 * Int(round(Double(maxSize) / 10.0))
+        
         //Save User Settings
-        NSUserDefaults.standardUserDefaults().setInteger(Int(maxSize), forKey: "rows")
-        NSUserDefaults.standardUserDefaults().setInteger(Int(maxSize), forKey: "cols")
+        NSUserDefaults.standardUserDefaults().setInteger(Int(nearestTen), forKey: "rows")
+        NSUserDefaults.standardUserDefaults().setInteger(Int(nearestTen), forKey: "cols")
         
         let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
         NSNotificationCenter.defaultCenter().postNotification(notification)
@@ -85,7 +88,7 @@ class ConfigurationEditorViewController: UIViewController {
             commit(titleTextField.text!)
         }
 
-
+        NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "saveUserGridsNotification", object:nil, userInfo:nil))
     }
     
     @IBAction func cancelButtonPressed(button: UIButton) {

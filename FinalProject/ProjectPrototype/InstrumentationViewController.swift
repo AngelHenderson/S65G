@@ -30,10 +30,11 @@ class InstrumentationViewController: UIViewController {
         
         //Loads User's Previous Settings
         if let rowsKey = NSUserDefaults.standardUserDefaults().objectForKey("rows"){
-            gameEngine.rows = rowsKey as! Int
+            
+            gameEngine.rows = rowsKey as! Int == 0 ? 20 : rowsKey as! Int
         }
         if let colsKey = NSUserDefaults.standardUserDefaults().objectForKey("cols"){
-            gameEngine.cols = colsKey as! Int
+            gameEngine.cols = colsKey as! Int == 0 ? 20 : colsKey as! Int
         }
         if let runTimerKey = NSUserDefaults.standardUserDefaults().objectForKey("runTimer"){
             gameEngine.runTimer = runTimerKey as! Bool

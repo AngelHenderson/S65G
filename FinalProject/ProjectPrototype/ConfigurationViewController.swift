@@ -48,10 +48,31 @@ class ConfigurationViewController: UITableViewController {
                 self.JSONArray = (json as! Array<AnyObject>).map({ element in
                     return GridData.fromJSON(element)
                 })
+
                 let op = NSBlockOperation {
                     self.tableView.reloadData()
                 }
                 NSOperationQueue.mainQueue().addOperation(op)
+            }
+        }
+        
+        //Load Previous User Saved Grids
+        var userArrayOfTitles:[String] = []
+        var userArrayOfContents:[[[Int]]] = []
+        
+        if let userTitles = NSUserDefaults.standardUserDefaults().objectForKey("userArrayOfTitles"){
+            userArrayOfTitles = userTitles as! [String]
+        }
+        
+        if let userContents = NSUserDefaults.standardUserDefaults().objectForKey("userArrayOfContents"){
+            userArrayOfContents = userContents as! [[[Int]]]
+        }
+        
+        print("Initial UserArrayOfTitles is \(userArrayOfTitles)")
+        if userArrayOfTitles.isEmpty == false {
+            for i in 0..<userArrayOfTitles.count {
+                print(i)
+                userArray.append(GridData(title: userArrayOfTitles[i], contents: userArrayOfContents[i]))
             }
         }
         
@@ -62,7 +83,6 @@ class ConfigurationViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.editButton(_:)), name: "editTableNotification", object: nil)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.saveGridAction(_:)), name: "saveUserGridsNotification", object: nil)
-
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -149,11 +169,14 @@ class ConfigurationViewController: UITableViewController {
     func addButton(notification:NSNotification) {
         if let message = notification.userInfo!["title"] as? String {
             message != "" ? userArray.append(GridData(title:notification.userInfo!["title"] as! String,contents: notification.userInfo!["points"] as! [[Int]])) : userArray.append(GridData(title:"New Grid",contents: []))
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name: "saveUserGridsNotification", object:nil, userInfo:nil))
         }
         let itemRow = userArray.count - 1
         let itemPath = NSIndexPath(forRow: itemRow, inSection: 1)
         tableView.insertRowsAtIndexPaths([itemPath],
                                          withRowAnimation: .Automatic)
+        
+        
     }
     
     
@@ -181,9 +204,18 @@ class ConfigurationViewController: UITableViewController {
     
     // MARK: - Save Elements
     func saveGridAction(notification:NSNotification) {
-       // var userArraySaved:Array<GridData> = userArray // to downcast to Array<String>, we unwrap it with AnyObject! first
-       // for titles in userArray.title
-       // NSUserDefaults.standardUserDefaults().setObject(userArraySaved.title, forKey: "userArray")
+        var userArrayOfTitles:[String] = []
+        var userArrayOfContents:[[[Int]]] = []
+
+        for element in userArray{
+            userArrayOfTitles.append(element.title)
+            userArrayOfContents.append(element.contents)
+        }
+
+        NSUserDefaults.standardUserDefaults().setObject(userArrayOfTitles, forKey: "userArrayOfTitles")
+        NSUserDefaults.standardUserDefaults().setObject(userArrayOfContents, forKey: "userArrayOfContents")
+        
+        print(userArrayOfTitles)
     }
     
     // MARK: - Navigation
