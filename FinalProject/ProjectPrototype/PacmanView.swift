@@ -140,13 +140,25 @@ class PacmanView: UIView {
                     let maxX: Int = pacManArray.flatMap {$0.1}.reduce(flatArrayForY[0]) { $0 > $1 ? $0 : $1 }
                     
                     //print("\(minX) and \(maxX) and \(minY) and \(maxY)")
-                    let offset: [(Int,Int)] = [
+                    let oddOffset: [(Int,Int)] = [
                         (minY,minX),(maxY,minX),(minY,maxX),(maxY,maxX),
                         (minY+3,maxX),(minY+3,maxX-1),(minY+3,maxX-2),
                         (minY+2,maxX),(minY+4,maxX),
                     ]
-                    containsTuple(offset, tuple: (row,col)) == true ? UIColor.blackColor().setStroke() : PacmanColor.setStroke()
-                    containsTuple(offset, tuple: (row,col)) == true ? UIColor.blackColor().setFill() : PacmanColor.setFill()
+                    
+                    let evenOffset: [(Int,Int)] = [
+                        (minY,minX),(maxY,minX),(minY,maxX),(maxY,maxX),
+                        ]
+                    
+                    if minX % 2 != 0 {
+                        containsTuple(evenOffset, tuple: (row,col)) == true ? UIColor.blackColor().setStroke() : PacmanColor.setStroke()
+                        containsTuple(evenOffset, tuple: (row,col)) == true ? UIColor.blackColor().setFill() : PacmanColor.setFill()
+                    }
+                    else {
+                        containsTuple(oddOffset, tuple: (row,col)) == true ? UIColor.blackColor().setStroke() : PacmanColor.setStroke()
+                        containsTuple(oddOffset, tuple: (row,col)) == true ? UIColor.blackColor().setFill() : PacmanColor.setFill()
+                    }
+
                 }
                 
                 inner.stroke()

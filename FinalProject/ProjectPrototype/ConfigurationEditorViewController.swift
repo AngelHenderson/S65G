@@ -27,7 +27,6 @@ class ConfigurationEditorViewController: UIViewController {
         super.viewDidLoad()
         
         //Standard Engine Set
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Save,target: self,action: #selector(saveButtonPressed))
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Cancel,target: self,action: #selector(cancelButtonPressed))
     }
@@ -55,7 +54,6 @@ class ConfigurationEditorViewController: UIViewController {
             StandardEngine.sharedInstance.rows = Int(nearestTen)
             StandardEngine.sharedInstance.cols = Int(nearestTen)
         }
-
 
         gridView.points = jsonContent.isEmpty ? [] : jsonContent.map{Array in (Array[0],Array[1])}
     }

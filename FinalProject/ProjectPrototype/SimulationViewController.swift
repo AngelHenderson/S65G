@@ -1,5 +1,6 @@
 
 import UIKit
+import AVFoundation
 
 class SimulationViewController: UIViewController, EngineDelegate {
 
@@ -14,8 +15,11 @@ class SimulationViewController: UIViewController, EngineDelegate {
     @IBOutlet weak var pacModeLabel: UILabel!
     
     @IBOutlet weak var pacmanView: PacmanView!
-    var points:[(Int,Int)] = []
+    
+    var pacmanPosition:(Int,Int) = (3,3)
 
+    var audioPlayer:AVAudioPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,10 +27,10 @@ class SimulationViewController: UIViewController, EngineDelegate {
         gameEngine = StandardEngine._sharedInstance
         gameEngine.delegate = self
 
-        pacmanView.PacmanPoints = [(3,3)]
+        pacmanView.PacmanPoints = [pacmanPosition]
 //        let e = gameEngine.grid[1,1]
 //        print ("\(e)")
-
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.updateGridNotification(_:)), name: "updateGridNotification", object: nil)
     }
     
@@ -40,6 +44,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
 
     func updateGridNotification (notification:NSNotification){
+        self.movePacMan()
         gridView.setNeedsDisplay()
         pacmanView.setNeedsDisplay()
     }
@@ -47,8 +52,10 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     @IBAction func runButtonAction(sender: AnyObject) {
         gameEngine.step()
+        self.movePacMan()
     }
     
+
     @IBAction func saveButtonAction(sender: AnyObject) {
         
         var inputTextField: UITextField?
@@ -87,14 +94,34 @@ class SimulationViewController: UIViewController, EngineDelegate {
         gridView.points = []
         let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
         NSNotificationCenter.defaultCenter().postNotification(notification)
+        
+        //Pac-Man Reset
+        self.resetPacMan()
     }
     
     @IBAction func pacmanModeTapped(sender: AnyObject) {
+        
+        //Pac-Man Reset
+        self.resetPacMan()
+        
+        //Play Audio
+        if sender.on == true {
+            let path = NSBundle.mainBundle().pathForResource("Pacmanbegin", ofType:"wav")!
+            let url = NSURL(fileURLWithPath: path)
+            do {
+                let sound = try AVAudioPlayer(contentsOfURL: url)
+                audioPlayer = sound
+                sound.play()
+            } catch {
+                // couldn't load file :(
+            }
+        }
+        
+        //Updates UI and brings Pac-Man View Forward
         let buttonColor: UIColor = sender.on == true ? UIColor(red:0.42, green:0.42, blue:0.43, alpha:1.00) : UIColor.groupTableViewBackgroundColor()
         let backgroundColor: UIColor = sender.on == true ? UIColor(red:0.08, green:0.08, blue:0.09, alpha:1.00) : UIColor.whiteColor()
         let labelColor: UIColor = sender.on == true ? UIColor(red:0.78, green:0.78, blue:0.79, alpha:1.00) : UIColor.darkGrayColor()
         let textColor: UIColor = sender.on == true ? UIColor.whiteColor() : UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.00)
-
         
         view.backgroundColor = backgroundColor
         saveButton.backgroundColor = buttonColor
@@ -109,11 +136,46 @@ class SimulationViewController: UIViewController, EngineDelegate {
         self.gridView.alpha = sender.on == true ? 0 : 1
     }
     
+
+
+    
+    //Handles Pac-Man's Movements
+    func movePacMan() {
+        if pacSwitch.on == true {
+            
+            //Play Audio
+            let path = NSBundle.mainBundle().pathForResource("Pacmanchomp", ofType:"wav")!
+            let url = NSURL(fileURLWithPath: path)
+            do {
+                let sound = try AVAudioPlayer(contentsOfURL: url)
+                audioPlayer = sound
+                sound.play()
+            } catch {
+                // couldn't load file :(
+            }
+        
+            for element in pacmanView.PacmanPoints {
+                //print(element)
+            }
+            let nextPosition: Int = pacmanPosition.1 + 1
+            pacmanPosition = (pacmanPosition.0,nextPosition)
+            pacmanView.PacmanPoints = [pacmanPosition]
+            
+        }
+    }
+    
+    func resetPacMan() {
+        //Pac-Man Reset
+        pacmanPosition = (3,3)
+        pacmanView.PacmanPoints = [pacmanPosition]
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 

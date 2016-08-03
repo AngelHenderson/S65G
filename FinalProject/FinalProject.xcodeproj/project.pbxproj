@@ -11,6 +11,8 @@
 		587FBB021D4ED0EA00C1E8B4 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587FBB011D4ED0EA00C1E8B4 /* Grid.swift */; };
 		587FBB041D4ED1C900C1E8B4 /* EngineDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 587FBB031D4ED1C900C1E8B4 /* EngineDelegate.swift */; };
 		58B50AAE1D51672700401AF6 /* PacmanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B50AAD1D51672700401AF6 /* PacmanView.swift */; };
+		58B50AB61D51D89B00401AF6 /* Pacmanbegin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 58B50AB51D51D89B00401AF6 /* Pacmanbegin.wav */; };
+		58B50AB81D51D99100401AF6 /* Pacmanchomp.wav in Resources */ = {isa = PBXBuildFile; fileRef = 58B50AB71D51D99100401AF6 /* Pacmanchomp.wav */; };
 		FB97CDD51D441B610022CC4A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97CDD41D441B610022CC4A /* AppDelegate.swift */; };
 		FB97CDD71D441B610022CC4A /* InstrumentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97CDD61D441B610022CC4A /* InstrumentationViewController.swift */; };
 		FB97CDD91D441B610022CC4A /* SimulationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97CDD81D441B610022CC4A /* SimulationViewController.swift */; };
@@ -29,6 +31,8 @@
 		587FBB011D4ED0EA00C1E8B4 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		587FBB031D4ED1C900C1E8B4 /* EngineDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EngineDelegate.swift; sourceTree = "<group>"; };
 		58B50AAD1D51672700401AF6 /* PacmanView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PacmanView.swift; sourceTree = "<group>"; };
+		58B50AB51D51D89B00401AF6 /* Pacmanbegin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Pacmanbegin.wav; sourceTree = "<group>"; };
+		58B50AB71D51D99100401AF6 /* Pacmanchomp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Pacmanchomp.wav; sourceTree = "<group>"; };
 		FB97CDD11D441B610022CC4A /* FinalProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FinalProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB97CDD41D441B610022CC4A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FB97CDD61D441B610022CC4A /* InstrumentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstrumentationViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,8 @@
 				FB97CDF61D44249F0022CC4A /* Engine.swift */,
 				587FBB031D4ED1C900C1E8B4 /* EngineDelegate.swift */,
 				587FBAF91D4C0ABF00C1E8B4 /* Fetcher.swift */,
+				58B50AB51D51D89B00401AF6 /* Pacmanbegin.wav */,
+				58B50AB71D51D99100401AF6 /* Pacmanchomp.wav */,
 				FB97CDDA1D441B610022CC4A /* Main.storyboard */,
 				FB97CDDD1D441B610022CC4A /* Assets.xcassets */,
 				FB97CDDF1D441B610022CC4A /* LaunchScreen.storyboard */,
@@ -152,6 +158,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58B50AB61D51D89B00401AF6 /* Pacmanbegin.wav in Resources */,
+				58B50AB81D51D99100401AF6 /* Pacmanchomp.wav in Resources */,
 				FB97CDE11D441B610022CC4A /* LaunchScreen.storyboard in Resources */,
 				FB97CDDE1D441B610022CC4A /* Assets.xcassets in Resources */,
 				FB97CDDC1D441B610022CC4A /* Main.storyboard in Resources */,
