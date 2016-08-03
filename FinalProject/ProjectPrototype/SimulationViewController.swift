@@ -20,7 +20,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         gameEngine = StandardEngine._sharedInstance
         gameEngine.delegate = self
 
-        pacmanView.PacmanPoints = [(6,6)]
+        pacmanView.PacmanPoints = [(19,19)]
 //        let e = gameEngine.grid[1,1]
 //        print ("\(e)")
 

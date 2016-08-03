@@ -149,13 +149,21 @@ class PacmanView: UIView {
                 
                 //Drawing Pac-man
                 if containsTuple(pacManArray, tuple: (row,col)) == true {
-                    let flatArray = pacManArray.flatMap {$0.0}
-                    let max: Int = pacManArray.flatMap {$0.0}.reduce(flatArray[0]) { $0 > $1 ? $0 : $1 }
-                    let min: Int = pacManArray.flatMap {$0.0}.reduce(flatArray[0]) { $0 > $1 ? $1 : $0 }
+                    let flatArrayForX = pacManArray.flatMap {$0.0}
+                    let flatArrayForY = pacManArray.flatMap {$0.1}
+                    let minY: Int = pacManArray.flatMap {$0.0}.reduce(flatArrayForX[0]) { $0 > $1 ? $1 : $0 }
+                    let maxY: Int = pacManArray.flatMap {$0.0}.reduce(flatArrayForX[0]) { $0 > $1 ? $0 : $1 }
+                    let minX: Int = pacManArray.flatMap {$0.1}.reduce(flatArrayForY[0]) { $0 > $1 ? $1 : $0 }
+                    let maxX: Int = pacManArray.flatMap {$0.1}.reduce(flatArrayForY[0]) { $0 > $1 ? $0 : $1 }
+                    
+                    print("\(minX) and \(maxX) and \(minY) and \(maxY)")
                     let offset: [(Int,Int)] = [
-                        (min,min),(min,max),(max,min),(max,max),
-                        (min+3,max),(min+3,max-1),(min+3,max-2),
-                        (min+2,max),(min+4,max)
+                        //(minY,minX),(minY,maxX),(maxY,minY),(maxX,maxY),
+                        //(minX+3,maxY),(minX+3,maxY-1),(minX+3,maxY-2),
+                        //(minX+2,maxY),(minX+4,maxY)
+                        (minY,minX),(maxY,minX),(minY,maxX),(maxY,maxX),
+                        (minY+3,maxX),(minY+3,maxX-1),(minY+3,maxX-2),
+                        (minY+2,maxX),(minY+4,maxX),
                     ]
                     containsTuple(offset, tuple: (row,col)) == true ? UIColor.blackColor().setStroke() : PacmanColor.setStroke()
                     containsTuple(offset, tuple: (row,col)) == true ? UIColor.blackColor().setFill() : PacmanColor.setFill()
