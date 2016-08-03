@@ -19,6 +19,7 @@ class StatisticsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Sets Text Colors for Label
         livingLabel.textColor = UIColor(red:0.00, green:0.50, blue:0.00, alpha:1.00)
         bornLabel.textColor = UIColor(red:0.40, green:0.70, blue:0.40, alpha:1.00)
         deadLabel.textColor = UIColor(red:0.64, green:0.64, blue:0.64, alpha:1.00)
@@ -27,6 +28,7 @@ class StatisticsViewController: UIViewController {
         gameEngine = StandardEngine._sharedInstance
         countCells(StandardEngine._sharedInstance.grid)
 
+        //Update Grid Notification
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.cellCountNotification(_:)), name: "updateGridNotification", object: nil)
     }
     
@@ -36,12 +38,14 @@ class StatisticsViewController: UIViewController {
     }
     
     func cellCountNotification (notification:NSNotification){
+        //Checks for UserInfo and counts the number of cells for each state
         if let userInfo = notification.userInfo {
             let withGrid = (userInfo["grid"] as! GridProtocolWrapper).grid
             countCells(withGrid)
         }
     }
     
+    //Function that counts the total for each cell state
     func countCells (grid:GridProtocol){
         var aliveCount: Int = 0
         var bornCount: Int = 0

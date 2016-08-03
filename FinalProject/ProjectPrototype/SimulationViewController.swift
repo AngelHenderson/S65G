@@ -11,13 +11,13 @@ class SimulationViewController: UIViewController, EngineDelegate {
     @IBOutlet weak var restButton: UIButton!
     @IBOutlet weak var titleTextfield: UITextField!
 
+    //Pac Man Mode Components
     @IBOutlet weak var pacSwitch: UISwitch!
     @IBOutlet weak var pacModeLabel: UILabel!
-    
     @IBOutlet weak var pacmanView: PacmanView!
-    
-    var pacmanPosition:(Int,Int) = (3,3)
 
+    //Pacman initial Position
+    var pacmanPosition:(Int,Int) = (3,3)
     var audioPlayer:AVAudioPlayer!
     
     override func viewDidLoad() {
@@ -27,18 +27,8 @@ class SimulationViewController: UIViewController, EngineDelegate {
         gameEngine = StandardEngine._sharedInstance
         gameEngine.delegate = self
 
-        //pacmanView.PacmanPoints = [pacmanPosition]
-//        let e = gameEngine.grid[1,1]
-//        print ("\(e)")
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.updateGridNotification(_:)), name: "updateGridNotification", object: nil)
-        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(movePacManNotification(_:)), name: "movePacManNotification", object: nil)
-
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        
     }
 
     func engineDidUpdate(withGrid: GridProtocol) {
@@ -105,7 +95,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
         NSNotificationCenter.defaultCenter().postNotification(notification)
         
-        //Pac-Man Reset
+        //Reset Pac-Man  Position
         self.resetPacMan()
     }
     
@@ -113,7 +103,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
 
     @IBAction func pacmanModeTapped(sender: AnyObject) {
         
-        //Play Audio
+        //Play Initial Audio
         if sender.on == true {
             let path = NSBundle.mainBundle().pathForResource("Pacmanbegin", ofType:"wav")!
             let url = NSURL(fileURLWithPath: path)
@@ -180,6 +170,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         }
     }
     
+    //Reset Pac-Man Position
     func resetPacMan() {
         //Pac-Man Reset
         let randomPosition = Int(arc4random_uniform(UInt32(gameEngine.rows-6))) + 3

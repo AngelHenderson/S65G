@@ -13,6 +13,7 @@ class PacmanView: UIView {
     var PacmanColor: UIColor = UIColor.yellowColor()
     var pacManArray: [(Int,Int)] = []
     
+    //Pacman Position including entire body
     var PacmanPoints:[(Int,Int)] {
         get {
             return pacManArray
@@ -22,7 +23,7 @@ class PacmanView: UIView {
             let pointX: Int = newValue[0].0
             let pointY: Int = newValue[0].1
             
-            //Creates Array for Pacman Body
+            //Creates Array for Pacman Body based on center point
             for row in pointX-3...pointX+3 {
                 for col in pointY-3...pointY+3 {
                     pacManArray.append(row,col)
@@ -54,7 +55,6 @@ class PacmanView: UIView {
         }
     }
 
-    
     var livingColor: UIColor = UIColor(red:0.86, green:0.88, blue:0.88, alpha:1.00)
     var emptyColor: UIColor = UIColor.blackColor()
     var bornColor: UIColor = UIColor.grayColor()
@@ -197,7 +197,9 @@ class PacmanView: UIView {
         if previousPositionX != rowIndex || previousPositionY != colIndex {
             
             //Toggles Between Cell States
-            StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? StandardEngine.sharedInstance.grid[colIndex,rowIndex].isLiving() == true ? .Empty : .Alive : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
+            if (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0) {
+                StandardEngine.sharedInstance.grid[colIndex,rowIndex] = StandardEngine.sharedInstance.grid[colIndex,rowIndex].isLiving() == true ? .Empty : .Alive
+            }
             
             let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
             

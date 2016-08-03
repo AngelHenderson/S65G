@@ -50,10 +50,12 @@ class InstrumentationViewController: UIViewController {
             self.urlTextField.text = "https://dl.dropboxusercontent.com/u/7544475/S65g.json"
         }))
         
+        //Notifications for Edit Button
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.editButtonUpdate(_:)), name: "editingNotification", object: nil)
     }
 
     override func viewDidAppear(animated: Bool) {
+        //Updates UI
         refreshUI(gameEngine)
     }
 
@@ -100,23 +102,30 @@ class InstrumentationViewController: UIViewController {
         refreshUI(gameEngine)
     }
 
+    
     @IBAction func reloadAction(sender: AnyObject) {
+        //Notification to update url source with textfield
         let notification = NSNotification(name: "updateSourceNotification", object:nil, userInfo:["url": urlTextField.text!])
+        
         //Bonus: Check for Empty Textfield
         urlTextField.text != "" ? NSNotificationCenter.defaultCenter().postNotification(notification) : self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func addAction(sender: UIBarButtonItem) {
+        //Notification to add to table
+
         let notification = NSNotification(name: "addToTableNotification", object:nil, userInfo:["title":""])
         NSNotificationCenter.defaultCenter().postNotification(notification)
     }
     
     @IBAction func editAction(sender: UIBarButtonItem) {
+        //Notification to edit table
         let notification = NSNotification(name: "editTableNotification", object:nil, userInfo:nil)
         NSNotificationCenter.defaultCenter().postNotification(notification)
     }
     
     func editButtonUpdate(notification:NSNotification) {
+        //Notification to update edit button text
         if let userInfo = notification.userInfo {
             let editTitle: String! = (userInfo["setEditing"]! as! Bool) == true ? "Done" : "Edit"
             self.editBarItem.title = editTitle

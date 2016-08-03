@@ -243,7 +243,6 @@ class ConfigurationViewController: UITableViewController {
                 // Update the row
                 if indexPathForCell!.section == 0 { self.JSONArray[editingRow].contents = $0 }
                 else { self.userArray[editingRow].contents = $0 }
-
             }
             
             editViewController.commit = {
