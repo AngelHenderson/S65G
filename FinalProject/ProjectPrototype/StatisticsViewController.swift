@@ -10,9 +10,20 @@ class StatisticsViewController: UIViewController {
     @IBOutlet weak var deadCellCount: UILabel!
     @IBOutlet weak var emptyCellCount: UILabel!
     
+    @IBOutlet weak var livingLabel: UILabel!
+    @IBOutlet weak var bornLabel: UILabel!
+    @IBOutlet weak var deadLabel: UILabel!
+    @IBOutlet weak var emptyLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        livingLabel.textColor = UIColor(red:0.00, green:0.50, blue:0.00, alpha:1.00)
+        bornLabel.textColor = UIColor(red:0.40, green:0.70, blue:0.40, alpha:1.00)
+        deadLabel.textColor = UIColor(red:0.64, green:0.64, blue:0.64, alpha:1.00)
+        emptyLabel.textColor = UIColor(red:0.33, green:0.33, blue:0.33, alpha:1.00)
+        
         gameEngine = StandardEngine._sharedInstance
         countCells(StandardEngine._sharedInstance.grid)
 

@@ -276,9 +276,13 @@
                     <tabBarItem key="tabBarItem" title="Statistics" image="Statistics" id="KBB-GK-HgT"/>
                     <connections>
                         <outlet property="bornCellCount" destination="aDh-UG-Qup" id="cWQ-u2-D65"/>
+                        <outlet property="bornLabel" destination="Gda-J7-xEa" id="t59-X3-KuU"/>
                         <outlet property="deadCellCount" destination="VaT-dy-hmt" id="rj5-bt-VzO"/>
+                        <outlet property="deadLabel" destination="vda-At-jGC" id="ecs-dj-34z"/>
                         <outlet property="emptyCellCount" destination="7QN-rB-dTx" id="Jow-Qg-paV"/>
+                        <outlet property="emptyLabel" destination="Gji-xM-LXC" id="R89-pG-ZqU"/>
                         <outlet property="livingCellCount" destination="7Tb-La-7n0" id="wmn-EI-G9u"/>
+                        <outlet property="livingLabel" destination="PJw-z5-Tq2" id="RgQ-nM-bcq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvv-hQ-DqS" userLabel="First Responder" sceneMemberID="firstResponder"/>
