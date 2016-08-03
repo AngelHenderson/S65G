@@ -1,15 +1,39 @@
 //
-//  GridView.swift
-//  ProjectPrototype
+//  PacmanView.swift
+//  FinalProject
 //
-//  Created by Van Simmons on 7/23/16.
+//  Created by Angel Henderson on 8/2/16.
 //  Copyright © 2016 S65g. All rights reserved.
 //
 
 import UIKit
 
-class GridView: UIView {
+class PacmanView: UIView {
 
+    var PacmanColor: UIColor = UIColor.yellowColor()
+
+    var PacmanPoints:[(Int,Int)] {
+        get {
+            //The getter for points should return an array of coordinates which are currently living (born or alive)
+            var pointsArray: [(Int,Int)] = []
+            for row in 0..<StandardEngine.sharedInstance.rows {
+                for col in 0..<StandardEngine.sharedInstance.cols {
+                    if StandardEngine.sharedInstance.grid[row,col].isLiving() == true { pointsArray.append(row,col)}
+                }
+            }
+            return pointsArray
+        }
+        set (newValue) {
+            //when points is set, all cells EXCEPT for those in points are set to off
+            for row in 0..<StandardEngine.sharedInstance.rows {
+                for col in 0..<StandardEngine.sharedInstance.cols {
+                    StandardEngine.sharedInstance.grid[row,col] = containsTuple(newValue, tuple: (row,col)) == true ?  .Empty : StandardEngine.sharedInstance.grid[row,col]
+                }
+            }
+            self.setNeedsDisplay()
+        }
+    }
+    
     var points:[(Int,Int)] {
         get {
             //The getter for points should return an array of coordinates which are currently living (born or alive)
@@ -31,12 +55,13 @@ class GridView: UIView {
             self.setNeedsDisplay()
         }
     }
+
     
-    @IBInspectable var livingColor: UIColor = UIColor.greenColor()
-    @IBInspectable var emptyColor: UIColor = UIColor.darkGrayColor()
-    @IBInspectable var bornColor: UIColor = UIColor.blueColor()
-    @IBInspectable var diedColor: UIColor = UIColor.redColor()
-    @IBInspectable var gridColor: UIColor = UIColor.grayColor()
+    @IBInspectable var livingColor: UIColor = UIColor(red:0.86, green:0.88, blue:0.88, alpha:1.00)
+    @IBInspectable var emptyColor: UIColor = UIColor.blackColor()
+    @IBInspectable var bornColor: UIColor = UIColor.groupTableViewBackgroundColor()
+    @IBInspectable var diedColor: UIColor = UIColor.blackColor()
+    @IBInspectable var gridColor: UIColor = UIColor(red:0.14, green:0.18, blue:0.85, alpha:1.00)
     @IBInspectable var gridWidth: CGFloat = 2
     
     var previousPositionX: Int = 0
@@ -59,11 +84,11 @@ class GridView: UIView {
         let gridRowX = bounds.origin.x
         var gridRowY = bounds.origin.y
         let gridSpaceBetweenRows = bounds.height / CGFloat(StandardEngine.sharedInstance.rows)
-
+        
         var gridColX = bounds.origin.x
         let gridColY = bounds.origin.y
         let gridSpaceBetweenCols = bounds.width / CGFloat(StandardEngine.sharedInstance.cols)
-
+        
         //Draws Grid Lines for Rows
         for _ in 0...StandardEngine.sharedInstance.rows {
             gridLinePath.moveToPoint(CGPoint(x: gridRowX, y: gridRowY))
@@ -107,6 +132,7 @@ class GridView: UIView {
                     diedColor.setStroke()
                     diedColor.setFill()
                 }
+                
                 inner.stroke()
                 inner.fill()
             }
@@ -124,13 +150,11 @@ class GridView: UIView {
             currentTouches(touch)
         }
     }
-
-
     
     func currentTouches(touch: UITouch) {
         // Get the first touch and its location in this view controller's view coordinate system
         let touchLocation = touch.locationInView(self)
-                
+        
         let gridSpaceBetweenCols = bounds.width / CGFloat(StandardEngine.sharedInstance.cols)
         let gridSpaceBetweenRows = bounds.height / CGFloat(StandardEngine.sharedInstance.rows)
         
@@ -141,7 +165,7 @@ class GridView: UIView {
             
             //Toggles Between Cell States
             StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? StandardEngine.sharedInstance.grid[colIndex,rowIndex].isLiving() == true ? .Empty : .Alive : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
-
+            
             let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
             
             let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
@@ -157,4 +181,5 @@ class GridView: UIView {
     func containsTuple(tupleArray:[(Int,Int)], tuple:(Int,Int)) -> Bool {
         return tupleArray.filter{$0.0 == tuple.0 && $0.1 == tuple.1 }.count > 0
     }
+
 }
