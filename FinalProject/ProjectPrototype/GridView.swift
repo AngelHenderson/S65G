@@ -32,10 +32,10 @@ class GridView: UIView {
         }
     }
     
-    @IBInspectable var livingColor: UIColor = UIColor.greenColor()
-    @IBInspectable var emptyColor: UIColor = UIColor.darkGrayColor()
-    @IBInspectable var bornColor: UIColor = UIColor.blueColor()
-    @IBInspectable var diedColor: UIColor = UIColor.redColor()
+    @IBInspectable var livingColor: UIColor = UIColor(red:0.00, green:0.50, blue:0.00, alpha:1.00)
+    @IBInspectable var emptyColor: UIColor = UIColor(red:0.33, green:0.33, blue:0.33, alpha:1.00)
+    @IBInspectable var bornColor: UIColor = UIColor(red:0.40, green:0.70, blue:0.40, alpha:1.00)
+    @IBInspectable var diedColor: UIColor = UIColor(red:0.64, green:0.64, blue:0.64, alpha:1.00)
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridWidth: CGFloat = 2
     
@@ -125,8 +125,6 @@ class GridView: UIView {
         }
     }
 
-
-    
     func currentTouches(touch: UITouch) {
         // Get the first touch and its location in this view controller's view coordinate system
         let touchLocation = touch.locationInView(self)
@@ -140,7 +138,9 @@ class GridView: UIView {
         if previousPositionX != rowIndex || previousPositionY != colIndex {
             
             //Toggles Between Cell States
-            StandardEngine.sharedInstance.grid[colIndex,rowIndex] = (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0 ? StandardEngine.sharedInstance.grid[colIndex,rowIndex].isLiving() == true ? .Empty : .Alive : StandardEngine.sharedInstance.grid[colIndex,rowIndex])
+            if (rowIndex < StandardEngine.sharedInstance.cols && rowIndex >= 0 && colIndex < StandardEngine.sharedInstance.rows && colIndex >= 0) {
+               StandardEngine.sharedInstance.grid[colIndex,rowIndex] = StandardEngine.sharedInstance.grid[colIndex,rowIndex].isLiving() == true ? .Empty : .Alive
+            }
 
             let gridRect = CGRect(x: CGFloat(rowIndex) * gridSpaceBetweenCols + gridWidth / 2, y:  CGFloat(colIndex) * gridSpaceBetweenRows + gridWidth / 2, width: gridSpaceBetweenCols - gridWidth, height: gridSpaceBetweenRows - gridWidth)
             
