@@ -113,9 +113,6 @@ class SimulationViewController: UIViewController, EngineDelegate {
 
     @IBAction func pacmanModeTapped(sender: AnyObject) {
         
-        //Pac-Man Reset
-        self.resetPacMan()
-        
         //Play Audio
         if sender.on == true {
             let path = NSBundle.mainBundle().pathForResource("Pacmanbegin", ofType:"wav")!
@@ -127,6 +124,9 @@ class SimulationViewController: UIViewController, EngineDelegate {
             } catch {
                 // couldn't load file :(
             }
+            
+            //Pac-Man Reset
+            self.resetPacMan()
         }
         
         //Updates UI and brings Pac-Man View Forward
@@ -172,9 +172,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
             if minX == gameEngine.rows{
                 self.resetPacMan()
             }
-//            for element in pacmanView.PacmanPoints {
-//                //print(element)
-//            }
+
             let nextPosition: Int = pacmanPosition.1 + 1
             pacmanPosition = (pacmanPosition.0,nextPosition)
             pacmanView.PacmanPoints = [pacmanPosition]
