@@ -15,18 +15,10 @@ class PacmanView: UIView {
     
     var PacmanPoints:[(Int,Int)] {
         get {
-//            for row in 0..<StandardEngine.sharedInstance.rows {
-//                for col in 0..<StandardEngine.sharedInstance.cols {
-//                    if StandardEngine.sharedInstance.grid[row,col].isLiving() == true { pointsArray.append(row,col)}
-//                    
-//
-//                }
-//            }
             return pacManArray
         }
         set (newValue) {
             pacManArray = []
-            print(newValue)
             let pointX: Int = newValue[0].0
             let pointY: Int = newValue[0].1
             
@@ -35,15 +27,6 @@ class PacmanView: UIView {
                     pacManArray.append(row,col)
                 }
             }
-            //when points is set, all cells EXCEPT for those in points are set to off
-            /*for row in 0..<StandardEngine.sharedInstance.rows {
-                for col in 0..<StandardEngine.sharedInstance.cols {
-                    StandardEngine.sharedInstance.grid[row,col] = containsTuple(newValue, tuple: (row,col)) == true ?  .Empty : StandardEngine.sharedInstance.grid[row,col]
-                }
-            }*/
-            
-            print("Pacman is \(pacManArray)")
-
             self.setNeedsDisplay()
         }
     }
@@ -156,11 +139,8 @@ class PacmanView: UIView {
                     let minX: Int = pacManArray.flatMap {$0.1}.reduce(flatArrayForY[0]) { $0 > $1 ? $1 : $0 }
                     let maxX: Int = pacManArray.flatMap {$0.1}.reduce(flatArrayForY[0]) { $0 > $1 ? $0 : $1 }
                     
-                    print("\(minX) and \(maxX) and \(minY) and \(maxY)")
+                    //print("\(minX) and \(maxX) and \(minY) and \(maxY)")
                     let offset: [(Int,Int)] = [
-                        //(minY,minX),(minY,maxX),(maxY,minY),(maxX,maxY),
-                        //(minX+3,maxY),(minX+3,maxY-1),(minX+3,maxY-2),
-                        //(minX+2,maxY),(minX+4,maxY)
                         (minY,minX),(maxY,minX),(minY,maxX),(maxY,maxX),
                         (minY+3,maxX),(minY+3,maxX-1),(minY+3,maxX-2),
                         (minY+2,maxX),(minY+4,maxX),

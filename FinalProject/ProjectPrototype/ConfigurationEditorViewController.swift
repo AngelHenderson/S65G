@@ -53,7 +53,7 @@ class ConfigurationEditorViewController: UIViewController {
         
         //Round to Nearest 10
         let nearestTen: Int = 10 * Int(ceil(Double(maxSize) / 10.0))
-        print(nearestTen)
+
         //If New Grid then ignore changing Grid Size
         if maxSize > 0 {
             StandardEngine.sharedInstance.rows = Int(nearestTen)

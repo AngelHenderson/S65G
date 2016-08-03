@@ -68,10 +68,8 @@ class ConfigurationViewController: UITableViewController {
             userArrayOfContents = userContents as! [[[Int]]]
         }
         
-        print("Initial UserArrayOfTitles is \(userArrayOfTitles)")
         if userArrayOfTitles.isEmpty == false {
             for i in 0..<userArrayOfTitles.count {
-                print(i)
                 userArray.append(GridData(title: userArrayOfTitles[i], contents: userArrayOfContents[i]))
             }
         }
@@ -214,8 +212,6 @@ class ConfigurationViewController: UITableViewController {
 
         NSUserDefaults.standardUserDefaults().setObject(userArrayOfTitles, forKey: "userArrayOfTitles")
         NSUserDefaults.standardUserDefaults().setObject(userArrayOfContents, forKey: "userArrayOfContents")
-        
-        print(userArrayOfTitles)
     }
     
     // MARK: - Navigation
