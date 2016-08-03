@@ -41,18 +41,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n6y-74-cnZ">
                                 <rect key="frame" x="20" y="20" width="560" height="523"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bj-RX-Vou" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
-                                        <rect key="frame" x="71" y="8" width="418" height="418"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="4Bj-RX-Vou" secondAttribute="height" multiplier="1:1" id="RN4-gc-yON"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="luM-K3-S95" userLabel="Pacman View" customClass="PacmanView" customModule="FinalProject" customModuleProvider="target">
                                         <rect key="frame" x="71" y="8" width="418" height="418"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="luM-K3-S95" secondAttribute="height" multiplier="1:1" id="nza-q5-Gd4"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Bj-RX-Vou" customClass="GridView" customModule="FinalProject" customModuleProvider="target">
+                                        <rect key="frame" x="71" y="8" width="418" height="418"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="4Bj-RX-Vou" secondAttribute="height" multiplier="1:1" id="RN4-gc-yON"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVh-Sm-JNb">
@@ -94,14 +94,28 @@
                                             <action selector="resetButtonAction:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="4vH-xf-5Oa"/>
                                         </connections>
                                     </button>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-Kj-jVB">
+                                        <rect key="frame" x="305.5" y="482" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="pacmanModeTapped:" destination="8rJ-Kc-sve" eventType="valueChanged" id="gh0-6o-tvl"/>
+                                        </connections>
+                                    </switch>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pac-Man Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asF-F1-qvu">
+                                        <rect key="frame" x="187" y="489" width="105" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="top" secondItem="n6y-74-cnZ" secondAttribute="top" constant="8" id="4rr-mx-eEl"/>
+                                    <constraint firstItem="asF-F1-qvu" firstAttribute="centerY" secondItem="2Ca-Kj-jVB" secondAttribute="centerY" id="6Yw-1G-2E1"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="height" relation="lessThanOrEqual" secondItem="n6y-74-cnZ" secondAttribute="height" multiplier="0.8" id="B1d-Rt-Qbs"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="width" relation="lessThanOrEqual" secondItem="n6y-74-cnZ" secondAttribute="width" multiplier="0.8" id="IJ5-wN-Gz0"/>
                                     <constraint firstItem="luM-K3-S95" firstAttribute="centerY" secondItem="4Bj-RX-Vou" secondAttribute="centerY" id="KJl-qf-1f2"/>
                                     <constraint firstItem="luM-K3-S95" firstAttribute="height" secondItem="4Bj-RX-Vou" secondAttribute="height" id="N7o-q3-cOa"/>
+                                    <constraint firstItem="2Ca-Kj-jVB" firstAttribute="leading" secondItem="asF-F1-qvu" secondAttribute="trailing" constant="13.5" id="Wg4-xQ-dHl"/>
                                     <constraint firstItem="luM-K3-S95" firstAttribute="centerX" secondItem="4Bj-RX-Vou" secondAttribute="centerX" id="XF1-sF-z5M"/>
                                     <constraint firstItem="luM-K3-S95" firstAttribute="width" secondItem="4Bj-RX-Vou" secondAttribute="width" id="XTa-ut-T44"/>
                                     <constraint firstItem="HVh-Sm-JNb" firstAttribute="top" secondItem="4Bj-RX-Vou" secondAttribute="bottom" constant="10" id="Ynv-DQ-8q4"/>
@@ -115,6 +129,7 @@
                                     <constraint firstItem="luM-K3-S95" firstAttribute="width" secondItem="luM-K3-S95" secondAttribute="height" multiplier="1:1" id="tgM-O0-IRR"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="centerX" secondItem="n6y-74-cnZ" secondAttribute="centerX" id="ugi-NK-uvF"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="width" secondItem="n6y-74-cnZ" secondAttribute="width" multiplier="0.8" priority="750" id="yGD-85-7c9"/>
+                                    <constraint firstItem="2Ca-Kj-jVB" firstAttribute="top" secondItem="HVh-Sm-JNb" secondAttribute="bottom" constant="16" id="z2s-l1-anB"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -124,6 +139,7 @@
                             <constraint firstItem="n6y-74-cnZ" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="7zB-5N-Lag"/>
                             <constraint firstItem="HVh-Sm-JNb" firstAttribute="width" secondItem="QS5-Rx-YEW" secondAttribute="width" multiplier="0.3" id="BZe-As-RSJ"/>
                             <constraint firstItem="n6y-74-cnZ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="DEB-jS-WCf"/>
+                            <constraint firstItem="2Ca-Kj-jVB" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" constant="50" id="LGl-Rb-2Sd"/>
                             <constraint firstItem="n6y-74-cnZ" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" id="V1M-eq-gQh"/>
                             <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="n6y-74-cnZ" secondAttribute="bottom" constant="8" id="yNE-OF-JYL"/>
                         </constraints>
@@ -131,8 +147,12 @@
                     <tabBarItem key="tabBarItem" title="Simulation" image="Simulation" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="gridView" destination="4Bj-RX-Vou" id="aPD-oD-mTb"/>
+                        <outlet property="pacModeLabel" destination="asF-F1-qvu" id="Gpi-Gx-8IP"/>
+                        <outlet property="pacSwitch" destination="2Ca-Kj-jVB" id="We4-26-CqP"/>
                         <outlet property="pacmanView" destination="luM-K3-S95" id="EsU-do-GKU"/>
+                        <outlet property="restButton" destination="0Qn-W2-iej" id="62I-g7-Ooj"/>
                         <outlet property="runButton" destination="HVh-Sm-JNb" id="HrM-hb-NtZ"/>
+                        <outlet property="saveButton" destination="KNJ-6U-6Nq" id="jg2-Ew-sff"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

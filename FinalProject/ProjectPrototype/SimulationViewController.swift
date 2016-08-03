@@ -10,6 +10,9 @@ class SimulationViewController: UIViewController, EngineDelegate {
     @IBOutlet weak var restButton: UIButton!
     @IBOutlet weak var titleTextfield: UITextField!
 
+    @IBOutlet weak var pacSwitch: UISwitch!
+    @IBOutlet weak var pacModeLabel: UILabel!
+    
     @IBOutlet weak var pacmanView: PacmanView!
     var points:[(Int,Int)] = []
 
@@ -84,6 +87,26 @@ class SimulationViewController: UIViewController, EngineDelegate {
         gridView.points = []
         let notification = NSNotification(name: "updateGridNotification", object:nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
         NSNotificationCenter.defaultCenter().postNotification(notification)
+    }
+    
+    @IBAction func pacmanModeTapped(sender: AnyObject) {
+        let buttonColor: UIColor = sender.on == true ? UIColor(red:0.42, green:0.42, blue:0.43, alpha:1.00) : UIColor.groupTableViewBackgroundColor()
+        let backgroundColor: UIColor = sender.on == true ? UIColor(red:0.08, green:0.08, blue:0.09, alpha:1.00) : UIColor.whiteColor()
+        let labelColor: UIColor = sender.on == true ? UIColor(red:0.78, green:0.78, blue:0.79, alpha:1.00) : UIColor.darkGrayColor()
+        let textColor: UIColor = sender.on == true ? UIColor.whiteColor() : UIColor(red:0.00, green:0.48, blue:1.00, alpha:1.00)
+
+        
+        view.backgroundColor = backgroundColor
+        saveButton.backgroundColor = buttonColor
+        restButton.backgroundColor = buttonColor
+        runButton.backgroundColor = buttonColor
+        saveButton.setTitleColor(textColor, forState: UIControlState.Normal)
+        restButton.setTitleColor(textColor, forState: UIControlState.Normal)
+        runButton.setTitleColor(textColor, forState: UIControlState.Normal)
+        pacModeLabel.textColor = labelColor
+        
+        self.pacmanView.alpha = sender.on == true ? 1 : 0
+        self.gridView.alpha = sender.on == true ? 0 : 1
     }
     
     override func didReceiveMemoryWarning() {
