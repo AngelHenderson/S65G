@@ -32,9 +32,9 @@ class GridView: UIView {
         }
     }
     
-    @IBInspectable var livingColor: UIColor = UIColor(red:0.00, green:0.50, blue:0.00, alpha:1.00)
+    @IBInspectable var livingColor: UIColor = UIColor(red:0.17, green:0.56, blue:1.00, alpha:1.00)
     @IBInspectable var emptyColor: UIColor = UIColor(red:0.33, green:0.33, blue:0.33, alpha:1.00)
-    @IBInspectable var bornColor: UIColor = UIColor(red:0.40, green:0.70, blue:0.40, alpha:1.00)
+    @IBInspectable var bornColor: UIColor = UIColor(red:0.17, green:0.56, blue:1.00, alpha:0.6)
     @IBInspectable var diedColor: UIColor = UIColor(red:0.64, green:0.64, blue:0.64, alpha:1.00)
     @IBInspectable var gridColor: UIColor = UIColor.grayColor()
     @IBInspectable var gridWidth: CGFloat = 2

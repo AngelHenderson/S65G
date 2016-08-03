@@ -22,6 +22,7 @@ class PacmanView: UIView {
             let pointX: Int = newValue[0].0
             let pointY: Int = newValue[0].1
             
+            //Creates Array for Pacman Body
             for row in pointX-3...pointX+3 {
                 for col in pointY-3...pointY+3 {
                     pacManArray.append(row,col)
@@ -139,7 +140,8 @@ class PacmanView: UIView {
                     let minX: Int = pacManArray.flatMap {$0.1}.reduce(flatArrayForY[0]) { $0 > $1 ? $1 : $0 }
                     let maxX: Int = pacManArray.flatMap {$0.1}.reduce(flatArrayForY[0]) { $0 > $1 ? $0 : $1 }
                     
-                    //print("\(minX) and \(maxX) and \(minY) and \(maxY)")
+
+                    //Offset for Pac-man Animation
                     let oddOffset: [(Int,Int)] = [
                         (minY,minX),(maxY,minX),(minY,maxX),(maxY,maxX),
                         (minY+3,maxX),(minY+3,maxX-1),(minY+3,maxX-2),
@@ -149,7 +151,7 @@ class PacmanView: UIView {
                     let evenOffset: [(Int,Int)] = [(minY,minX),(maxY,minX),(minY,maxX),(maxY,maxX)]
                     let diceRoll = Int(arc4random_uniform(2) + 1)
 
-                    //Offset Type affect Pac-man Animation
+                    //Color set for Pacman
                     if minX % 2 != 0 {
                         containsTuple(evenOffset, tuple: (row,col)) == true ? UIColor.blackColor().setStroke() : PacmanColor.setStroke()
                         containsTuple(evenOffset, tuple: (row,col)) == true ? UIColor.blackColor().setFill() : PacmanColor.setFill()

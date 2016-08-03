@@ -68,9 +68,12 @@ class StandardEngine: EngineProtocol {
     
     func notifyObservers() {
         self.step()
+        
+        //Notification to Update Grid
         let notification = NSNotification(name: "updateGridNotification", object: nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
         NSNotificationCenter.defaultCenter().postNotification(notification)
         
+        //Notification to Move Pacman
         let notification2 = NSNotification(name: "movePacManNotification", object: nil, userInfo:nil)
         NSNotificationCenter.defaultCenter().postNotification(notification2)
     }
