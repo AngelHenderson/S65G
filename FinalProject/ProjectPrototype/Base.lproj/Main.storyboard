@@ -94,8 +94,9 @@
                                             <action selector="resetButtonAction:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="4vH-xf-5Oa"/>
                                         </connections>
                                     </button>
-                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-Kj-jVB">
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="2Ca-Kj-jVB">
                                         <rect key="frame" x="305.5" y="482" width="51" height="31"/>
+                                        <color key="onTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="pacmanModeTapped:" destination="8rJ-Kc-sve" eventType="valueChanged" id="gh0-6o-tvl"/>
                                         </connections>
@@ -609,21 +610,11 @@
                                             <constraint firstAttribute="width" secondItem="B6y-H6-Vkf" secondAttribute="height" multiplier="1:1" id="5OJ-Ag-lkY"/>
                                         </constraints>
                                     </view>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1x-AW-LGe">
-                                        <rect key="frame" x="206" y="236" width="188" height="0.0"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="PsL-6O-j3P" firstAttribute="top" secondItem="u5V-JI-kxc" secondAttribute="top" constant="8" id="24z-Pg-VYl"/>
-                                    <constraint firstItem="N1x-AW-LGe" firstAttribute="top" secondItem="B6y-H6-Vkf" secondAttribute="bottom" constant="5" id="7z0-7B-S1p"/>
-                                    <constraint firstItem="N1x-AW-LGe" firstAttribute="width" secondItem="B6y-H6-Vkf" secondAttribute="width" id="8nC-7S-MDm"/>
                                     <constraint firstItem="B6y-H6-Vkf" firstAttribute="height" secondItem="u5V-JI-kxc" secondAttribute="height" priority="750" id="EnR-hf-BrG"/>
-                                    <constraint firstItem="N1x-AW-LGe" firstAttribute="centerX" secondItem="u5V-JI-kxc" secondAttribute="centerX" id="Gtf-Lx-aDD"/>
-                                    <constraint firstAttribute="bottom" secondItem="N1x-AW-LGe" secondAttribute="bottom" priority="250" constant="5" id="PBX-f9-9fZ"/>
                                     <constraint firstItem="PsL-6O-j3P" firstAttribute="width" secondItem="u5V-JI-kxc" secondAttribute="width" multiplier="0.7" id="QEI-k9-OGo"/>
                                     <constraint firstItem="B6y-H6-Vkf" firstAttribute="top" secondItem="PsL-6O-j3P" secondAttribute="bottom" constant="5" id="Xvv-vW-pv4"/>
                                     <constraint firstItem="B6y-H6-Vkf" firstAttribute="centerX" secondItem="u5V-JI-kxc" secondAttribute="centerX" id="YPd-3e-Z1X"/>
@@ -645,7 +636,6 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="gridView" destination="B6y-H6-Vkf" id="t58-8T-58r"/>
-                        <outlet property="textView" destination="N1x-AW-LGe" id="n6H-O6-PbE"/>
                         <outlet property="titleTextField" destination="PsL-6O-j3P" id="V9a-Ry-xOd"/>
                     </connections>
                 </viewController>
