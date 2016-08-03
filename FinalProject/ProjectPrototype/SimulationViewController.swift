@@ -32,6 +32,9 @@ class SimulationViewController: UIViewController, EngineDelegate {
 //        print ("\(e)")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SimulationViewController.updateGridNotification(_:)), name: "updateGridNotification", object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(movePacManNotification(_:)), name: "movePacManNotification", object: nil)
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,11 +47,18 @@ class SimulationViewController: UIViewController, EngineDelegate {
     }
 
     func updateGridNotification (notification:NSNotification){
-        self.movePacMan()
         gridView.setNeedsDisplay()
-        pacmanView.setNeedsDisplay()
+        if pacSwitch.on {
+            pacmanView.setNeedsDisplay()
+        }
     }
     
+    func movePacManNotification (notification:NSNotification){
+        if pacSwitch.on {
+            self.movePacMan()
+            pacmanView.setNeedsDisplay()
+        }
+    }
     
     @IBAction func runButtonAction(sender: AnyObject) {
         gameEngine.step()

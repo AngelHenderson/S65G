@@ -146,18 +146,21 @@ class PacmanView: UIView {
                         (minY+2,maxX),(minY+4,maxX),
                     ]
                     
-                    let evenOffset: [(Int,Int)] = [
-                        (minY,minX),(maxY,minX),(minY,maxX),(maxY,maxX),
-                        ]
-                    
+                    let evenOffset: [(Int,Int)] = [(minY,minX),(maxY,minX),(minY,maxX),(maxY,maxX)]
+                    let diceRoll = Int(arc4random_uniform(2) + 1)
+
+                    //Offset Type affect Pac-man Animation
                     if minX % 2 != 0 {
                         containsTuple(evenOffset, tuple: (row,col)) == true ? UIColor.blackColor().setStroke() : PacmanColor.setStroke()
                         containsTuple(evenOffset, tuple: (row,col)) == true ? UIColor.blackColor().setFill() : PacmanColor.setFill()
+                        StandardEngine.sharedInstance.grid[row,col] = containsTuple(evenOffset, tuple: (row,col)) == true && diceRoll == 1 ? .Alive : StandardEngine.sharedInstance.grid[row,col]
                     }
                     else {
                         containsTuple(oddOffset, tuple: (row,col)) == true ? UIColor.blackColor().setStroke() : PacmanColor.setStroke()
                         containsTuple(oddOffset, tuple: (row,col)) == true ? UIColor.blackColor().setFill() : PacmanColor.setFill()
+                        StandardEngine.sharedInstance.grid[row,col] = containsTuple(oddOffset, tuple: (row,col)) == true && diceRoll == 1 ? .Alive : StandardEngine.sharedInstance.grid[row,col]
                     }
+
 
                 }
                 

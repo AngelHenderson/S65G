@@ -70,6 +70,9 @@ class StandardEngine: EngineProtocol {
         self.step()
         let notification = NSNotification(name: "updateGridNotification", object: nil, userInfo:["grid":GridProtocolWrapper(s: StandardEngine.sharedInstance.grid)])
         NSNotificationCenter.defaultCenter().postNotification(notification)
+        
+        let notification2 = NSNotification(name: "movePacManNotification", object: nil, userInfo:nil)
+        NSNotificationCenter.defaultCenter().postNotification(notification2)
     }
     
     // MARK: - Private Helper Methods
