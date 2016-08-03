@@ -56,7 +56,7 @@ class PacmanView: UIView {
     
     var livingColor: UIColor = UIColor(red:0.86, green:0.88, blue:0.88, alpha:1.00)
     var emptyColor: UIColor = UIColor.blackColor()
-    var bornColor: UIColor = UIColor.groupTableViewBackgroundColor()
+    var bornColor: UIColor = UIColor.grayColor()
     var diedColor: UIColor = UIColor.blackColor()
     var gridColor: UIColor = UIColor(red:0.14, green:0.18, blue:0.85, alpha:1.00)
     var gridWidth: CGFloat = 1
