@@ -109,6 +109,8 @@ class SimulationViewController: UIViewController, EngineDelegate {
         self.resetPacMan()
     }
     
+    // MARK: - Pacman Functions
+
     @IBAction func pacmanModeTapped(sender: AnyObject) {
         
         //Pac-Man Reset
