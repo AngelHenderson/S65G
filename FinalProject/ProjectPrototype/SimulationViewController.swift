@@ -27,7 +27,7 @@ class SimulationViewController: UIViewController, EngineDelegate {
         gameEngine = StandardEngine._sharedInstance
         gameEngine.delegate = self
 
-        pacmanView.PacmanPoints = [pacmanPosition]
+        //pacmanView.PacmanPoints = [pacmanPosition]
 //        let e = gameEngine.grid[1,1]
 //        print ("\(e)")
         
@@ -165,10 +165,16 @@ class SimulationViewController: UIViewController, EngineDelegate {
             } catch {
                 // couldn't load file :(
             }
+            
+            let flatArrayForY = pacmanView.PacmanPoints.flatMap {$0.1}
+            let minX: Int = pacmanView.PacmanPoints.flatMap {$0.1}.reduce(flatArrayForY[0]) { $0 > $1 ? $1 : $0 }
         
-            for element in pacmanView.PacmanPoints {
-                //print(element)
+            if minX == gameEngine.rows{
+                self.resetPacMan()
             }
+//            for element in pacmanView.PacmanPoints {
+//                //print(element)
+//            }
             let nextPosition: Int = pacmanPosition.1 + 1
             pacmanPosition = (pacmanPosition.0,nextPosition)
             pacmanView.PacmanPoints = [pacmanPosition]
@@ -178,7 +184,8 @@ class SimulationViewController: UIViewController, EngineDelegate {
     
     func resetPacMan() {
         //Pac-Man Reset
-        pacmanPosition = (3,3)
+        let randomPosition = Int(arc4random_uniform(UInt32(gameEngine.rows-6))) + 3
+        pacmanPosition = (randomPosition,3)
         pacmanView.PacmanPoints = [pacmanPosition]
     }
     
