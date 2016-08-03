@@ -11,25 +11,39 @@ import UIKit
 class PacmanView: UIView {
 
     var PacmanColor: UIColor = UIColor.yellowColor()
-
+    var pacManArray: [(Int,Int)] = []
+    
     var PacmanPoints:[(Int,Int)] {
         get {
-            //The getter for points should return an array of coordinates which are currently living (born or alive)
-            var pointsArray: [(Int,Int)] = []
-            for row in 0..<StandardEngine.sharedInstance.rows {
-                for col in 0..<StandardEngine.sharedInstance.cols {
-                    if StandardEngine.sharedInstance.grid[row,col].isLiving() == true { pointsArray.append(row,col)}
-                }
-            }
-            return pointsArray
+//            for row in 0..<StandardEngine.sharedInstance.rows {
+//                for col in 0..<StandardEngine.sharedInstance.cols {
+//                    if StandardEngine.sharedInstance.grid[row,col].isLiving() == true { pointsArray.append(row,col)}
+//                    
+//
+//                }
+//            }
+            return pacManArray
         }
         set (newValue) {
+            pacManArray = []
+            print(newValue)
+            let pointX: Int = newValue[0].0
+            let pointY: Int = newValue[0].1
+            
+            for row in pointX-3...pointX+3 {
+                for col in pointY-3...pointY+3 {
+                    pacManArray.append(row,col)
+                }
+            }
             //when points is set, all cells EXCEPT for those in points are set to off
-            for row in 0..<StandardEngine.sharedInstance.rows {
+            /*for row in 0..<StandardEngine.sharedInstance.rows {
                 for col in 0..<StandardEngine.sharedInstance.cols {
                     StandardEngine.sharedInstance.grid[row,col] = containsTuple(newValue, tuple: (row,col)) == true ?  .Empty : StandardEngine.sharedInstance.grid[row,col]
                 }
-            }
+            }*/
+            
+            print("Pacman is \(pacManArray)")
+
             self.setNeedsDisplay()
         }
     }
@@ -57,12 +71,12 @@ class PacmanView: UIView {
     }
 
     
-    @IBInspectable var livingColor: UIColor = UIColor(red:0.86, green:0.88, blue:0.88, alpha:1.00)
-    @IBInspectable var emptyColor: UIColor = UIColor.blackColor()
-    @IBInspectable var bornColor: UIColor = UIColor.groupTableViewBackgroundColor()
-    @IBInspectable var diedColor: UIColor = UIColor.blackColor()
-    @IBInspectable var gridColor: UIColor = UIColor(red:0.14, green:0.18, blue:0.85, alpha:1.00)
-    @IBInspectable var gridWidth: CGFloat = 2
+    var livingColor: UIColor = UIColor(red:0.86, green:0.88, blue:0.88, alpha:1.00)
+    var emptyColor: UIColor = UIColor.blackColor()
+    var bornColor: UIColor = UIColor.groupTableViewBackgroundColor()
+    var diedColor: UIColor = UIColor.blackColor()
+    var gridColor: UIColor = UIColor(red:0.14, green:0.18, blue:0.85, alpha:1.00)
+    var gridWidth: CGFloat = 1
     
     var previousPositionX: Int = 0
     var previousPositionY: Int = 0
@@ -131,6 +145,20 @@ class PacmanView: UIView {
                 case .Died:
                     diedColor.setStroke()
                     diedColor.setFill()
+                }
+                
+                //Drawing Pac-man
+                if containsTuple(pacManArray, tuple: (row,col)) == true {
+                    let flatArray = pacManArray.flatMap {$0.0}
+                    let max: Int = pacManArray.flatMap {$0.0}.reduce(flatArray[0]) { $0 > $1 ? $0 : $1 }
+                    let min: Int = pacManArray.flatMap {$0.0}.reduce(flatArray[0]) { $0 > $1 ? $1 : $0 }
+                    let offset: [(Int,Int)] = [
+                        (min,min),(min,max),(max,min),(max,max),
+                        (min+3,max),(min+3,max-1),(min+3,max-2),
+                        (min+2,max),(min+4,max)
+                    ]
+                    containsTuple(offset, tuple: (row,col)) == true ? UIColor.blackColor().setStroke() : PacmanColor.setStroke()
+                    containsTuple(offset, tuple: (row,col)) == true ? UIColor.blackColor().setFill() : PacmanColor.setFill()
                 }
                 
                 inner.stroke()

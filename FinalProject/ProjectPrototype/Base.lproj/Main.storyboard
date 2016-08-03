@@ -48,6 +48,13 @@
                                             <constraint firstAttribute="width" secondItem="4Bj-RX-Vou" secondAttribute="height" multiplier="1:1" id="RN4-gc-yON"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="luM-K3-S95" userLabel="Pacman View" customClass="PacmanView" customModule="FinalProject" customModuleProvider="target">
+                                        <rect key="frame" x="71" y="8" width="418" height="418"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="luM-K3-S95" secondAttribute="height" multiplier="1:1" id="nza-q5-Gd4"/>
+                                        </constraints>
+                                    </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVh-Sm-JNb">
                                         <rect key="frame" x="190" y="436" width="180" height="30"/>
                                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -93,6 +100,10 @@
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="top" secondItem="n6y-74-cnZ" secondAttribute="top" constant="8" id="4rr-mx-eEl"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="height" relation="lessThanOrEqual" secondItem="n6y-74-cnZ" secondAttribute="height" multiplier="0.8" id="B1d-Rt-Qbs"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="width" relation="lessThanOrEqual" secondItem="n6y-74-cnZ" secondAttribute="width" multiplier="0.8" id="IJ5-wN-Gz0"/>
+                                    <constraint firstItem="luM-K3-S95" firstAttribute="centerY" secondItem="4Bj-RX-Vou" secondAttribute="centerY" id="KJl-qf-1f2"/>
+                                    <constraint firstItem="luM-K3-S95" firstAttribute="height" secondItem="4Bj-RX-Vou" secondAttribute="height" id="N7o-q3-cOa"/>
+                                    <constraint firstItem="luM-K3-S95" firstAttribute="centerX" secondItem="4Bj-RX-Vou" secondAttribute="centerX" id="XF1-sF-z5M"/>
+                                    <constraint firstItem="luM-K3-S95" firstAttribute="width" secondItem="4Bj-RX-Vou" secondAttribute="width" id="XTa-ut-T44"/>
                                     <constraint firstItem="HVh-Sm-JNb" firstAttribute="top" secondItem="4Bj-RX-Vou" secondAttribute="bottom" constant="10" id="Ynv-DQ-8q4"/>
                                     <constraint firstItem="0Qn-W2-iej" firstAttribute="width" secondItem="n6y-74-cnZ" secondAttribute="width" multiplier="0.3" id="ae1-Fa-acu"/>
                                     <constraint firstItem="KNJ-6U-6Nq" firstAttribute="width" secondItem="n6y-74-cnZ" secondAttribute="width" multiplier="0.3" id="cxJ-AT-IYE"/>
@@ -101,6 +112,7 @@
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="height" secondItem="n6y-74-cnZ" secondAttribute="height" multiplier="0.8" priority="750" id="fMZ-hS-BCA"/>
                                     <constraint firstItem="0Qn-W2-iej" firstAttribute="centerX" secondItem="n6y-74-cnZ" secondAttribute="centerX" multiplier="1.7" id="l3B-bh-F5d"/>
                                     <constraint firstItem="0Qn-W2-iej" firstAttribute="centerY" secondItem="HVh-Sm-JNb" secondAttribute="centerY" id="mBb-Bz-HIe"/>
+                                    <constraint firstItem="luM-K3-S95" firstAttribute="width" secondItem="luM-K3-S95" secondAttribute="height" multiplier="1:1" id="tgM-O0-IRR"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="centerX" secondItem="n6y-74-cnZ" secondAttribute="centerX" id="ugi-NK-uvF"/>
                                     <constraint firstItem="4Bj-RX-Vou" firstAttribute="width" secondItem="n6y-74-cnZ" secondAttribute="width" multiplier="0.8" priority="750" id="yGD-85-7c9"/>
                                 </constraints>
@@ -119,6 +131,7 @@
                     <tabBarItem key="tabBarItem" title="Simulation" image="Simulation" id="cPa-gy-q4n"/>
                     <connections>
                         <outlet property="gridView" destination="4Bj-RX-Vou" id="aPD-oD-mTb"/>
+                        <outlet property="pacmanView" destination="luM-K3-S95" id="EsU-do-GKU"/>
                         <outlet property="runButton" destination="HVh-Sm-JNb" id="HrM-hb-NtZ"/>
                     </connections>
                 </viewController>

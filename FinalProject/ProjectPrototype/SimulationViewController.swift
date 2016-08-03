@@ -10,15 +10,17 @@ class SimulationViewController: UIViewController, EngineDelegate {
     @IBOutlet weak var restButton: UIButton!
     @IBOutlet weak var titleTextfield: UITextField!
 
+    @IBOutlet weak var pacmanView: PacmanView!
     var points:[(Int,Int)] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.pacmanView.backgroundColor = UIColor.blackColor()
         gameEngine = StandardEngine._sharedInstance
         gameEngine.delegate = self
 
-        //gridView.points = [(0,0),(1,1),(2,2),(3,3)]
+        pacmanView.PacmanPoints = [(6,6)]
 //        let e = gameEngine.grid[1,1]
 //        print ("\(e)")
 
@@ -31,10 +33,12 @@ class SimulationViewController: UIViewController, EngineDelegate {
 
     func engineDidUpdate(withGrid: GridProtocol) {
         gridView.setNeedsDisplay()
+        pacmanView.setNeedsDisplay()
     }
 
     func updateGridNotification (notification:NSNotification){
         gridView.setNeedsDisplay()
+        pacmanView.setNeedsDisplay()
     }
     
     
