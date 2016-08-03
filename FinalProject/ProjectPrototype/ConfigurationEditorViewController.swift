@@ -12,7 +12,6 @@ class ConfigurationEditorViewController: UIViewController {
     
     @IBOutlet var titleTextField : UITextField!
     @IBOutlet weak var gridView: GridView!
-    @IBOutlet weak var textView: UITextView!
 
     var jsonTitle: String!
     var jsonContent: [[Int]]!
@@ -39,9 +38,6 @@ class ConfigurationEditorViewController: UIViewController {
 
         // Refresh the name of the Grid to edit
         titleTextField.text = gridToEdit
-        textView.text = textView.text + "JSON Content"
-        textView.text = textView.text + "\n" + "\n" + jsonTitle
-        textView.text = textView.text + " : " + jsonContent.description
         
         //Save Original State of Points
         originalPoints = gridView.points
